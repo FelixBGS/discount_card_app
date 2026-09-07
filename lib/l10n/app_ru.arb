@@ -1,0 +1,26 @@
+{
+  "myCardsTitle": "Мои карты",
+  "@myCardsTitle": {
+    "description": "Заглавия для экрана каталога"
+  },
+
+  "catalogNavOption": "Каталог",
+  "@catalogNavOption": {
+    "description": "Название раздела в навигационной нижней панели"
+  },
+
+  "scannerNavOption": "Сканер",
+  "@scannerNavOption": {
+    "description": "Название раздела в навигационной нижней панели"
+  },
+
+  "settingsNavOption": "Настройки",
+  "@settingsNavOption": {
+    "description": "Название раздела в навигационной нижней панели"
+  },
+
+  "searchCardsHint": "Поиск по названию или магазину",
+  "@searchCardsHint": {
+    "description": "Подсказка по вводу для поисковой строки дискотных карт"
+  }
+}
