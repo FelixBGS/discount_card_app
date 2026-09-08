@@ -118,11 +118,59 @@ abstract class AppLocalizations {
   /// **'Настройки'**
   String get settingsNavOption;
 
-  /// Подсказка по вводу для поисковой строки дискотных карт
+  /// Подсказка по вводу для поисковой строки дисконтных карт
   ///
   /// In ru, this message translates to:
   /// **'Поиск по названию или магазину'**
   String get searchCardsHint;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Супермаркеты'**
+  String get supermarketCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Одежда'**
+  String get clothingCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Кафе и рестораны'**
+  String get cafeAndRestaurantsCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Бытовая техника'**
+  String get householdApplianceCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Аптеки'**
+  String get pharmacyCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Развлечения'**
+  String get entertainmentCategory;
+
+  /// Название категории дисконтных карт
+  ///
+  /// In ru, this message translates to:
+  /// **'Электроника'**
+  String get electronicsCategory;
+
+  /// Подпись категории, если значение с API не распознано
+  ///
+  /// In ru, this message translates to:
+  /// **'Другое'**
+  String get unknownCategory;
 }
 
 class _AppLocalizationsDelegate

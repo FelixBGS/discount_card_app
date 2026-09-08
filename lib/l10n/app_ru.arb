@@ -21,6 +21,46 @@
 
   "searchCardsHint": "Поиск по названию или магазину",
   "@searchCardsHint": {
-    "description": "Подсказка по вводу для поисковой строки дискотных карт"
+    "description": "Подсказка по вводу для поисковой строки дисконтных карт"
+  },
+
+  "supermarketCategory": "Супермаркеты",
+  "@supermarketCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "clothingCategory": "Одежда",
+  "@clothingCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "cafeAndRestaurantsCategory": "Кафе и рестораны",
+  "@cafeAndRestaurantsCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "householdApplianceCategory": "Бытовая техника",
+  "@householdApplianceCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "pharmacyCategory": "Аптеки",
+  "@pharmacyCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "entertainmentCategory": "Развлечения",
+  "@entertainmentCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "electronicsCategory": "Электроника",
+  "@electronicsCategory": {
+    "description": "Название категории дисконтных карт"
+  },
+
+  "unknownCategory": "Другое",
+  "@unknownCategory": {
+    "description": "Подпись категории, если значение с API не распознано"
   }
 }

@@ -7,24 +7,24 @@ abstract final class AppTypography {
     headlineSmall: TextStyle(
       fontSize: 24,
       height: 1.2,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       letterSpacing: -0.5,
     ),
     titleLarge: TextStyle(
-      fontSize: 20,
+      fontSize: 28,
       height: 1.2,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
       letterSpacing: -0.3,
     ),
     titleMedium: TextStyle(
       fontSize: 16,
       height: 1.3,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
     ),
     titleSmall: TextStyle(
       fontSize: 14,
       height: 1.3,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
     ),
     bodyLarge: TextStyle(
       fontSize: 16,

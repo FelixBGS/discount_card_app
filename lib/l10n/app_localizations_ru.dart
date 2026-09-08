@@ -23,4 +23,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get searchCardsHint => 'Поиск по названию или магазину';
+
+  @override
+  String get supermarketCategory => 'Супермаркеты';
+
+  @override
+  String get clothingCategory => 'Одежда';
+
+  @override
+  String get cafeAndRestaurantsCategory => 'Кафе и рестораны';
+
+  @override
+  String get householdApplianceCategory => 'Бытовая техника';
+
+  @override
+  String get pharmacyCategory => 'Аптеки';
+
+  @override
+  String get entertainmentCategory => 'Развлечения';
+
+  @override
+  String get electronicsCategory => 'Электроника';
+
+  @override
+  String get unknownCategory => 'Другое';
 }
