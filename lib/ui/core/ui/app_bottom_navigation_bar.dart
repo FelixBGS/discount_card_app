@@ -1,7 +1,6 @@
 import 'package:discount_card_app/l10n/l10n.dart';
+import 'package:discount_card_app/ui/models/app_tab.dart';
 import 'package:flutter/material.dart';
-
-enum AppTab { catalog, scanner, settings }
 
 class AppBottomNavigationBar extends StatelessWidget {
   const AppBottomNavigationBar({

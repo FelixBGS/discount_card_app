@@ -2,6 +2,7 @@ import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/core/themes/app_colors.dart';
 import 'package:discount_card_app/ui/core/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/core/ui/app_search_bar.dart';
+import 'package:discount_card_app/ui/home/widgets/filter_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -43,6 +44,10 @@ class HomeScreen extends StatelessWidget {
             AppSearchBar(
               hintText: context.l10n.searchCardsHint,
               icon: Icons.search_rounded,
+            ),
+            Wrap(spacing: AppSpacing.md, children: [
+                
+              ],
             ),
           ],
         ),
