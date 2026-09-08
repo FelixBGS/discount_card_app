@@ -1,4 +1,5 @@
 import 'package:discount_card_app/l10n/l10n.dart';
+import 'package:discount_card_app/ui/core/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/core/ui/app_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,24 +13,27 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           context.l10n.myCardsTitle,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
-        titleSpacing: 24,
-        actionsPadding: const EdgeInsets.only(right: 24),
+        titleSpacing: AppSpacing.lg,
+        actionsPadding: const EdgeInsets.only(right: AppSpacing.lg),
         actions: [
           IconButton(
             onPressed: () => {},
             icon: SvgPicture.asset(
-              width: 28,
-              height: 28,
+              width: AppSizes.iconMedium,
+              height: AppSizes.iconMedium,
               "assets/images/icons/ic_barcode_scanner.svg",
             ),
           ),
-          IconButton(onPressed: () => {}, icon: Icon(Icons.add, size: 28)),
+          IconButton(
+            onPressed: () => {},
+            icon: Icon(Icons.add, size: AppSizes.iconMedium),
+          ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
