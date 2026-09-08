@@ -23,20 +23,21 @@ class HomeScreen extends StatelessWidget {
             onPressed: () => {},
             icon: SvgPicture.asset(
               colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
-              width: AppSizes.iconLarge,
-              height: AppSizes.iconLarge,
+              width: AppSizes.iconMedium,
+              height: AppSizes.iconMedium,
               "assets/images/icons/ic_barcode_scanner.svg",
             ),
           ),
           IconButton(
             onPressed: () => {},
-            icon: Icon(Icons.add, size: AppSizes.iconLarge),
+            icon: Icon(Icons.add, size: AppSizes.iconMedium),
           ),
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         child: Column(
+          spacing: AppSpacing.md,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppSearchBar(

@@ -15,7 +15,7 @@ abstract final class AppNavigationBarTheme {
         final isSelected = states.contains(WidgetState.selected);
 
         return IconThemeData(
-          size: AppSizes.iconMedium,
+          size: AppSizes.iconSmall,
           color: isSelected ? AppColors.primary : AppColors.textSecondary,
         );
       }),

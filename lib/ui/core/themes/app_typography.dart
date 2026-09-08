@@ -17,7 +17,7 @@ abstract final class AppTypography {
       letterSpacing: -0.3,
     ),
     titleMedium: TextStyle(
-      fontSize: 16,
+      fontSize: 20,
       height: 1.3,
       fontWeight: FontWeight.bold,
     ),

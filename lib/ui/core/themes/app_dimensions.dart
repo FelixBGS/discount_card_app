@@ -20,10 +20,10 @@ abstract final class AppSpacing {
 
 abstract final class AppSizes {
   // Иконки
-  static const double iconSmall = 16;
-  static const double iconMedium = 24;
-  static const double iconLarge = 28;
-  static const double iconExtraLarge = 32;
+  static const double iconSmall = 24;
+  static const double iconMedium = 32;
+  static const double iconLarge = 48;
+  static const double iconExtraLarge = 64;
 
   // Высота компонентов
   static const double buttonHeight = 52;
