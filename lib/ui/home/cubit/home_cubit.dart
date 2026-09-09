@@ -1,15 +1,27 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 import 'package:discount_card_app/ui/home/cubit/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState());
+  final DiscountCardRepository _repository;
 
-  void changeQuery(String newQuery) => emit(
-    HomeState(selectedFilter: state.selectedFilter, searchQuery: newQuery),
-  );
+  HomeCubit(this._repository) : super(const HomeState()) {
+    changeSelectedFilter(state.selectedFilter);
+  }
 
-  void changeSelectedFilter(CardCategoryType? selectedFilter) => emit(
-    HomeState(selectedFilter: selectedFilter, searchQuery: state.searchQuery),
-  );
+  void changeQuery(String newQuery) {
+    emit(state.copyWith(searchQuery: newQuery));
+  }
+
+  Future<void> changeSelectedFilter(CardCategoryType? selectedFilter) async {
+    emit(state.copyWith(selectedFilter: () => selectedFilter));
+
+    try {
+      final cards = await _repository.searchCardsByType(selectedFilter);
+      emit(state.copyWith(discountCards: cards));
+    } catch (e) {
+      // ignore error
+    }
+  }
 }

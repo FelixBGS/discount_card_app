@@ -1,9 +1,12 @@
 import 'package:discount_card_app/data/models/card_category_type_api.dart';
 import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/home/cubit/home_cubit.dart';
 import 'package:discount_card_app/ui/home/cubit/home_state.dart';
+import 'package:discount_card_app/ui/home/widgets/discount_card_panel.dart';
 import 'package:discount_card_app/ui/models/card_category_ui.dart';
+import 'package:discount_card_app/ui/models/card_color_ui.dart';
 import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/shared/ui/app_search_bar.dart';
@@ -47,17 +50,18 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
         child: Column(
-          spacing: AppSpacing.md,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppSearchBar(
               hintText: context.l10n.searchCardsHint,
               icon: Icons.search_rounded,
             ),
-            BlocBuilder<HomeCubit, HomeState>(
-              builder: ((context, state) {
+            const SizedBox(height: AppSpacing.md),
+            BlocSelector<HomeCubit, HomeState, CardCategoryType?>(
+              selector: (state) => state.selectedFilter,
+              builder: ((context, selectedFilter) {
                 return Wrap(
-                  spacing: AppSpacing.md,
+                  spacing: AppSpacing.sm,
                   children: [null, ...CardCategoryType.values]
                       .map(
                         (category) => FilterContainer(
@@ -67,12 +71,36 @@ class HomeScreen extends StatelessWidget {
                               category,
                             );
                           },
-                          isSelected: state.selectedFilter == category,
+                          isSelected: selectedFilter == category,
                         ),
                       )
                       .toList(),
                 );
               }),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            Expanded(
+              child: BlocSelector<HomeCubit, HomeState, List<DiscountCard>>(
+                selector: (state) => state.discountCards,
+                builder: (context, discountCards) {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: AppSpacing.sm),
+                    itemCount: discountCards.length,
+                    itemBuilder: (context, index) {
+                      final discountCard = discountCards[index];
+                      return DiscountCardPanel(
+                        key: ValueKey(discountCard.id),
+                        iconUrl: discountCard.logoUrl ?? "https://www.svgrepo.com/show/524853/question-circle.svg",
+                        shopName: discountCard.shopName,
+                        categoryName: discountCard.category.label(context.l10n),
+                        color: discountCard.color.color,
+                        onPressed: () => {},
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),

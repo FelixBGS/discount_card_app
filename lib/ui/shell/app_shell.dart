@@ -1,3 +1,4 @@
+import 'package:discount_card_app/core/di/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/home/cubit/home_cubit.dart';
@@ -25,7 +26,7 @@ class _AppShellState extends State<AppShell> {
         index: _selectedTab.index,
         children: [
           BlocProvider(
-            create: (context) => HomeCubit(),
+            create: (context) => HomeCubit(getIt()),
             child: const HomeScreen(),
           ),
           _TabPlaceholder(title: l10n.scannerNavOption),
