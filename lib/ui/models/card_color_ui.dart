@@ -1,5 +1,5 @@
 import 'package:discount_card_app/domain/models/card_color.dart';
-import 'package:discount_card_app/ui/core/themes/app_colors.dart';
+import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 extension CardColorUi on CardColor {

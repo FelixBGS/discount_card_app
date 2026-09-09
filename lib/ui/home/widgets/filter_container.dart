@@ -1,5 +1,5 @@
-import 'package:discount_card_app/ui/core/themes/app_colors.dart';
-import 'package:discount_card_app/ui/core/themes/app_dimensions.dart';
+import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
+import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:flutter/material.dart';
 
 class FilterContainer extends StatelessWidget {
@@ -12,7 +12,7 @@ class FilterContainer extends StatelessWidget {
 
   final bool isSelected;
   final String filterName;
-  final ValueChanged<bool> onSelected;
+  final ValueChanged<void> onSelected;
 
   @override
   Widget build(BuildContext context) {

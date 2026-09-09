@@ -47,4 +47,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get unknownCategory => 'Другое';
+
+  @override
+  String get allFilter => 'Все';
 }

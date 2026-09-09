@@ -1,8 +1,9 @@
 import 'package:discount_card_app/domain/models/barcode_format.dart';
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
+import 'package:equatable/equatable.dart';
 
-class DiscountCard {
+class DiscountCard extends Equatable {
   const DiscountCard({
     required this.id,
     required this.shopName,
@@ -48,21 +49,7 @@ class DiscountCard {
   }
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        other is DiscountCard &&
-            id == other.id &&
-            shopName == other.shopName &&
-            category == other.category &&
-            color == other.color &&
-            barcode == other.barcode &&
-            barcodeFormat == other.barcodeFormat &&
-            logoUrl == other.logoUrl &&
-            description == other.description;
-  }
-
-  @override
-  int get hashCode => Object.hash(
+  List<Object?> get props => [
     id,
     shopName,
     category,
@@ -71,5 +58,5 @@ class DiscountCard {
     barcodeFormat,
     logoUrl,
     description,
-  );
+  ];
 }

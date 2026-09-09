@@ -62,5 +62,10 @@
   "unknownCategory": "Другое",
   "@unknownCategory": {
     "description": "Подпись категории, если значение с API не распознано"
+  },
+  
+  "allFilter": "Все",
+  "@allFilter": {
+    "description": "Подпись фильтра для отображения всех категорий"
   }
 }

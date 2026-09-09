@@ -35,3 +35,12 @@ extension CardCategoryUi on CardCategoryType {
     CardCategoryType.unknown => Icons.category_outlined,
   };
 }
+
+extension CardCategoryNullableUi on CardCategoryType? {
+  String label(AppLocalizations l10n) {
+    if (this == null) {
+      return l10n.allFilter;
+    }
+    return this!.label(l10n);
+  }
+}

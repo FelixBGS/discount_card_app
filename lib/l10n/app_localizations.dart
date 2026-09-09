@@ -171,6 +171,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Другое'**
   String get unknownCategory;
+
+  /// Подпись фильтра для отображения всех категорий
+  ///
+  /// In ru, this message translates to:
+  /// **'Все'**
+  String get allFilter;
 }
 
 class _AppLocalizationsDelegate
