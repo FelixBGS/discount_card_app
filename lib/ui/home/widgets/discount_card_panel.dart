@@ -5,14 +5,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 class DiscountCardPanel extends StatelessWidget {
   const DiscountCardPanel({
     super.key,
-    required this.iconUrl,
+    this.iconUrl,
+    required this.fallbackIconAsset,
     required this.shopName,
     required this.categoryName,
     required this.color,
     required this.onPressed,
   });
 
-  final String iconUrl;
+  final String? iconUrl;
+  final String fallbackIconAsset;
   final String shopName;
   final String categoryName;
   final Color color;
@@ -36,11 +38,30 @@ class DiscountCardPanel extends StatelessWidget {
           ),
           child: Row(
             children: [
-              SvgPicture.network(
-                iconUrl,
-                width: AppSizes.iconLarge,
-                height: AppSizes.iconLarge,
-              ),
+              if (iconUrl != null && iconUrl!.isNotEmpty)
+                SvgPicture.network(
+                  iconUrl!,
+                  width: AppSizes.iconLarge,
+                  height: AppSizes.iconLarge,
+                  placeholderBuilder: (context) => const SizedBox(
+                    width: AppSizes.iconLarge,
+                    height: AppSizes.iconLarge,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 2,
+                    ),
+                  ),
+                )
+              else
+                SvgPicture.asset(
+                  fallbackIconAsset,
+                  width: AppSizes.iconLarge,
+                  height: AppSizes.iconLarge,
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
+                ),
               const SizedBox(width: AppSpacing.lg),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

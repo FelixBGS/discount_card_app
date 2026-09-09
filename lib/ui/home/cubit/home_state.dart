@@ -1,5 +1,5 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
-import 'package:discount_card_app/domain/models/discount_card.dart';
+import 'package:discount_card_app/ui/models/discount_card_ui.dart';
 import 'package:flutter/widgets.dart';
 import 'package:equatable/equatable.dart';
 
@@ -8,16 +8,19 @@ class HomeState extends Equatable {
     this.selectedFilter,
     this.searchQuery = "",
     this.discountCards = const [],
+    this.isLoading = false,
   });
 
   final CardCategoryType? selectedFilter;
-  final List<DiscountCard> discountCards;
+  final List<DiscountCardUi> discountCards;
   final String searchQuery;
+  final bool isLoading;
 
   HomeState copyWith({
     ValueGetter<CardCategoryType?>? selectedFilter,
-    List<DiscountCard>? discountCards,
+    List<DiscountCardUi>? discountCards,
     String? searchQuery,
+    bool? isLoading,
   }) {
     return HomeState(
       selectedFilter: selectedFilter != null
@@ -25,9 +28,10 @@ class HomeState extends Equatable {
           : this.selectedFilter,
       discountCards: discountCards ?? this.discountCards,
       searchQuery: searchQuery ?? this.searchQuery,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 
   @override
-  List<Object?> get props => [selectedFilter, searchQuery, discountCards];
+  List<Object?> get props => [selectedFilter, searchQuery, discountCards, isLoading];
 }

@@ -26,7 +26,7 @@ class _AppShellState extends State<AppShell> {
         index: _selectedTab.index,
         children: [
           BlocProvider(
-            create: (context) => HomeCubit(getIt()),
+            create: (context) => HomeCubit(getIt())..init(),
             child: const HomeScreen(),
           ),
           _TabPlaceholder(title: l10n.scannerNavOption),
