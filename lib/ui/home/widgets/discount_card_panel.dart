@@ -29,7 +29,7 @@ class DiscountCardPanel extends StatelessWidget {
         highlightColor: Colors.white.withValues(alpha: 0.1),
         splashFactory: InkRipple.splashFactory,
         child: Ink(
-          padding: EdgeInsets.all(AppSpacing.sm),
+          padding: const EdgeInsets.all(AppSpacing.sm),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSizes.radiusMedium),
             color: color,
@@ -41,7 +41,7 @@ class DiscountCardPanel extends StatelessWidget {
                 width: AppSizes.iconLarge,
                 height: AppSizes.iconLarge,
               ),
-              SizedBox(width: AppSpacing.lg),
+              const SizedBox(width: AppSpacing.lg),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -52,8 +52,8 @@ class DiscountCardPanel extends StatelessWidget {
                   Text(categoryName),
                 ],
               ),
-              Spacer(),
-              Icon(Icons.arrow_forward_ios),
+              const Spacer(),
+              const Icon(Icons.arrow_forward_ios),
             ],
           ),
         ),

@@ -24,9 +24,9 @@ class FilterContainer extends StatelessWidget {
       side: BorderSide.none,
       backgroundColor: AppColors.inputBackground,
       selectedColor: AppColors.primary,
-      labelStyle: TextStyle(
-        color: isSelected ? Colors.white : AppColors.textPrimary,
-      ),
+      labelStyle: isSelected
+          ? const TextStyle(color: Colors.white)
+          : const TextStyle(color: AppColors.textPrimary),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.radiusLarge),
       ),

@@ -23,7 +23,10 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () => {},
             icon: SvgPicture.asset(
-              colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                AppColors.primary,
+                BlendMode.srcIn,
+              ),
               width: AppSizes.iconMedium,
               height: AppSizes.iconMedium,
               "assets/images/icons/ic_barcode_scanner.svg",
@@ -31,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () => {},
-            icon: Icon(Icons.add, size: AppSizes.iconMedium),
+            icon: const Icon(Icons.add, size: AppSizes.iconMedium),
           ),
         ],
       ),
