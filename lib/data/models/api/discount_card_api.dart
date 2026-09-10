@@ -1,5 +1,5 @@
-class DiscountCardDto {
-  const DiscountCardDto({
+class DiscountCardApi {
+  const DiscountCardApi({
     required this.id,
     required this.shopName,
     required this.category,
@@ -19,8 +19,8 @@ class DiscountCardDto {
   final String? logoUrl;
   final String? description;
 
-  factory DiscountCardDto.fromJson(Map<String, dynamic> json) {
-    return DiscountCardDto(
+  factory DiscountCardApi.fromJson(Map<String, dynamic> json) {
+    return DiscountCardApi(
       id: json['id'] as String,
       shopName: json['name'] as String,
       category: json['category'] as String,

@@ -1,11 +1,11 @@
 import 'package:discount_card_app/data/mappers/barcode_format_mapper.dart';
 import 'package:discount_card_app/data/mappers/card_category_type_mapper.dart';
 import 'package:discount_card_app/data/mappers/card_color_mapper.dart';
-import 'package:discount_card_app/data/models/discount_card_dto.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
+import '../models/api/discount_card_api.dart';
 
 abstract final class DiscountCardMapper {
-  static DiscountCard fromApi(DiscountCardDto value) => DiscountCard(
+  static DiscountCard fromApi(DiscountCardApi value) => DiscountCard(
     id: value.id,
     shopName: value.shopName,
     category: CardCategoryTypeMapper.fromApi(value.category),
@@ -16,7 +16,7 @@ abstract final class DiscountCardMapper {
     description: value.description,
   );
 
-  static DiscountCardDto toApi(DiscountCard value) => DiscountCardDto(
+  static DiscountCardApi toApi(DiscountCard value) => DiscountCardApi(
     id: value.id,
     shopName: value.shopName,
     category: CardCategoryTypeMapper.toApi(value.category),
@@ -28,7 +28,7 @@ abstract final class DiscountCardMapper {
   );
 
   static DiscountCard fromJson(Map<String, dynamic> json) =>
-      fromApi(DiscountCardDto.fromJson(json));
+      fromApi(DiscountCardApi.fromJson(json));
 
   static Map<String, dynamic> toJson(DiscountCard value) =>
       toApi(value).toJson();

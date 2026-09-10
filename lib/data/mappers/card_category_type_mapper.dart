@@ -1,5 +1,5 @@
-import 'package:discount_card_app/data/models/card_category_type_api.dart';
 import 'package:discount_card_app/domain/models/card_category_type.dart';
+import '../models/api/card_category_type_api.dart';
 
 abstract final class CardCategoryTypeMapper {
   static CardCategoryType fromApi(String value) => switch (value) {

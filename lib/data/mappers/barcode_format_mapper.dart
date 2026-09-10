@@ -1,4 +1,4 @@
-import 'package:discount_card_app/data/models/barcode_format_api.dart';
+import 'package:discount_card_app/data/models/api/barcode_format_api.dart';
 import 'package:discount_card_app/domain/models/barcode_format.dart';
 
 abstract final class BarcodeFormatMapper {

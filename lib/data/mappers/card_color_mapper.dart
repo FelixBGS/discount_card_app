@@ -1,5 +1,5 @@
-import 'package:discount_card_app/data/models/card_color_api.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
+import '../models/api/card_color_api.dart';
 
 abstract final class CardColorMapper {
   static CardColor fromApi(String value) => switch (value) {
