@@ -3,17 +3,24 @@ import 'package:discount_card_app/ui/home/cubit/home_cubit.dart';
 import 'package:discount_card_app/ui/home/cubit/home_state.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_panel.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_shimmer.dart';
-import 'package:discount_card_app/ui/models/card_category_ui.dart';
+import 'package:discount_card_app/ui/models/discount_card_ui.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../models/card_category_ui.dart';
 
 class HomeCardsList extends StatelessWidget {
   const HomeCardsList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocSelector<
+      HomeCubit,
+      HomeState,
+      ({HomeDataStatus status, List<DiscountCardUi> discountCards})
+    >(
+      selector: (s) => (status: s.status, discountCards: s.discountCards),
       builder: (context, state) {
         if (state.status is HomeDataInitial) {
           return ListView.separated(
