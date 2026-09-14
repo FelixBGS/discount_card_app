@@ -15,23 +15,30 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const HomeAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AppSearchBar(
-              hintText: context.l10n.searchCardsHint,
-              icon: Icons.search_rounded,
-              onChanged: (query) =>
-                  context.read<HomeCubit>().changeSearchQuery(query),
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+            sliver: SliverToBoxAdapter(
+              child: AppSearchBar(
+                hintText: context.l10n.searchCardsHint,
+                icon: Icons.search_rounded,
+                onChanged: (query) =>
+                    context.read<HomeCubit>().changeSearchQuery(query),
+              ),
             ),
-            const SizedBox(height: AppSpacing.md),
-            const HomeFiltersSection(),
-            const SizedBox(height: AppSpacing.md),
-            const Expanded(child: HomeCardsList()),
-          ],
-        ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.md)),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+            sliver: SliverToBoxAdapter(child: HomeFiltersSection()),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.md)),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+            sliver: HomeCardsList(),
+          ),
+        ],
       ),
     );
   }

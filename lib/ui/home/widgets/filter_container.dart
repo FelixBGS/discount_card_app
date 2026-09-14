@@ -1,4 +1,3 @@
-import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:flutter/material.dart';
 

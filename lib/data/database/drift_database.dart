@@ -45,6 +45,24 @@ class AppDatabase extends _$AppDatabase {
     );
   }
 
+  static QueryExecutor _openConnection() => driftDatabase(
+    name: _databaseName,
+    native: DriftNativeOptions(
+      databaseDirectory: getApplicationSupportDirectory,
+      setup: (db) {
+        db.createFunction(
+          functionName: 'unicode_lower',
+          argumentCount: const AllowedArgumentCount(1),
+          function: (args) {
+            final value = args.first;
+            if (value == null) return null;
+            return value.toString().toLowerCase();
+          },
+        );
+      },
+    ),
+  );
+
   Future<void> _seedData() async {
     await batch((batch) {
       batch.insertAll(discountCardScheme, [
@@ -84,25 +102,151 @@ class AppDatabase extends _$AppDatabase {
             "https://trace-logos.ru/assets/logos/svgs/mcdonalds.svg",
           ),
         ),
+        DiscountCardSchemeCompanion.insert(
+          id: "4",
+          shopName: "Пятерочка",
+          shopNameSearch: "пятерочка",
+          category: CardCategoryType.supermarket,
+          color: CardColor.green,
+          barcode: "2349521",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/pyaterochka.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "5",
+          shopName: "Чижик",
+          shopNameSearch: "чижик",
+          category: CardCategoryType.supermarket,
+          color: CardColor.yellow,
+          barcode: "2142141",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/chizhik.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "6",
+          shopName: "McDonalds",
+          shopNameSearch: "mcdonalds",
+          category: CardCategoryType.cafeAndRestaurant,
+          color: CardColor.red,
+          barcode: "14120102",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/mcdonalds.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "7",
+          shopName: "Пятерочка",
+          shopNameSearch: "пятерочка",
+          category: CardCategoryType.supermarket,
+          color: CardColor.green,
+          barcode: "2349521",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/pyaterochka.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "8",
+          shopName: "Чижик",
+          shopNameSearch: "чижик",
+          category: CardCategoryType.supermarket,
+          color: CardColor.yellow,
+          barcode: "2142141",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/chizhik.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "9",
+          shopName: "McDonalds",
+          shopNameSearch: "mcdonalds",
+          category: CardCategoryType.cafeAndRestaurant,
+          color: CardColor.red,
+          barcode: "14120102",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/mcdonalds.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "10",
+          shopName: "Пятерочка",
+          shopNameSearch: "пятерочка",
+          category: CardCategoryType.supermarket,
+          color: CardColor.green,
+          barcode: "2349521",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/pyaterochka.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "11",
+          shopName: "Чижик",
+          shopNameSearch: "чижик",
+          category: CardCategoryType.supermarket,
+          color: CardColor.yellow,
+          barcode: "2142141",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/chizhik.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "12",
+          shopName: "McDonalds",
+          shopNameSearch: "mcdonalds",
+          category: CardCategoryType.cafeAndRestaurant,
+          color: CardColor.red,
+          barcode: "14120102",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/mcdonalds.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "13",
+          shopName: "Пятерочка",
+          shopNameSearch: "пятерочка",
+          category: CardCategoryType.supermarket,
+          color: CardColor.green,
+          barcode: "2349521",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/pyaterochka.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "14",
+          shopName: "Чижик",
+          shopNameSearch: "чижик",
+          category: CardCategoryType.supermarket,
+          color: CardColor.yellow,
+          barcode: "2142141",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/chizhik.svg",
+          ),
+        ),
+        DiscountCardSchemeCompanion.insert(
+          id: "15",
+          shopName: "McDonalds",
+          shopNameSearch: "mcdonalds",
+          category: CardCategoryType.cafeAndRestaurant,
+          color: CardColor.red,
+          barcode: "14120102",
+          barcodeFormat: BarcodeFormat.ean8,
+          logoUrl: const Value(
+            "https://trace-logos.ru/assets/logos/svgs/mcdonalds.svg",
+          ),
+        ),
       ]);
     });
   }
-
-  static QueryExecutor _openConnection() => driftDatabase(
-    name: _databaseName,
-    native: DriftNativeOptions(
-      databaseDirectory: getApplicationSupportDirectory,
-      setup: (db) {
-        db.createFunction(
-          functionName: 'unicode_lower',
-          argumentCount: const AllowedArgumentCount(1),
-          function: (args) {
-            final value = args.first;
-            if (value == null) return null;
-            return value.toString().toLowerCase();
-          },
-        );
-      },
-    ),
-  );
 }

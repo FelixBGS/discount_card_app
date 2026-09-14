@@ -23,7 +23,7 @@ class HomeCardsList extends StatelessWidget {
       selector: (s) => (status: s.status, discountCards: s.discountCards),
       builder: (context, state) {
         if (state.status is HomeDataInitial) {
-          return ListView.separated(
+          return SliverList.separated(
             separatorBuilder: (context, index) =>
                 const SizedBox(height: AppSpacing.sm),
             itemCount: 5,
@@ -31,7 +31,7 @@ class HomeCardsList extends StatelessWidget {
           );
         }
 
-        return ListView.separated(
+        return SliverList.separated(
           separatorBuilder: (context, index) =>
               const SizedBox(height: AppSpacing.sm),
           itemCount: state.discountCards.length,
