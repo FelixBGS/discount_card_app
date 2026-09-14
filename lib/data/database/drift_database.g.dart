@@ -29,6 +29,17 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _shopNameSearchMeta = const VerificationMeta(
+    'shopNameSearch',
+  );
+  @override
+  late final GeneratedColumn<String> shopNameSearch = GeneratedColumn<String>(
+    'shop_name_search',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   late final GeneratedColumnWithTypeConverter<CardCategoryType, String>
   category =
@@ -99,6 +110,7 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
   List<GeneratedColumn> get $columns => [
     id,
     shopName,
+    shopNameSearch,
     category,
     color,
     barcode,
@@ -130,6 +142,17 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
       );
     } else if (isInserting) {
       context.missing(_shopNameMeta);
+    }
+    if (data.containsKey('shop_name_search')) {
+      context.handle(
+        _shopNameSearchMeta,
+        shopNameSearch.isAcceptableOrUnknown(
+          data['shop_name_search']!,
+          _shopNameSearchMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_shopNameSearchMeta);
     }
     if (data.containsKey('barcode')) {
       context.handle(
@@ -170,6 +193,10 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
       shopName: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}shop_name'],
+      )!,
+      shopNameSearch: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}shop_name_search'],
       )!,
       category: $DiscountCardSchemeTable.$convertercategory.fromSql(
         attachedDatabase.typeMapping.read(
@@ -221,6 +248,7 @@ class DiscountCardEntity extends DataClass
     implements Insertable<DiscountCardEntity> {
   final String id;
   final String shopName;
+  final String shopNameSearch;
   final CardCategoryType category;
   final CardColor color;
   final String barcode;
@@ -230,6 +258,7 @@ class DiscountCardEntity extends DataClass
   const DiscountCardEntity({
     required this.id,
     required this.shopName,
+    required this.shopNameSearch,
     required this.category,
     required this.color,
     required this.barcode,
@@ -242,6 +271,7 @@ class DiscountCardEntity extends DataClass
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['shop_name'] = Variable<String>(shopName);
+    map['shop_name_search'] = Variable<String>(shopNameSearch);
     {
       map['category'] = Variable<String>(
         $DiscountCardSchemeTable.$convertercategory.toSql(category),
@@ -271,6 +301,7 @@ class DiscountCardEntity extends DataClass
     return DiscountCardSchemeCompanion(
       id: Value(id),
       shopName: Value(shopName),
+      shopNameSearch: Value(shopNameSearch),
       category: Value(category),
       color: Value(color),
       barcode: Value(barcode),
@@ -292,6 +323,7 @@ class DiscountCardEntity extends DataClass
     return DiscountCardEntity(
       id: serializer.fromJson<String>(json['id']),
       shopName: serializer.fromJson<String>(json['shopName']),
+      shopNameSearch: serializer.fromJson<String>(json['shopNameSearch']),
       category: serializer.fromJson<CardCategoryType>(json['category']),
       color: serializer.fromJson<CardColor>(json['color']),
       barcode: serializer.fromJson<String>(json['barcode']),
@@ -306,6 +338,7 @@ class DiscountCardEntity extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'shopName': serializer.toJson<String>(shopName),
+      'shopNameSearch': serializer.toJson<String>(shopNameSearch),
       'category': serializer.toJson<CardCategoryType>(category),
       'color': serializer.toJson<CardColor>(color),
       'barcode': serializer.toJson<String>(barcode),
@@ -318,6 +351,7 @@ class DiscountCardEntity extends DataClass
   DiscountCardEntity copyWith({
     String? id,
     String? shopName,
+    String? shopNameSearch,
     CardCategoryType? category,
     CardColor? color,
     String? barcode,
@@ -327,6 +361,7 @@ class DiscountCardEntity extends DataClass
   }) => DiscountCardEntity(
     id: id ?? this.id,
     shopName: shopName ?? this.shopName,
+    shopNameSearch: shopNameSearch ?? this.shopNameSearch,
     category: category ?? this.category,
     color: color ?? this.color,
     barcode: barcode ?? this.barcode,
@@ -338,6 +373,9 @@ class DiscountCardEntity extends DataClass
     return DiscountCardEntity(
       id: data.id.present ? data.id.value : this.id,
       shopName: data.shopName.present ? data.shopName.value : this.shopName,
+      shopNameSearch: data.shopNameSearch.present
+          ? data.shopNameSearch.value
+          : this.shopNameSearch,
       category: data.category.present ? data.category.value : this.category,
       color: data.color.present ? data.color.value : this.color,
       barcode: data.barcode.present ? data.barcode.value : this.barcode,
@@ -356,6 +394,7 @@ class DiscountCardEntity extends DataClass
     return (StringBuffer('DiscountCardEntity(')
           ..write('id: $id, ')
           ..write('shopName: $shopName, ')
+          ..write('shopNameSearch: $shopNameSearch, ')
           ..write('category: $category, ')
           ..write('color: $color, ')
           ..write('barcode: $barcode, ')
@@ -370,6 +409,7 @@ class DiscountCardEntity extends DataClass
   int get hashCode => Object.hash(
     id,
     shopName,
+    shopNameSearch,
     category,
     color,
     barcode,
@@ -383,6 +423,7 @@ class DiscountCardEntity extends DataClass
       (other is DiscountCardEntity &&
           other.id == this.id &&
           other.shopName == this.shopName &&
+          other.shopNameSearch == this.shopNameSearch &&
           other.category == this.category &&
           other.color == this.color &&
           other.barcode == this.barcode &&
@@ -394,6 +435,7 @@ class DiscountCardEntity extends DataClass
 class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   final Value<String> id;
   final Value<String> shopName;
+  final Value<String> shopNameSearch;
   final Value<CardCategoryType> category;
   final Value<CardColor> color;
   final Value<String> barcode;
@@ -404,6 +446,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   const DiscountCardSchemeCompanion({
     this.id = const Value.absent(),
     this.shopName = const Value.absent(),
+    this.shopNameSearch = const Value.absent(),
     this.category = const Value.absent(),
     this.color = const Value.absent(),
     this.barcode = const Value.absent(),
@@ -415,6 +458,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   DiscountCardSchemeCompanion.insert({
     required String id,
     required String shopName,
+    required String shopNameSearch,
     required CardCategoryType category,
     required CardColor color,
     required String barcode,
@@ -424,6 +468,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     this.rowid = const Value.absent(),
   }) : id = Value(id),
        shopName = Value(shopName),
+       shopNameSearch = Value(shopNameSearch),
        category = Value(category),
        color = Value(color),
        barcode = Value(barcode),
@@ -431,6 +476,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   static Insertable<DiscountCardEntity> custom({
     Expression<String>? id,
     Expression<String>? shopName,
+    Expression<String>? shopNameSearch,
     Expression<String>? category,
     Expression<String>? color,
     Expression<String>? barcode,
@@ -442,6 +488,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (shopName != null) 'shop_name': shopName,
+      if (shopNameSearch != null) 'shop_name_search': shopNameSearch,
       if (category != null) 'category': category,
       if (color != null) 'color': color,
       if (barcode != null) 'barcode': barcode,
@@ -455,6 +502,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   DiscountCardSchemeCompanion copyWith({
     Value<String>? id,
     Value<String>? shopName,
+    Value<String>? shopNameSearch,
     Value<CardCategoryType>? category,
     Value<CardColor>? color,
     Value<String>? barcode,
@@ -466,6 +514,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     return DiscountCardSchemeCompanion(
       id: id ?? this.id,
       shopName: shopName ?? this.shopName,
+      shopNameSearch: shopNameSearch ?? this.shopNameSearch,
       category: category ?? this.category,
       color: color ?? this.color,
       barcode: barcode ?? this.barcode,
@@ -484,6 +533,9 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     }
     if (shopName.present) {
       map['shop_name'] = Variable<String>(shopName.value);
+    }
+    if (shopNameSearch.present) {
+      map['shop_name_search'] = Variable<String>(shopNameSearch.value);
     }
     if (category.present) {
       map['category'] = Variable<String>(
@@ -522,6 +574,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     return (StringBuffer('DiscountCardSchemeCompanion(')
           ..write('id: $id, ')
           ..write('shopName: $shopName, ')
+          ..write('shopNameSearch: $shopNameSearch, ')
           ..write('category: $category, ')
           ..write('color: $color, ')
           ..write('barcode: $barcode, ')
@@ -553,6 +606,7 @@ typedef $$DiscountCardSchemeTableCreateCompanionBuilder =
     DiscountCardSchemeCompanion Function({
       required String id,
       required String shopName,
+      required String shopNameSearch,
       required CardCategoryType category,
       required CardColor color,
       required String barcode,
@@ -565,6 +619,7 @@ typedef $$DiscountCardSchemeTableUpdateCompanionBuilder =
     DiscountCardSchemeCompanion Function({
       Value<String> id,
       Value<String> shopName,
+      Value<String> shopNameSearch,
       Value<CardCategoryType> category,
       Value<CardColor> color,
       Value<String> barcode,
@@ -590,6 +645,11 @@ class $$DiscountCardSchemeTableFilterComposer
 
   ColumnFilters<String> get shopName => $composableBuilder(
     column: $table.shopName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get shopNameSearch => $composableBuilder(
+    column: $table.shopNameSearch,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -646,6 +706,11 @@ class $$DiscountCardSchemeTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get shopNameSearch => $composableBuilder(
+    column: $table.shopNameSearch,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get category => $composableBuilder(
     column: $table.category,
     builder: (column) => ColumnOrderings(column),
@@ -691,6 +756,11 @@ class $$DiscountCardSchemeTableAnnotationComposer
 
   GeneratedColumn<String> get shopName =>
       $composableBuilder(column: $table.shopName, builder: (column) => column);
+
+  GeneratedColumn<String> get shopNameSearch => $composableBuilder(
+    column: $table.shopNameSearch,
+    builder: (column) => column,
+  );
 
   GeneratedColumnWithTypeConverter<CardCategoryType, String> get category =>
       $composableBuilder(column: $table.category, builder: (column) => column);
@@ -758,6 +828,7 @@ class $$DiscountCardSchemeTableTableManager
               ({
                 Value<String> id = const Value.absent(),
                 Value<String> shopName = const Value.absent(),
+                Value<String> shopNameSearch = const Value.absent(),
                 Value<CardCategoryType> category = const Value.absent(),
                 Value<CardColor> color = const Value.absent(),
                 Value<String> barcode = const Value.absent(),
@@ -768,6 +839,7 @@ class $$DiscountCardSchemeTableTableManager
               }) => DiscountCardSchemeCompanion(
                 id: id,
                 shopName: shopName,
+                shopNameSearch: shopNameSearch,
                 category: category,
                 color: color,
                 barcode: barcode,
@@ -780,6 +852,7 @@ class $$DiscountCardSchemeTableTableManager
               ({
                 required String id,
                 required String shopName,
+                required String shopNameSearch,
                 required CardCategoryType category,
                 required CardColor color,
                 required String barcode,
@@ -790,6 +863,7 @@ class $$DiscountCardSchemeTableTableManager
               }) => DiscountCardSchemeCompanion.insert(
                 id: id,
                 shopName: shopName,
+                shopNameSearch: shopNameSearch,
                 category: category,
                 color: color,
                 barcode: barcode,

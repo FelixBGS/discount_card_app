@@ -8,6 +8,7 @@ import '../converters/card_color_converter.dart';
 class DiscountCardScheme extends Table {
   TextColumn get id => text()();
   TextColumn get shopName => text()();
+  TextColumn get shopNameSearch => text()();
   TextColumn get category => text().map(const CardCategoryConverter())();
   TextColumn get color => text().map(const CardColorConverter())();
   TextColumn get barcode => text()();
