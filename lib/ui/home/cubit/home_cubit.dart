@@ -13,19 +13,33 @@ class HomeCubit extends Cubit<HomeState> {
     changeSelectedFilter(null);
   }
 
-  void changeQuery(String newQuery) {
+  Future<void> changeQuery(String newQuery) async {
     emit(state.copyWith(searchQuery: newQuery));
+
+    try {
+      final cards = await _repository.searchCardsByFilters(
+        state.searchQuery,
+        state.selectedFilter,
+      );
+      final uiCards = cards.map((card) => card.toUi()).toList();
+      emit(state.copyWith(discountCards: uiCards));
+    } catch (e) {
+      // TODO add error handling
+    }
   }
 
   Future<void> changeSelectedFilter(CardCategoryType? selectedFilter) async {
-    emit(state.copyWith(selectedFilter: () => selectedFilter, isLoading: true));
+    emit(state.copyWith(selectedFilter: () => selectedFilter));
 
     try {
-      final cards = await _repository.searchCardsByType(selectedFilter);
+      final cards = await _repository.searchCardsByFilters(
+        state.searchQuery,
+        state.selectedFilter,
+      );
       final uiCards = cards.map((card) => card.toUi()).toList();
-      emit(state.copyWith(discountCards: uiCards, isLoading: false));
+      emit(state.copyWith(discountCards: uiCards));
     } catch (e) {
-      emit(state.copyWith(isLoading: false));
+      // TODO add error handling
     }
   }
 }

@@ -2,9 +2,10 @@ import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-class DiscountCardUi {
+class DiscountCardUi extends Equatable {
   final String id;
   final String shopName;
   final CardCategoryType category;
@@ -20,6 +21,16 @@ class DiscountCardUi {
     required this.localIconAsset,
     this.iconUrl,
   });
+
+  @override
+  List<Object?> get props => [
+    id,
+    shopName,
+    category,
+    backgroundColor,
+    iconUrl,
+    localIconAsset,
+  ];
 }
 
 extension DiscountCardToUiMapper on DiscountCard {
@@ -30,18 +41,18 @@ extension DiscountCardToUiMapper on DiscountCard {
       category: category,
       backgroundColor: _mapColor(color),
       iconUrl: logoUrl,
-      localIconAsset:"assets/images/icons/ic_question_mark_circle.svg",
+      localIconAsset: "assets/images/icons/ic_question_mark_circle.svg",
     );
   }
 
   Color _mapColor(CardColor color) => switch (color) {
-        CardColor.red => AppColors.cardRed,
-        CardColor.orange => AppColors.cardOrange,
-        CardColor.yellow => AppColors.cardYellow,
-        CardColor.green => AppColors.cardGreen,
-        CardColor.blue => AppColors.cardBlue,
-        CardColor.darkBlue => AppColors.cardDarkBlue,
-        CardColor.purple => AppColors.cardPurple,
-        CardColor.unknown => AppColors.cardRed,
-      };
+    CardColor.red => AppColors.cardRed,
+    CardColor.orange => AppColors.cardOrange,
+    CardColor.yellow => AppColors.cardYellow,
+    CardColor.green => AppColors.cardGreen,
+    CardColor.blue => AppColors.cardBlue,
+    CardColor.darkBlue => AppColors.cardDarkBlue,
+    CardColor.purple => AppColors.cardPurple,
+    CardColor.unknown => AppColors.cardRed,
+  };
 }
