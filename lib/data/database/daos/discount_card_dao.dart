@@ -11,37 +11,22 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
     with _$DiscountCardDaoMixin {
   DiscountCardDao(super.db);
 
-  Future<List<DiscountCardEntity>> getAllCards() =>
-      select(discountCardScheme).get();
-
-  Future<List<DiscountCardEntity>> getCardsByCategory(
-    CardCategoryType category,
-  ) {
-    return (select(
-      discountCardScheme,
-    )..where((tbl) => tbl.category.equalsValue(category))).get();
-  }
-
-  Future<List<DiscountCardEntity>> getCardsByShopNameQuery(
+  Stream<List<DiscountCardEntity>> watchCardsByFilters(
     String shopNameQuery,
+    CardCategoryType? category,
   ) {
-    final shopNameQueryLower = shopNameQuery.toLowerCase();
-    return (select(
-      discountCardScheme,
-    )..where((tbl) => tbl.shopNameSearch.like('%$shopNameQueryLower%'))).get();
-  }
+    final query = select(discountCardScheme);
 
-  Future<List<DiscountCardEntity>> getCardsByCategoryAndShopNameQuery(
-    String shopNameQuery,
-    CardCategoryType category,
-  ) {
-    final shopNameQueryLower = shopNameQuery.toLowerCase();
-    return (select(discountCardScheme)..where(
-          (tbl) =>
-              tbl.category.equalsValue(category) &
-              tbl.shopNameSearch.like('%$shopNameQueryLower%'),
-        ))
-        .get();
+    if (category != null) {
+      query.where((tbl) => tbl.category.equalsValue(category));
+    }
+
+    final normalizedQuery = shopNameQuery.trim().toLowerCase();
+    if (normalizedQuery.isNotEmpty) {
+      query.where((tbl) => tbl.shopNameSearch.like("%$normalizedQuery"));
+    }
+
+    return query.watch();
   }
 
   Future<void> insertCard(DiscountCardSchemeCompanion entity) =>
