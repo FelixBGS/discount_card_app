@@ -53,7 +53,7 @@ class HomeCubit extends Cubit<HomeState> {
             );
   }
 
-  void changeSearchQuery(String newQuery) async {
+  void changeSearchQuery(String newQuery) {
     emit(state.copyWith(searchQuery: newQuery));
   }
 
