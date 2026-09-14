@@ -23,7 +23,7 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
 
     final normalizedQuery = shopNameQuery.trim().toLowerCase();
     if (normalizedQuery.isNotEmpty) {
-      query.where((tbl) => tbl.shopNameSearch.like("%$normalizedQuery"));
+      query.where((tbl) => tbl.shopNameSearch.like("%$normalizedQuery%"));
     }
 
     return query.watch();
