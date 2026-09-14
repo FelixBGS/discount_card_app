@@ -55,7 +55,9 @@ class AppShellRouteData extends StatefulShellRouteData {
     return Stack(
       children: List.generate(children.length, (index) {
         final isActive = index == navigationShell.currentIndex;
-        final isCameraTab = index == 1;
+        
+        final branch = navigationShell.route.branches[index];
+        final isCameraTab = branch.initialLocation == '/scanner';
 
         if (isCameraTab) {
           return isActive ? children[index] : const SizedBox.shrink();
