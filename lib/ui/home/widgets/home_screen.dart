@@ -23,14 +23,13 @@ class HomeScreen extends StatelessWidget {
             AppSearchBar(
               hintText: context.l10n.searchCardsHint,
               icon: Icons.search_rounded,
-              onChanged: (query) => context.read<HomeCubit>().changeQuery(query),
+              onChanged: (query) =>
+                  context.read<HomeCubit>().changeSearchQuery(query),
             ),
             const SizedBox(height: AppSpacing.md),
             const HomeFiltersSection(),
             const SizedBox(height: AppSpacing.md),
-            const Expanded(
-              child: HomeCardsList(),
-            ),
+            const Expanded(child: HomeCardsList()),
           ],
         ),
       ),

@@ -15,7 +15,7 @@ class HomeCardsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state.isLoading) {
+        if (state.status is HomeDataInitial) {
           return ListView.separated(
             separatorBuilder: (context, index) =>
                 const SizedBox(height: AppSpacing.sm),

@@ -21,7 +21,7 @@ class HomeCubit extends Cubit<HomeState> {
     _subscribeToCards();
   }
 
-  Future<void> changeQuery(String newQuery) async {
+  Future<void> changeSearchQuery(String newQuery) async {
     emit(state.copyWith(searchQuery: newQuery));
 
     _searchDebounceTimer?.cancel();
@@ -30,8 +30,10 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  Future<void> changeSelectedFilter(CardCategoryType? selectedFilter) async {
-    emit(state.copyWith(selectedFilter: () => selectedFilter));
+  Future<void> changeSelectedCategory(
+    CardCategoryType? selectedCategory,
+  ) async {
+    emit(state.copyWith(selectedCategory: () => selectedCategory));
     _subscribeToCards();
   }
 
@@ -39,15 +41,17 @@ class HomeCubit extends Cubit<HomeState> {
     _cardSubscription?.cancel();
 
     _cardSubscription = _repository
-        .watchCardsByFilters(state.searchQuery, state.selectedFilter)
+        .watchCardsByFilters(state.searchQuery, state.selectedCategory)
         .listen(
           (cards) {
             if (isClosed) return;
             final uiCards = cards.map((card) => card.toUi()).toList();
-            emit(state.copyWith(discountCards: uiCards));
+            emit(
+              state.copyWith(discountCards: uiCards, status: HomeDataSuccess()),
+            );
           },
           onError: (error) {
-            // TODO add error handling
+            emit(state.copyWith(status: HomeDataError(error.toString())));
           },
         );
   }

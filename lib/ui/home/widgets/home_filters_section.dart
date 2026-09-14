@@ -14,7 +14,7 @@ class HomeFiltersSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<HomeCubit, HomeState, CardCategoryType?>(
-      selector: (state) => state.selectedFilter,
+      selector: (state) => state.selectedCategory,
       builder: ((context, selectedFilter) {
         final filters = [null, ...CardCategoryType.values];
 
@@ -27,7 +27,7 @@ class HomeFiltersSection extends StatelessWidget {
                       ? context.l10n.allFilter
                       : category.label(context.l10n),
                   onSelected: (_) {
-                    context.read<HomeCubit>().changeSelectedFilter(category);
+                    context.read<HomeCubit>().changeSelectedCategory(category);
                   },
                   isSelected: selectedFilter == category,
                 ),

@@ -1,37 +1,65 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/ui/models/discount_card_ui.dart';
-import 'package:flutter/widgets.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeState extends Equatable {
   const HomeState({
-    this.selectedFilter,
+    this.selectedCategory,
     this.searchQuery = "",
     this.discountCards = const [],
-    this.isLoading = false,
+    this.status = const HomeDataInitial(),
   });
 
-  final CardCategoryType? selectedFilter;
+  final CardCategoryType? selectedCategory;
   final List<DiscountCardUi> discountCards;
   final String searchQuery;
-  final bool isLoading;
+  final HomeDataStatus status;
 
   HomeState copyWith({
-    ValueGetter<CardCategoryType?>? selectedFilter,
-    List<DiscountCardUi>? discountCards,
+    HomeDataStatus? status,
+    ValueGetter<CardCategoryType?>? selectedCategory,
     String? searchQuery,
-    bool? isLoading,
+    List<DiscountCardUi>? discountCards,
   }) {
     return HomeState(
-      selectedFilter: selectedFilter != null
-          ? selectedFilter()
-          : this.selectedFilter,
-      discountCards: discountCards ?? this.discountCards,
+      status: status ?? this.status,
+      selectedCategory: selectedCategory != null
+          ? selectedCategory()
+          : this.selectedCategory,
       searchQuery: searchQuery ?? this.searchQuery,
-      isLoading: isLoading ?? this.isLoading,
+      discountCards: discountCards ?? this.discountCards,
     );
   }
 
   @override
-  List<Object?> get props => [selectedFilter, searchQuery, discountCards, isLoading];
+  List<Object?> get props => [
+    selectedCategory,
+    searchQuery,
+    discountCards,
+    status,
+  ];
+}
+
+sealed class HomeDataStatus extends Equatable {
+  const HomeDataStatus();
+
+  @override
+  List<Object?> get props => [];
+}
+
+final class HomeDataInitial extends HomeDataStatus {
+  const HomeDataInitial();
+}
+
+final class HomeDataSuccess extends HomeDataStatus {
+  const HomeDataSuccess();
+}
+
+final class HomeDataError extends HomeDataStatus {
+  final String message;
+  const HomeDataError(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
