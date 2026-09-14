@@ -23,7 +23,7 @@ abstract final class AppAppBarTheme {
     ),
     titleTextStyle: TextStyle(
       color: AppColors.textPrimary,
-      fontSize: 20,
+      fontSize: 28,
       height: 1.2,
       fontWeight: FontWeight.w700,
       letterSpacing: -0.3,

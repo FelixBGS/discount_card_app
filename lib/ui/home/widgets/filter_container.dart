@@ -16,17 +16,19 @@ class FilterContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return FilterChip(
       showCheckmark: false,
       selected: isSelected,
       onSelected: onSelected,
       label: Text(filterName),
       side: BorderSide.none,
-      backgroundColor: AppColors.inputBackground,
-      selectedColor: AppColors.primary,
+      backgroundColor: colorScheme.surfaceContainerHighest,
+      selectedColor: colorScheme.primary,
       labelStyle: isSelected
-          ? const TextStyle(color: Colors.white)
-          : const TextStyle(color: AppColors.textPrimary),
+          ? TextStyle(color: colorScheme.onPrimary)
+          : TextStyle(color: colorScheme.onSurface),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSizes.radiusLarge),
       ),

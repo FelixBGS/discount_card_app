@@ -9,19 +9,24 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return AppBar(
       title: Text(
         context.l10n.myCardsTitle,
-        style: Theme.of(context).textTheme.titleLarge,
+        style: theme.textTheme.titleLarge?.copyWith(
+          color: colorScheme.onSurface,
+        ),
       ),
       titleSpacing: AppSpacing.lg,
       actionsPadding: const EdgeInsets.only(right: AppSpacing.lg),
       actions: [
         IconButton(
-          onPressed: () => {},
+          onPressed: null,
           icon: SvgPicture.asset(
-            colorFilter: const ColorFilter.mode(
-              AppColors.primary,
+            colorFilter: ColorFilter.mode(
+              colorScheme.primary,
               BlendMode.srcIn,
             ),
             width: AppSizes.iconMedium,
@@ -29,9 +34,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             "assets/images/icons/ic_barcode_scanner.svg",
           ),
         ),
-        IconButton(
-          onPressed: () => {},
-          icon: const Icon(Icons.add, size: AppSizes.iconMedium),
+        const IconButton(
+          onPressed: null,
+          icon: Icon(Icons.add, size: AppSizes.iconMedium),
         ),
       ],
     );
