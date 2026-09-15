@@ -1,5 +1,6 @@
 import 'package:discount_card_app/data/database/drift_database.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
+import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:drift/drift.dart';
 
 extension DiscountCardEntityMapper on DiscountCardEntity {
@@ -10,7 +11,7 @@ extension DiscountCardEntityMapper on DiscountCardEntity {
     color: color,
     barcode: barcode,
     barcodeFormat: barcodeFormat,
-    logoUrl: logoUrl,
+    logo: LogoSource.parse(logoUrl),
     description: description,
   );
 }
@@ -24,7 +25,7 @@ extension DiscountCardMapper on DiscountCard {
     color: Value(color),
     barcode: Value(barcode),
     barcodeFormat: Value(barcodeFormat),
-    logoUrl: Value(logoUrl),
+    logoUrl: Value(logo.toRawUrl()),
     description: Value(description),
   );
 }

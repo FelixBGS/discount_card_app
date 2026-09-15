@@ -39,8 +39,7 @@ class HomeCardsList extends StatelessWidget {
             final discountCard = state.discountCards[index];
             return DiscountCardPanel(
               key: ValueKey(discountCard.id),
-              iconUrl: discountCard.iconUrl,
-              fallbackIconAsset: discountCard.localIconAsset,
+              logo: discountCard.logo,
               shopName: discountCard.shopName,
               categoryName: discountCard.category.label(context.l10n),
               color: discountCard.backgroundColor,

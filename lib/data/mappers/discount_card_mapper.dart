@@ -2,6 +2,8 @@ import 'package:discount_card_app/data/mappers/barcode_format_mapper.dart';
 import 'package:discount_card_app/data/mappers/card_category_type_mapper.dart';
 import 'package:discount_card_app/data/mappers/card_color_mapper.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
+
+import '../../domain/models/logo_source.dart';
 import '../models/api/discount_card_api.dart';
 
 abstract final class DiscountCardMapper {
@@ -12,7 +14,7 @@ abstract final class DiscountCardMapper {
     color: CardColorMapper.fromApi(value.color),
     barcode: value.barcode,
     barcodeFormat: BarcodeFormatMapper.fromApi(value.barcodeFormat),
-    logoUrl: value.logoUrl,
+    logo: LogoSource.parse(value.logoUrl),
     description: value.description,
   );
 
@@ -23,7 +25,7 @@ abstract final class DiscountCardMapper {
     color: CardColorMapper.toApi(value.color),
     barcode: value.barcode,
     barcodeFormat: BarcodeFormatMapper.toApi(value.barcodeFormat),
-    logoUrl: value.logoUrl,
+    logoUrl: value.logo.toRawUrl(),
     description: value.description,
   );
 

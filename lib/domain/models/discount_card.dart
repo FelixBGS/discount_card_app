@@ -3,6 +3,8 @@ import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:equatable/equatable.dart';
 
+import 'logo_source.dart';
+
 class DiscountCard extends Equatable {
   const DiscountCard({
     required this.id,
@@ -11,7 +13,7 @@ class DiscountCard extends Equatable {
     required this.color,
     required this.barcode,
     required this.barcodeFormat,
-    this.logoUrl,
+    required this.logo,
     this.description,
   });
 
@@ -23,7 +25,7 @@ class DiscountCard extends Equatable {
   final CardColor color;
   final String barcode;
   final BarcodeFormat barcodeFormat;
-  final String? logoUrl;
+  final LogoSource logo;
   final String? description;
 
   DiscountCard copyWith({
@@ -33,7 +35,7 @@ class DiscountCard extends Equatable {
     CardColor? color,
     String? barcode,
     BarcodeFormat? barcodeFormat,
-    String? logoUrl,
+    LogoSource? logoUrl,
     String? description,
   }) {
     return DiscountCard(
@@ -43,7 +45,7 @@ class DiscountCard extends Equatable {
       color: color ?? this.color,
       barcode: barcode ?? this.barcode,
       barcodeFormat: barcodeFormat ?? this.barcodeFormat,
-      logoUrl: logoUrl ?? this.logoUrl,
+      logo: logoUrl ?? this.logo,
       description: description ?? this.description,
     );
   }
@@ -56,7 +58,7 @@ class DiscountCard extends Equatable {
     color,
     barcode,
     barcodeFormat,
-    logoUrl,
+    logo,
     description,
   ];
 }

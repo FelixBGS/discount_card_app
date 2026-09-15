@@ -1,20 +1,19 @@
+import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
+import 'package:discount_card_app/ui/shared/ui/universal_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DiscountCardPanel extends StatelessWidget {
   const DiscountCardPanel({
     super.key,
-    this.iconUrl,
-    required this.fallbackIconAsset,
+    required this.logo,
     required this.shopName,
     required this.categoryName,
     required this.color,
     required this.onPressed,
   });
 
-  final String? iconUrl;
-  final String fallbackIconAsset;
+  final LogoSource logo;
   final String shopName;
   final String categoryName;
   final Color color;
@@ -38,30 +37,11 @@ class DiscountCardPanel extends StatelessWidget {
           ),
           child: Row(
             children: [
-              if (iconUrl != null && iconUrl!.isNotEmpty)
-                SvgPicture.network(
-                  iconUrl!,
-                  width: AppSizes.iconLarge,
-                  height: AppSizes.iconLarge,
-                  placeholderBuilder: (context) => const SizedBox(
-                    width: AppSizes.iconLarge,
-                    height: AppSizes.iconLarge,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 2,
-                    ),
-                  ),
-                )
-              else
-                SvgPicture.asset(
-                  fallbackIconAsset,
-                  width: AppSizes.iconLarge,
-                  height: AppSizes.iconLarge,
-                  colorFilter: const ColorFilter.mode(
-                    Colors.white,
-                    BlendMode.srcIn,
-                  ),
-                ),
+              UniversalIcon(
+                logo: logo,
+                width: AppSizes.iconLarge,
+                height: AppSizes.iconLarge,
+              ),
               const SizedBox(width: AppSpacing.lg),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
