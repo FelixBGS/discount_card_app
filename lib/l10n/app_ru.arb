@@ -4,6 +4,12 @@
     "description": "Заглавия для экрана каталога"
   },
 
+  "editCardTitle": "Редактирование карты",
+  "createCardTitle": "Создание карты",
+  "cardColor": "Цвет карты",
+  "save": "Сохранить",
+  "deleteCard": "Удалить карту",
+
   "catalogNavOption": "Каталог",
   "@catalogNavOption": {
     "description": "Название раздела в навигационной нижней панели"

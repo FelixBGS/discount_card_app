@@ -13,6 +13,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get myCardsTitle => 'Мои карты';
 
   @override
+  String get editCardTitle => 'Редактирование карты';
+
+  @override
+  String get createCardTitle => 'Создание карты';
+
+  @override
+  String get cardColor => 'Цвет карты';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get deleteCard => 'Удалить карту';
+
+  @override
   String get catalogNavOption => 'Каталог';
 
   @override

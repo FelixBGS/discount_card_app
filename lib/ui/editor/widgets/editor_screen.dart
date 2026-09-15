@@ -1,14 +1,57 @@
+import 'package:discount_card_app/ui/editor/widgets/color_selector.dart';
+import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
+import 'package:discount_card_app/ui/shared/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../l10n/l10n.dart';
 import '../../util/utils.dart';
 
 class EditorScreen extends StatelessWidget {
+  const EditorScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Column(children: []);
+    final colorScheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(context.l10n.editCardTitle),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
+      body: Column(
+        children: [
+          ColorSelector(
+            titleText: context.l10n.cardColor,
+            colors: AppColors.cardColors,
+            onColorSelected: (color) => {},
+            selectedColor: null,
+          ),
+          AppButton(
+            onPressed: () => {},
+            text: context.l10n.save,
+            backgroundColor: colorScheme.primary,
+            textColor: colorScheme.onPrimary,
+          ),
+          AppButton(
+            onPressed: () => {},
+            text: context.l10n.deleteCard,
+            backgroundColor: colorScheme.error,
+            textColor: colorScheme.onError,
+          ),
+        ],
+      ),
+    );
   }
 }
 
-@Preview(name: "Editor Screen", theme: appPreviewTheme)
-Widget editorScreenPreview() => EditorScreen();
+@Preview(
+  name: "Editor Screen",
+  theme: appPreviewTheme,
+  localizations: appPreviewLocalizations,
+)
+Widget editorScreenPreview() => SizedBox(width: 500, child: EditorScreen());

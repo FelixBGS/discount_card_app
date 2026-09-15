@@ -100,6 +100,36 @@ abstract class AppLocalizations {
   /// **'Мои карты'**
   String get myCardsTitle;
 
+  /// No description provided for @editCardTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактирование карты'**
+  String get editCardTitle;
+
+  /// No description provided for @createCardTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Создание карты'**
+  String get createCardTitle;
+
+  /// No description provided for @cardColor.
+  ///
+  /// In ru, this message translates to:
+  /// **'Цвет карты'**
+  String get cardColor;
+
+  /// No description provided for @save.
+  ///
+  /// In ru, this message translates to:
+  /// **'Сохранить'**
+  String get save;
+
+  /// No description provided for @deleteCard.
+  ///
+  /// In ru, this message translates to:
+  /// **'Удалить карту'**
+  String get deleteCard;
+
   /// Название раздела в навигационной нижней панели
   ///
   /// In ru, this message translates to:
