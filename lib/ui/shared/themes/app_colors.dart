@@ -5,12 +5,15 @@ abstract final class AppColors {
   static const primaryDark = Color(0xFF383CE0);
   static const primaryContainer = Color(0xFFE7E8FF);
 
+  static const secondary = Color(0xFFEFF4F8);
+
   static const background = Color(0xFFF7F8FC);
   static const surface = Color(0xFFFFFFFF);
 
   static const textPrimary = Color(0xFF181B25);
   static const textSecondary = Color(0xFF7B8190);
 
+  static const selectedBorder = Color(0xFF4586F6);
   static const border = Color(0xFFE7E9F0);
   static const inputBackground = Color(0xFFF1F2F6);
 

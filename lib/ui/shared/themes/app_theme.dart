@@ -14,13 +14,13 @@ abstract final class AppTheme {
       onPrimary: Colors.white,
       primaryContainer: AppColors.primaryContainer,
       onPrimaryContainer: AppColors.primaryDark,
-      secondary: AppColors.primary,
-      onSecondary: Colors.white,
+      secondary: AppColors.secondary,
+      onSecondary: AppColors.textSecondary,
       surface: AppColors.surface,
       onSurface: AppColors.textPrimary,
       error: AppColors.danger,
       onError: Colors.white,
-      outline: AppColors.border,
+      outline: AppColors.selectedBorder,
     );
 
     return ThemeData(

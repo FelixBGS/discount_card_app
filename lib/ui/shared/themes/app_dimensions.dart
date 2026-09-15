@@ -1,9 +1,9 @@
-import 'package:flutter/painting.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 abstract final class AppSpacing {
   static const double none = 0;
+  static const double xxs = 2;
   static const double xs = 4;
   static const double sm = 8;
   static const double md = 16;
@@ -37,5 +37,5 @@ abstract final class AppSizes {
   static const double radiusExtraLarge = 24;
 
   // Границы
-  static const double borderWidth = 1;
+  static const double borderWidth = 3;
 }
