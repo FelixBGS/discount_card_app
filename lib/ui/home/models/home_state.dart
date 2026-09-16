@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 class HomeState extends Equatable {
   const HomeState({
     this.selectedCategory,
-    this.searchQuery = "",
+    this.searchQuery = '',
     this.discountCards = const [],
     this.status = const HomeDataInitial(),
   });
@@ -57,8 +57,9 @@ final class HomeDataSuccess extends HomeDataStatus {
 }
 
 final class HomeDataError extends HomeDataStatus {
-  final String message;
   const HomeDataError(this.message);
+
+  final String message;
 
   @override
   List<Object?> get props => [message];
