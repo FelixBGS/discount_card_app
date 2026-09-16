@@ -1,5 +1,5 @@
+import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/ui/editor/widgets/color_selector.dart';
-import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
 import 'package:discount_card_app/ui/shared/ui/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
@@ -27,18 +27,18 @@ class EditorScreen extends StatelessWidget {
         children: [
           ColorSelector(
             titleText: context.l10n.cardColor,
-            colors: AppColors.cardColors,
-            onColorSelected: (color) => {},
+            colors: CardColor.selectable,
+            onColorSelected: (color) {},
             selectedColor: null,
           ),
           AppButton(
-            onPressed: () => {},
+            onPressed: () {},
             text: context.l10n.save,
             backgroundColor: colorScheme.primary,
             textColor: colorScheme.onPrimary,
           ),
           AppButton(
-            onPressed: () => {},
+            onPressed: () {},
             text: context.l10n.deleteCard,
             backgroundColor: colorScheme.error,
             textColor: colorScheme.onError,

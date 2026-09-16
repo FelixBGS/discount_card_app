@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 import 'app_typography.dart';
+import 'card_palette.dart';
 import 'component_themes/app_bar_theme.dart';
 import 'component_themes/button_theme.dart';
 import 'component_themes/input_theme.dart';
@@ -28,6 +29,7 @@ abstract final class AppTheme {
       brightness: Brightness.light,
       fontFamily: AppTypography.fontFamily,
       colorScheme: colorScheme,
+      extensions: const [CardPalette.light],
       scaffoldBackgroundColor: AppColors.background,
       textTheme: AppTypography.textTheme.apply(
         bodyColor: AppColors.textPrimary,

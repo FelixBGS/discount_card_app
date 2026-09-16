@@ -20,7 +20,6 @@ abstract final class AppColors {
   static const danger = Color(0xFFF04455);
   static const disabled = Color(0xFFB7B9F8);
 
-  // Цвета карт лояльности (порядок как в палитре редактирования)
   static const cardRed = Color(0xFFF02E35);
   static const cardOrange = Color(0xFFFF851B);
   static const cardYellow = Color(0xFFF5C518);
@@ -28,14 +27,4 @@ abstract final class AppColors {
   static const cardBlue = Color(0xFF2382D8);
   static const cardDarkBlue = Color(0xFF2C4A9A);
   static const cardPurple = Color(0xFF7747D7);
-
-  static const cardColors = [
-    cardRed,
-    cardOrange,
-    cardYellow,
-    cardGreen,
-    cardBlue,
-    cardDarkBlue,
-    cardPurple,
-  ];
 }
