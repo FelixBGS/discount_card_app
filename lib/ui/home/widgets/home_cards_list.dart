@@ -1,10 +1,11 @@
+import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/home/cubit/home_cubit.dart';
-import 'package:discount_card_app/ui/home/cubit/home_state.dart';
+import 'package:discount_card_app/ui/home/state/home_cubit.dart';
+import 'package:discount_card_app/ui/home/state/home_state.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_panel.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_shimmer.dart';
-import 'package:discount_card_app/ui/models/discount_card_ui.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
+import 'package:discount_card_app/ui/shared/themes/card_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class HomeCardsList extends StatelessWidget {
     return BlocSelector<
       HomeCubit,
       HomeState,
-      ({HomeDataStatus status, List<DiscountCardUi> discountCards})
+      ({HomeDataStatus status, List<DiscountCard> discountCards})
     >(
       selector: (s) => (status: s.status, discountCards: s.discountCards),
       builder: (context, state) {
@@ -42,8 +43,8 @@ class HomeCardsList extends StatelessWidget {
               logo: discountCard.logo,
               shopName: discountCard.shopName,
               categoryName: discountCard.category.label(context.l10n),
-              color: discountCard.backgroundColor,
-              onPressed: () => {},
+              color: context.cardPalette.resolve(discountCard.color),
+              onPressed: () {},
             );
           },
         );

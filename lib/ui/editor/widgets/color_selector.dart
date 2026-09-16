@@ -1,5 +1,5 @@
+import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/ui/editor/widgets/color_variant.dart';
-import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
@@ -15,9 +15,9 @@ class ColorSelector extends StatelessWidget {
   });
 
   final String titleText;
-  final List<Color> colors;
-  final ValueChanged<Color> onColorSelected;
-  final Color? selectedColor;
+  final List<CardColor> colors;
+  final ValueChanged<CardColor> onColorSelected;
+  final CardColor? selectedColor;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +56,8 @@ Widget colorSelectorPreview() => ConstrainedBox(
   constraints: const BoxConstraints(maxWidth: 500),
   child: ColorSelector(
     titleText: "Цвет карты",
-    colors: AppColors.cardColors,
-    onColorSelected: (color) => {},
+    colors: CardColor.selectable,
+    onColorSelected: (color) {},
     selectedColor: null,
   ),
 );
@@ -71,8 +71,8 @@ Widget colorSelectorSelectedPreview() => ConstrainedBox(
   constraints: const BoxConstraints(maxWidth: 500),
   child: ColorSelector(
     titleText: "Цвет карты",
-    colors: AppColors.cardColors,
-    onColorSelected: (color) => {},
-    selectedColor: AppColors.cardRed,
+    colors: CardColor.selectable,
+    onColorSelected: (color) {},
+    selectedColor: CardColor.red,
   ),
 );

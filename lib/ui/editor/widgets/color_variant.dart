@@ -1,5 +1,6 @@
-import 'package:discount_card_app/ui/shared/themes/app_colors.dart';
+import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
+import 'package:discount_card_app/ui/shared/themes/card_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
@@ -13,9 +14,9 @@ class ColorVariant extends StatelessWidget {
     required this.onColorSelected,
   });
 
-  final Color color;
+  final CardColor color;
   final bool isSelected;
-  final ValueChanged<Color> onColorSelected;
+  final ValueChanged<CardColor> onColorSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,10 @@ class ColorVariant extends StatelessWidget {
             ),
           ),
           child: Container(
-            decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: context.cardPalette.resolve(color),
+            ),
           ),
         ),
       ),
@@ -50,9 +54,9 @@ Widget colorVariantNeutralPreview() => Material(
     child: SizedBox(
       width: 48,
       child: ColorVariant(
-        color: AppColors.cardRed,
+        color: CardColor.red,
         isSelected: false,
-        onColorSelected: (color) => {},
+        onColorSelected: (color) {},
       ),
     ),
   ),
@@ -65,9 +69,9 @@ Widget colorVariantSelectedPreview() => Material(
     child: SizedBox(
       width: 48,
       child: ColorVariant(
-        color: AppColors.cardRed,
+        color: CardColor.red,
         isSelected: true,
-        onColorSelected: (color) => {},
+        onColorSelected: (color) {},
       ),
     ),
   ),

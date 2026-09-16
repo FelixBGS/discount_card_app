@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
-import 'package:discount_card_app/ui/home/cubit/home_state.dart';
-import 'package:discount_card_app/ui/models/discount_card_ui.dart';
+import 'package:discount_card_app/ui/home/state/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -38,10 +37,9 @@ class HomeCubit extends Cubit<HomeState> {
             .listen(
               (cards) {
                 if (isClosed) return;
-                final uiCards = cards.map((card) => card.toUi()).toList();
                 emit(
                   state.copyWith(
-                    discountCards: uiCards,
+                    discountCards: cards,
                     status: const HomeDataSuccess(),
                   ),
                 );
@@ -58,7 +56,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void changeSelectedCategory(CardCategoryType? selectedCategory) {
-    emit(state.copyWith(selectedCategory: () => selectedCategory));
+    emit(state.copyWith(selectedCategory: selectedCategory));
   }
 
   @override

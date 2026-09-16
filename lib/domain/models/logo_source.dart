@@ -1,76 +1,47 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-sealed class LogoSource extends Equatable {
-  const LogoSource();
+part 'logo_source.freezed.dart';
+
+@freezed
+sealed class LogoSource with _$LogoSource {
+  const LogoSource._();
+
+  const factory LogoSource.empty() = EmptyLogo;
+  const factory LogoSource.asset(String path) = AssetLogo;
+  const factory LogoSource.network(String url) = NetworkLogo;
+  const factory LogoSource.localFile(String path) = LocalFileLogo;
 
   static LogoSource parse(String? url) {
     if (url == null || url.trim().isEmpty) return EmptyLogo();
 
-    final lowerUrl = url.trim().toLowerCase();
+    final trimmed = url.trim();
+    final lowerUrl = trimmed.toLowerCase();
 
     if (lowerUrl.startsWith("asset://") || lowerUrl.startsWith("assets/")) {
-      return AssetLogo(url.trim());
+      return LogoSource.asset(trimmed);
     }
 
     if (lowerUrl.startsWith("http://") || lowerUrl.startsWith("https://")) {
-      return NetworkLogo(url.trim());
+      return LogoSource.network(trimmed);
     }
 
     if (lowerUrl.startsWith("file://") || lowerUrl.startsWith("/")) {
-      final cleanPath = url.replaceFirst(
+      final cleanPath = trimmed.replaceFirst(
         RegExp(r'^file://', caseSensitive: false),
         '',
       );
-      return LocalFileLogo(cleanPath);
+      return LogoSource.localFile(cleanPath);
     }
 
-    return EmptyLogo();
+    return const LogoSource.empty();
   }
 
-  String? toRawUrl();
+  String? toRawUrl() => switch (this) {
+    AssetLogo(:final path) => path,
+    NetworkLogo(:final url) => url,
+    LocalFileLogo(:final path) => path,
+    EmptyLogo() => null,
+  };
 
   bool get isSvg => toRawUrl()?.toLowerCase().endsWith(".svg") ?? false;
-}
-
-class AssetLogo extends LogoSource {
-  final String path;
-  const AssetLogo(this.path);
-
-  @override
-  String toRawUrl() => path;
-
-  @override
-  List<Object?> get props => [path];
-}
-
-class NetworkLogo extends LogoSource {
-  final String url;
-  const NetworkLogo(this.url);
-
-  @override
-  String? toRawUrl() => url;
-
-  @override
-  List<Object?> get props => [url];
-}
-
-class LocalFileLogo extends LogoSource {
-  final String path;
-  const LocalFileLogo(this.path);
-
-  @override
-  String toRawUrl() => path;
-
-  @override
-  List<Object?> get props => [path];
-}
-
-class EmptyLogo extends LogoSource {
-  const EmptyLogo();
-
-  @override
-  String? toRawUrl() => null;
-
-  @override
-  List<Object?> get props => [];
 }

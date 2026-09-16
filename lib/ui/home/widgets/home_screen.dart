@@ -1,6 +1,6 @@
 import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/home/cubit/home_cubit.dart';
+import 'package:discount_card_app/ui/home/state/home_cubit.dart';
 import 'package:discount_card_app/ui/home/widgets/home_app_bar.dart';
 import 'package:discount_card_app/ui/home/widgets/home_cards_list.dart';
 import 'package:discount_card_app/ui/home/widgets/home_filters_section.dart';
