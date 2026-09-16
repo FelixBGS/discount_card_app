@@ -1,15 +1,13 @@
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/home/models/home_state.dart';
-import 'package:discount_card_app/ui/home/state/home_cubit.dart';
 import 'package:discount_card_app/ui/home/state/home_state.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_panel.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_shimmer.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
-import 'package:discount_card_app/ui/shared/themes/card_palette.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/card_category_ui.dart';
+import '../../shared/themes/card_palette.dart';
 
 class HomeCardsList extends StatelessWidget {
   const HomeCardsList({
@@ -19,7 +17,7 @@ class HomeCardsList extends StatelessWidget {
   });
 
   final HomeDataStatus status;
-  final List<DiscountCardUi> discountCards;
+  final List<DiscountCard> discountCards;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +41,7 @@ class HomeCardsList extends StatelessWidget {
           logo: discountCard.logo,
           shopName: discountCard.shopName,
           categoryName: discountCard.category.label(context.l10n),
-          color: discountCard.backgroundColor,
+          color: context.cardPalette.resolve(discountCard.color),
           onPressed: () => {},
         );
       },
