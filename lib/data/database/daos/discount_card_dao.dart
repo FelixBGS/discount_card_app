@@ -11,7 +11,7 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
     with _$DiscountCardDaoMixin {
   DiscountCardDao(super.db);
 
-  Stream<List<DiscountCardEntity>> watchCardsByFilters(
+  Future<List<DiscountCardEntity>> getCardsByFilters(
     String shopNameQuery,
     CardCategoryType? category,
   ) {
@@ -26,7 +26,7 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
       query.where((tbl) => tbl.shopNameSearch.like("%$normalizedQuery%"));
     }
 
-    return query.watch();
+    return query.get();
   }
 
   Future<void> insertCard(DiscountCardSchemeCompanion entity) =>

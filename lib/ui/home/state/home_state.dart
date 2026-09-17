@@ -8,14 +8,12 @@ part 'home_state.freezed.dart';
 class HomeState with _$HomeState {
   const HomeState({
     this.selectedCategory,
-    this.searchQuery = "",
     this.discountCards = const [],
     this.status = const HomeDataInitial(),
   });
 
   final CardCategoryType? selectedCategory;
   final List<DiscountCard> discountCards;
-  final String searchQuery;
   final HomeDataStatus status;
 }
 
@@ -25,5 +23,5 @@ sealed class HomeDataStatus with _$HomeDataStatus {
 
   const factory HomeDataStatus.success() = HomeDataSuccess;
 
-  const factory HomeDataStatus.error(String message) = HomeDataError;
+  const factory HomeDataStatus.error() = HomeDataError;
 }

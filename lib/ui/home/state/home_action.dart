@@ -1,6 +1,5 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
-
-import '../../../domain/models/discount_card.dart';
+import 'package:discount_card_app/domain/models/discount_card.dart';
 
 sealed class HomeAction {
   const HomeAction();
@@ -29,7 +28,5 @@ final class CardsReceived extends HomeAction {
 }
 
 final class CardsFailed extends HomeAction {
-  final String message;
-
-  const CardsFailed({required this.message});
+  const CardsFailed();
 }

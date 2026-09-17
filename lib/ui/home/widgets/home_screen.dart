@@ -17,18 +17,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreBuilder<AppState>(
-      onInit: (store) => store.dispatch(const HomeStarted()),
-      rebuildOnChange: false,
-      builder: (context, store) {
-        return HomeScreen(
-          onSearchQueryChanged: (newQuery) {
-            store.dispatch(QueryChanged(newQuery: newQuery));
-          },
-          onSelectedCategoryChanged: (selectedCategory) {
-            store.dispatch(CategoryChanged(selectedCategory));
-          },
-        );
+    final store = StoreProvider.of<AppState>(context, listen: false);
+    return HomeScreen(
+      onSearchQueryChanged: (newQuery) {
+        store.dispatch(QueryChanged(newQuery: newQuery));
+      },
+      onSelectedCategoryChanged: (selectedCategory) {
+        store.dispatch(CategoryChanged(selectedCategory));
       },
     );
   }

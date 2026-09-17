@@ -207,6 +207,18 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Все'**
   String get allFilter;
+
+  /// Сообщение, если каталог карт не загрузился
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось загрузить карты'**
+  String get cardsLoadError;
+
+  /// Пустое состояние списка карт при успешном ответе без результатов
+  ///
+  /// In ru, this message translates to:
+  /// **'Карт пока нет'**
+  String get cardsEmpty;
 }
 
 class _AppLocalizationsDelegate

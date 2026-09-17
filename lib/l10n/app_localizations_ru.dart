@@ -65,4 +65,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get allFilter => 'Все';
+
+  @override
+  String get cardsLoadError => 'Не удалось загрузить карты';
+
+  @override
+  String get cardsEmpty => 'Карт пока нет';
 }

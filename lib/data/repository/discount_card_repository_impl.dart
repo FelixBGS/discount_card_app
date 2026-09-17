@@ -15,12 +15,11 @@ final class DiscountCardRepositoryImpl implements DiscountCardRepository {
   }
 
   @override
-  Stream<List<DiscountCard>> watchCardsByFilters(
+  Future<List<DiscountCard>> getCards(
     String shopNameQuery,
     CardCategoryType? category,
-  ) {
-    return _dao
-        .watchCardsByFilters(shopNameQuery, category)
-        .map((entities) => entities.map((e) => e.toDomain()).toList());
+  ) async {
+    final entities = await _dao.getCardsByFilters(shopNameQuery, category);
+    return entities.map((e) => e.toDomain()).toList();
   }
 }

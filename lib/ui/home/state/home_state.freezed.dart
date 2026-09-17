@@ -27,20 +27,20 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 @override
 bool operator ==(Object other) {
   final _this = this as HomeState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.selectedCategory, _this.selectedCategory) || other.selectedCategory == _this.selectedCategory)&&const DeepCollectionEquality().equals(other.discountCards, _this.discountCards)&&(identical(other.searchQuery, _this.searchQuery) || other.searchQuery == _this.searchQuery)&&(identical(other.status, _this.status) || other.status == _this.status));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.selectedCategory, _this.selectedCategory) || other.selectedCategory == _this.selectedCategory)&&const DeepCollectionEquality().equals(other.discountCards, _this.discountCards)&&(identical(other.status, _this.status) || other.status == _this.status));
 }
 
 
 @override
 int get hashCode {
   final _this = this as HomeState;
-  return Object.hash(runtimeType,_this.selectedCategory,const DeepCollectionEquality().hash(_this.discountCards),_this.searchQuery,_this.status);
+  return Object.hash(runtimeType,_this.selectedCategory,const DeepCollectionEquality().hash(_this.discountCards),_this.status);
 }
 
 @override
 String toString() {
   final _this = this as HomeState;
-  return 'HomeState(selectedCategory: ${_this.selectedCategory}, discountCards: ${_this.discountCards}, searchQuery: ${_this.searchQuery}, status: ${_this.status})';
+  return 'HomeState(selectedCategory: ${_this.selectedCategory}, discountCards: ${_this.discountCards}, status: ${_this.status})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- CardCategoryType? selectedCategory, String searchQuery, List<DiscountCard> discountCards, HomeDataStatus status
+ CardCategoryType? selectedCategory, List<DiscountCard> discountCards, HomeDataStatus status
 });
 
 
@@ -68,11 +68,10 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedCategory = freezed,Object? searchQuery = null,Object? discountCards = null,Object? status = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selectedCategory = freezed,Object? discountCards = null,Object? status = null,}) {
   return _then(HomeState(
 selectedCategory: freezed == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
-as CardCategoryType?,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
-as String,discountCards: null == discountCards ? _self.discountCards : discountCards // ignore: cast_nullable_to_non_nullable
+as CardCategoryType?,discountCards: null == discountCards ? _self.discountCards : discountCards // ignore: cast_nullable_to_non_nullable
 as List<DiscountCard>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as HomeDataStatus,
   ));
@@ -316,12 +315,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  success,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  success,TResult Function()?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case HomeDataInitial() when initial != null:
 return initial();case HomeDataSuccess() when success != null:
 return success();case HomeDataError() when error != null:
-return error(_that.message);case _:
+return error();case _:
   return orElse();
 
 }
@@ -339,12 +338,12 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  success,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  success,required TResult Function()  error,}) {final _that = this;
 switch (_that) {
 case HomeDataInitial():
 return initial();case HomeDataSuccess():
 return success();case HomeDataError():
-return error(_that.message);}
+return error();}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -358,12 +357,12 @@ return error(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  success,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  success,TResult? Function()?  error,}) {final _that = this;
 switch (_that) {
 case HomeDataInitial() when initial != null:
 return initial();case HomeDataSuccess() when success != null:
 return success();case HomeDataError() when error != null:
-return error(_that.message);case _:
+return error();case _:
   return null;
 
 }
@@ -439,68 +438,32 @@ String toString() {
 
 
 class HomeDataError implements HomeDataStatus {
-  const HomeDataError(this.message);
+  const HomeDataError();
   
 
- final  String message;
 
-/// Create a copy of HomeDataStatus
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$HomeDataErrorCopyWith<HomeDataError> get copyWith => _$HomeDataErrorCopyWithImpl<HomeDataError>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDataError&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeDataError);
 }
 
 
 @override
-int get hashCode {
-    return Object.hash(runtimeType,message);
-}
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-    return 'HomeDataStatus.error(message: $message)';
+    return 'HomeDataStatus.error()';
 }
 
 
 }
 
-/// @nodoc
-abstract mixin class $HomeDataErrorCopyWith<$Res> implements $HomeDataStatusCopyWith<$Res> {
-  factory $HomeDataErrorCopyWith(HomeDataError value, $Res Function(HomeDataError) _then) = _$HomeDataErrorCopyWithImpl;
-@useResult
-$Res call({
- String message
-});
 
 
-
-
-}
-/// @nodoc
-class _$HomeDataErrorCopyWithImpl<$Res>
-    implements $HomeDataErrorCopyWith<$Res> {
-  _$HomeDataErrorCopyWithImpl(this._self, this._then);
-
-  final HomeDataError _self;
-  final $Res Function(HomeDataError) _then;
-
-/// Create a copy of HomeDataStatus
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(HomeDataError(
-null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-
-}
 
 // dart format on

@@ -1,33 +1,47 @@
+import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 import 'package:discount_card_app/ui/home/state/home_action.dart';
-import 'package:discount_card_app/ui/store/app_state.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 
-Stream<dynamic> homeEpic(
+typedef _Filters = ({String query, CardCategoryType? category});
+
+Stream<dynamic> homeEpic<S>(
   Stream<dynamic> actions,
-  EpicStore<AppState> store,
+  EpicStore<S> _,
   DiscountCardRepository repository,
 ) {
-  final queryChanges = actions.whereType<QueryChanged>().debounceTime(
-    const Duration(milliseconds: 300),
+  final queries = actions
+      .whereType<QueryChanged>()
+      .map((action) => action.newQuery)
+      .debounceTime(const Duration(milliseconds: 300))
+      .distinct()
+      .startWith('');
+
+  final categories = actions
+      .whereType<CategoryChanged>()
+      .map((action) => action.category)
+      .distinct()
+      .startWith(null);
+
+  final filters = Rx.combineLatest2(
+    queries,
+    categories,
+    (String query, CardCategoryType? category) =>
+        (query: query, category: category),
   );
 
-  final categoryChanges = actions.whereType<CategoryChanged>();
-  final starts = actions.whereType<HomeStarted>();
+  return filters.switchMap(_loadCards(repository));
+}
 
-  return Rx.merge([queryChanges, categoryChanges, starts]).switchMap((action) {
-    final homeState = store.state.homeState;
-    final query = homeState.searchQuery;
-    final category = homeState.selectedCategory;
-
-    return repository
-        .watchCardsByFilters(query, category)
-        .map<HomeAction>((cards) {
-          return CardsReceived(cards: cards);
-        })
-        .onErrorReturnWith(
-          (error, stackTrace) => CardsFailed(message: error.toString()),
-        );
-  });
+Stream<HomeAction> Function(_Filters) _loadCards(
+  DiscountCardRepository repository,
+) {
+  return (filters) {
+    return Stream.fromFuture(
+          repository.getCards(filters.query, filters.category),
+        )
+        .map<HomeAction>((cards) => CardsReceived(cards: cards))
+        .onErrorReturnWith((_, _) => const CardsFailed());
+  };
 }
