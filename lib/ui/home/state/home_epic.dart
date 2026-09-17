@@ -11,27 +11,29 @@ Stream<dynamic> homeEpic<S>(
   EpicStore<S> _,
   DiscountCardRepository repository,
 ) {
-  final queries = actions
-      .whereType<QueryChanged>()
-      .map((action) => action.newQuery)
-      .debounceTime(const Duration(milliseconds: 300))
-      .distinct()
-      .startWith('');
+  return actions.whereType<HomeStarted>().take(1).switchMap((_) {
+    final queries = actions
+        .whereType<QueryChanged>()
+        .map((action) => action.newQuery)
+        .debounceTime(const Duration(milliseconds: 300))
+        .distinct()
+        .startWith('');
 
-  final categories = actions
-      .whereType<CategoryChanged>()
-      .map((action) => action.category)
-      .distinct()
-      .startWith(null);
+    final categories = actions
+        .whereType<CategoryChanged>()
+        .map((action) => action.category)
+        .distinct()
+        .startWith(null);
 
-  final filters = Rx.combineLatest2(
-    queries,
-    categories,
-    (String query, CardCategoryType? category) =>
-        (query: query, category: category),
-  );
+    final filters = Rx.combineLatest2(
+      queries,
+      categories,
+      (String query, CardCategoryType? category) =>
+          (query: query, category: category),
+    );
 
-  return filters.switchMap(_loadCards(repository));
+    return filters.switchMap(_loadCards(repository));
+  });
 }
 
 Stream<HomeAction> Function(_Filters) _loadCards(

@@ -1,7 +1,6 @@
 import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 import 'package:discount_card_app/l10n/app_localizations.dart';
-import 'package:discount_card_app/ui/home/state/home_action.dart';
 import 'package:discount_card_app/ui/router/app_router.dart';
 import 'package:discount_card_app/ui/shared/themes/app_theme.dart';
 import 'package:discount_card_app/ui/store/app_state.dart';
@@ -15,10 +14,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
 
-  final store = configureStore(getIt<DiscountCardRepository>())
-    ..dispatch(const HomeStarted());
-
-  runApp(MyApp(store: store));
+  runApp(MyApp(store: configureStore(getIt<DiscountCardRepository>())));
 }
 
 class MyApp extends StatelessWidget {
