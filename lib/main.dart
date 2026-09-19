@@ -1,4 +1,3 @@
-import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/l10n/app_localizations.dart';
 import 'package:discount_card_app/ui/router/app_router.dart';
 import 'package:discount_card_app/ui/shared/themes/app_theme.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  setupLocator();
   runApp(const MyApp());
 }
 

@@ -39,7 +39,6 @@ dependencies:
   intl: any
 
   flutter_svg: ^2.0.9
-  get_it: ^9.2.1
   shimmer: ^4.0.0
   drift: ^2.35.0
   drift_flutter: ^0.3.1

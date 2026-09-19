@@ -17,14 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "13.3.0"
-  analyzer_buffer:
-    dependency: transitive
-    description:
-      name: analyzer_buffer
-      sha256: f890a2e708e38fbf4238ad2f9fd3d506538acdddb0cd8eb2c3e8c7bd17784b57
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.3.4"
   args:
     dependency: transitive
     description:
@@ -309,14 +301,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  freezed:
-    dependency: "direct dev"
-    description:
-      name: freezed
-      sha256: "541a82723c84298f3ca46a6c2186935aa21ad529ad1f1423d67af18040494f51"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.1"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -701,6 +685,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  rxdart:
+    dependency: "direct main"
+    description:
+      name: rxdart
+      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.28.0"
   shelf:
     dependency: transitive
     description:
