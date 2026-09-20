@@ -6,6 +6,7 @@ import 'package:flutter/widget_previews.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../l10n/l10n.dart';
+import '../../shared/themes/app_dimensions.dart';
 import '../../util/utils.dart';
 
 class EditorScreen extends StatelessWidget {
@@ -14,36 +15,39 @@ class EditorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.editCardTitle),
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(Icons.arrow_back),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(context.l10n.editCardTitle),
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: const Icon(Icons.arrow_back),
+          ),
         ),
-      ),
-      body: Column(
-        children: [
-          ColorSelector(
-            titleText: context.l10n.cardColor,
-            colors: CardColor.selectable,
-            onColorSelected: (color) {},
-            selectedColor: null,
-          ),
-          AppButton(
-            onPressed: () {},
-            text: context.l10n.save,
-            backgroundColor: colorScheme.primary,
-            textColor: colorScheme.onPrimary,
-          ),
-          AppButton(
-            onPressed: () {},
-            text: context.l10n.deleteCard,
-            backgroundColor: colorScheme.error,
-            textColor: colorScheme.onError,
-          ),
-        ],
+        body: Column(
+          children: [
+            ColorSelector(
+              titleText: context.l10n.cardColor,
+              colors: CardColor.selectable,
+              onColorSelected: (color) {},
+              selectedColor: null,
+            ),
+            AppButton(
+              onPressed: () {},
+              text: context.l10n.save,
+              backgroundColor: colorScheme.primary,
+              textColor: colorScheme.onPrimary,
+            ),
+            AppButton(
+              onPressed: () {},
+              text: context.l10n.deleteCard,
+              backgroundColor: colorScheme.error,
+              textColor: colorScheme.onError,
+            ),
+          ],
+        ),
       ),
     );
   }

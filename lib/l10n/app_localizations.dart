@@ -207,6 +207,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Все'**
   String get allFilter;
+
+  /// No description provided for @categoryTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Категория'**
+  String get categoryTitle;
 }
 
 class _AppLocalizationsDelegate

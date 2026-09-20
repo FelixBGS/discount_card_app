@@ -25,7 +25,7 @@ class ColorVariant extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1,
         child: Container(
-          padding: const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(AppSpacing.xxs),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(

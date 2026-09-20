@@ -22,6 +22,7 @@ abstract final class AppTheme {
       error: AppColors.danger,
       onError: Colors.white,
       outline: AppColors.selectedBorder,
+      outlineVariant: AppColors.border,
     );
 
     return ThemeData(

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:discount_card_app/domain/models/logo_source.dart';
+import 'package:discount_card_app/ui/shared/ui/local_file_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -68,7 +69,12 @@ class UniversalIcon extends StatelessWidget {
 
       LocalFileLogo(path: var path) =>
         logo.isSvg
-            ? SvgPicture.file(File(path), width: width, height: height)
+            ? localFileSvg(
+                path: path,
+                width: width,
+                height: height,
+                fallback: _buildFallback(context),
+              )
             : Image.file(
                 File(path),
                 width: width,

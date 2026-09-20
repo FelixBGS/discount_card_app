@@ -65,4 +65,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get allFilter => 'Все';
+
+  @override
+  String get categoryTitle => 'Категория';
 }

@@ -73,5 +73,7 @@
   "allFilter": "Все",
   "@allFilter": {
     "description": "Подпись фильтра для отображения всех категорий"
-  }
+  },
+
+  "categoryTitle": "Категория"
 }
