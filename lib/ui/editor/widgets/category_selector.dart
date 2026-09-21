@@ -10,9 +10,14 @@ import '../../models/card_category_ui.dart';
 import '../../util/utils.dart';
 
 class CategorySelector extends StatelessWidget {
-  const CategorySelector({super.key, required this.categoryType});
+  const CategorySelector({
+    super.key,
+    required this.categoryType,
+    required this.onPressed,
+  });
 
   final CardCategoryType categoryType;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,27 +25,30 @@ class CategorySelector extends StatelessWidget {
     final textTheme = theme.textTheme;
     final colorScheme = theme.colorScheme;
 
-    return PanelContainer(
-      borderColor: colorScheme.outlineVariant,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ContrastIcon.icon(categoryType.icon),
-          const SizedBox(width: AppSpacing.md),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(context.l10n.categoryTitle, style: textTheme.titleSmall),
-              Text(
-                categoryType.label(context.l10n),
-                style: textTheme.titleMedium,
-              ),
-            ],
-          ),
-          const Spacer(),
-          const Icon(Icons.arrow_forward_ios),
-        ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: PanelContainer(
+        borderColor: colorScheme.outlineVariant,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ContrastIcon.icon(categoryType.icon),
+            const SizedBox(width: AppSpacing.md),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(context.l10n.categoryTitle, style: textTheme.titleSmall),
+                Text(
+                  categoryType.label(context.l10n),
+                  style: textTheme.titleMedium,
+                ),
+              ],
+            ),
+            const Spacer(),
+            const Icon(Icons.arrow_forward_ios),
+          ],
+        ),
       ),
     );
   }
@@ -54,5 +62,8 @@ class CategorySelector extends StatelessWidget {
 )
 Widget categorySelectorPanelPreview() => SizedBox(
   width: 500,
-  child: CategorySelector(categoryType: CardCategoryType.entertainment),
+  child: CategorySelector(
+    categoryType: CardCategoryType.entertainment,
+    onPressed: () {},
+  ),
 );

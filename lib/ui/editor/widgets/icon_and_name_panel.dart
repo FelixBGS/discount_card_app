@@ -9,17 +9,44 @@ import '../../../domain/models/logo_source.dart';
 import '../../shared/ui/app_text_field.dart';
 import '../../util/utils.dart';
 
-class IconAndNamePanel extends StatelessWidget {
+class IconAndNamePanel extends StatefulWidget {
   const IconAndNamePanel({
     super.key,
     required this.logo,
     required this.onChangeIconPressed,
     required this.onNameChanged,
+    this.controller,
   });
 
   final LogoSource logo;
   final VoidCallback onChangeIconPressed;
   final VoidCallback onNameChanged;
+  final TextEditingController? controller;
+
+  @override
+  State<IconAndNamePanel> createState() => _IconAndNamePanelState();
+}
+
+class _IconAndNamePanelState extends State<IconAndNamePanel> {
+  TextEditingController? _internalController;
+
+  TextEditingController get _controller =>
+      widget.controller ?? (_internalController ??= TextEditingController());
+
+  @override
+  void didUpdateWidget(IconAndNamePanel oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller == null && widget.controller != null) {
+      _internalController?.dispose();
+      _internalController = null;
+    }
+  }
+
+  @override
+  void dispose() {
+    _internalController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +62,17 @@ class IconAndNamePanel extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
-              ShopIconSelector(logo: logo, onPressed: () {}),
+              ShopIconSelector(
+                logo: widget.logo,
+                onPressed: widget.onChangeIconPressed,
+              ),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: AppTextField(
-                  controller: TextEditingController(),
+                  controller: _controller,
                   labelText: context.l10n.shopNameLabel,
                   showClearButton: true,
+                  onChanged: (_) => widget.onNameChanged(),
                 ),
               ),
             ],
@@ -58,7 +89,7 @@ class IconAndNamePanel extends StatelessWidget {
   theme: appPreviewTheme,
   localizations: appPreviewLocalizations,
 )
-Widget categorySelectorPanelPreview() => SizedBox(
+Widget iconAndNamePanelPreview() => SizedBox(
   width: 500,
   child: IconAndNamePanel(
     logo: LogoSource.empty(),

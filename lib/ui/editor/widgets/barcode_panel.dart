@@ -39,7 +39,7 @@ class BarcodePanel extends StatelessWidget {
             child: AppBarcode(data: barcode, format: barcodeFormat),
           ),
           const SizedBox(height: AppSpacing.md),
-          _EditBarcodeRow(onPressed: () {}),
+          _EditBarcodeRow(onPressed: onEditPressed),
         ],
       ),
     );

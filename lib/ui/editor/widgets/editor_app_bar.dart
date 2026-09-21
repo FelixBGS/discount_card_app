@@ -21,7 +21,6 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       centerTitle: true,
       titleSpacing: AppSpacing.lg,
-      actionsPadding: const EdgeInsets.only(right: AppSpacing.lg),
       automaticallyImplyLeading: false,
       leading: Padding(
         padding: const EdgeInsetsGeometry.directional(start: AppSpacing.lg),
@@ -30,12 +29,6 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: const Icon(Icons.arrow_back_ios, size: AppSizes.iconMedium),
         ),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.done, size: AppSizes.iconMedium),
-        ),
-      ],
     );
   }
 

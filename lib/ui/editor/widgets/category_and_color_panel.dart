@@ -35,14 +35,17 @@ class CategoryAndColorPanel extends StatelessWidget {
         children: [
           Text(context.l10n.categoryTitle, style: textTheme.titleMedium),
           const SizedBox(height: AppSpacing.sm),
-          CategorySelector(categoryType: selectedCategoryType),
+          CategorySelector(
+            categoryType: selectedCategoryType,
+            onPressed: onCategoryTypeChanged,
+          ),
           const SizedBox(height: AppSpacing.lg),
           Text(context.l10n.cardColor, style: textTheme.titleMedium),
           const SizedBox(height: AppSpacing.sm),
           ColorSelector(
             colors: CardColor.selectable,
-            onColorSelected: (color) {},
-            selectedColor: null,
+            onColorSelected: (_) => onColorChanged(),
+            selectedColor: selectedColor,
           ),
         ],
       ),
@@ -56,7 +59,7 @@ class CategoryAndColorPanel extends StatelessWidget {
   theme: appPreviewTheme,
   localizations: appPreviewLocalizations,
 )
-Widget categorySelectorPanelPreview() => SizedBox(
+Widget categoryAndColorPanelPreview() => SizedBox(
   width: 500,
   child: CategoryAndColorPanel(
     selectedCategoryType: CardCategoryType.unknown,
