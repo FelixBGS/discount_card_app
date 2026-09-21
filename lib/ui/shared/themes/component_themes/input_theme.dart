@@ -6,6 +6,8 @@ import '../app_colors.dart';
 abstract final class AppInputTheme {
   static InputDecorationTheme get light {
     return InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.surface,
       hintStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
       prefixIconColor: AppColors.textSecondary,
       suffixIconColor: AppColors.textSecondary,

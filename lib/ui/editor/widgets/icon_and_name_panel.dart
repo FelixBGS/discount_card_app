@@ -24,7 +24,10 @@ class IconAndNamePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return PanelContainer(
+      borderColor: colorScheme.outline,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

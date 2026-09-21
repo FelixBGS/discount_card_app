@@ -30,7 +30,7 @@ class ColorVariant extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(
               color: isSelected
-                  ? Theme.of(context).colorScheme.outline
+                  ? Theme.of(context).colorScheme.primary
                   : Colors.transparent,
               width: AppSizes.borderWidth,
             ),

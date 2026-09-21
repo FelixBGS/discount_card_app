@@ -13,7 +13,7 @@ abstract final class AppButtonTheme {
         disabledBackgroundColor: AppColors.disabled,
         elevation: 0,
         minimumSize: const Size.fromHeight(AppSizes.buttonHeight),
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.radiusMedium),
         ),
@@ -30,7 +30,7 @@ abstract final class AppButtonTheme {
         disabledForegroundColor: Colors.white70,
         disabledBackgroundColor: AppColors.disabled,
         minimumSize: const Size.fromHeight(AppSizes.buttonHeight),
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.radiusMedium),
         ),

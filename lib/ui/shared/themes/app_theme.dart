@@ -21,8 +21,8 @@ abstract final class AppTheme {
       onSurface: AppColors.textPrimary,
       error: AppColors.danger,
       onError: Colors.white,
-      outline: AppColors.selectedBorder,
-      outlineVariant: AppColors.border,
+      outline: AppColors.border,
+      outlineVariant: AppColors.borderVariant,
     );
 
     return ThemeData(

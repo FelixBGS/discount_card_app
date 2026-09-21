@@ -9,8 +9,8 @@ import 'package:flutter/widget_previews.dart';
 import '../../models/card_category_ui.dart';
 import '../../util/utils.dart';
 
-class CategorySelectorPanel extends StatelessWidget {
-  const CategorySelectorPanel({super.key, required this.categoryType});
+class CategorySelector extends StatelessWidget {
+  const CategorySelector({super.key, required this.categoryType});
 
   final CardCategoryType categoryType;
 
@@ -18,8 +18,10 @@ class CategorySelectorPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
+    final colorScheme = theme.colorScheme;
 
     return PanelContainer(
+      borderColor: colorScheme.outlineVariant,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -52,5 +54,5 @@ class CategorySelectorPanel extends StatelessWidget {
 )
 Widget categorySelectorPanelPreview() => SizedBox(
   width: 500,
-  child: CategorySelectorPanel(categoryType: CardCategoryType.entertainment),
+  child: CategorySelector(categoryType: CardCategoryType.entertainment),
 );
