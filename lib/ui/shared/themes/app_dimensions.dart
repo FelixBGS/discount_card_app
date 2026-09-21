@@ -25,6 +25,8 @@ abstract final class AppSizes {
   static const double iconLarge = 48;
   static const double iconExtraLarge = 64;
 
+  static const double logoMedium = 92;
+
   // Высота компонентов
   static const double buttonHeight = 52;
   static const double inputHeight = 48;

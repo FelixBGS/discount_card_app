@@ -213,6 +213,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Категория'**
   String get categoryTitle;
+
+  /// No description provided for @iconAndShopNameTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Иконка и название'**
+  String get iconAndShopNameTitle;
+
+  /// No description provided for @shopNameLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Название магазина'**
+  String get shopNameLabel;
+
+  /// No description provided for @cardDescriptionLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Описание'**
+  String get cardDescriptionLabel;
 }
 
 class _AppLocalizationsDelegate

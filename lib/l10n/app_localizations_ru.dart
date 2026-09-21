@@ -68,4 +68,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get categoryTitle => 'Категория';
+
+  @override
+  String get iconAndShopNameTitle => 'Иконка и название';
+
+  @override
+  String get shopNameLabel => 'Название магазина';
+
+  @override
+  String get cardDescriptionLabel => 'Описание';
 }

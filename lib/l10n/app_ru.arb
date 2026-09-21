@@ -75,5 +75,11 @@
     "description": "Подпись фильтра для отображения всех категорий"
   },
 
-  "categoryTitle": "Категория"
+  "categoryTitle": "Категория",
+
+  "iconAndShopNameTitle": "Иконка и название",
+
+  "shopNameLabel": "Название магазина",
+
+  "cardDescriptionLabel": "Описание"
 }

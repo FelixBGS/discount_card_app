@@ -9,14 +9,14 @@ class UniversalIcon extends StatelessWidget {
   const UniversalIcon({
     super.key,
     required this.logo,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.borderRadius = 0,
   });
 
   final LogoSource logo;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double borderRadius;
 
   @override
@@ -33,8 +33,12 @@ class UniversalIcon extends StatelessWidget {
 
   Widget _buildImage(BuildContext context) {
     final double pixelRatio = MediaQuery.devicePixelRatioOf(context);
-    final int? cacheWidth = width > 0 ? (width * pixelRatio).round() : null;
-    final int? cacheHeight = height > 0 ? (height * pixelRatio).round() : null;
+    final int? cacheWidth = (width ?? 0) > 0
+        ? (width! * pixelRatio).round()
+        : null;
+    final int? cacheHeight = (height ?? 0) > 0
+        ? (height! * pixelRatio).round()
+        : null;
 
     return switch (logo) {
       EmptyLogo() => _buildFallback(context),

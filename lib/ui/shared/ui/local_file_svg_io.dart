@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 
 Widget localFileSvg({
   required String path,
-  required double width,
-  required double height,
+  double? width,
+  double? height,
   required Widget fallback,
 }) {
   return SvgPicture.file(

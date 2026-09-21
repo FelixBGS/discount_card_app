@@ -122,7 +122,7 @@ class _AppTextFieldState extends State<AppTextField> {
           widget.textInputAction ??
           (_isMultiline ? TextInputAction.newline : TextInputAction.done),
       inputFormatters: widget.inputFormatters,
-      style: theme.textTheme.bodyLarge,
+      style: theme.textTheme.titleMedium,
       onChanged: widget.onChanged,
       onSubmitted: widget.onSubmitted,
       buildCounter: (
@@ -184,9 +184,10 @@ class _AppTextFieldState extends State<AppTextField> {
                 color: AppColors.textSecondary,
               ),
             ),
-            const SizedBox(height: AppSpacing.xs),
+            const SizedBox(height: AppSpacing.xxs),
           ],
           textField,
+          const SizedBox(height: AppSpacing.sm),
           if (widget.maxLength != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Align(

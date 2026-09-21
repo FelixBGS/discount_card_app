@@ -2,6 +2,7 @@ import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/shared/ui/contrast_icon.dart';
+import 'package:discount_card_app/ui/shared/ui/panel_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
@@ -16,19 +17,9 @@ class CategorySelectorPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
 
-    return Container(
-      padding: EdgeInsets.all(AppSpacing.sm),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppSizes.radiusMedium),
-        border: Border.all(
-          color: colorScheme.outlineVariant,
-          width: AppSizes.borderWidth,
-        ),
-        color: colorScheme.surface,
-      ),
+    return PanelContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -6,17 +6,15 @@ import '../app_colors.dart';
 abstract final class AppInputTheme {
   static InputDecorationTheme get light {
     return InputDecorationTheme(
-      filled: true,
-      fillColor: AppColors.inputBackground,
       hintStyle: const TextStyle(color: AppColors.textSecondary, fontSize: 14),
       prefixIconColor: AppColors.textSecondary,
       suffixIconColor: AppColors.textSecondary,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
-        vertical: 12,
+        vertical: AppSpacing.md,
       ),
-      border: _border(Colors.transparent),
-      enabledBorder: _border(Colors.transparent),
+      border: _border(AppColors.border),
+      enabledBorder: _border(AppColors.border),
       focusedBorder: _border(AppColors.primary),
       errorBorder: _border(AppColors.danger),
       focusedErrorBorder: _border(AppColors.danger),
