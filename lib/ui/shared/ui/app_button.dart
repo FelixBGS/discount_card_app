@@ -29,7 +29,7 @@ class AppButton extends StatelessWidget {
   }
 }
 
-@Preview(name: "Primary Button", theme: appPreviewTheme)
+@Preview(name: "Primary Button", group: "App Button", theme: appPreviewTheme)
 WidgetBuilder primaryButtonPreview() {
   return (BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -47,7 +47,7 @@ WidgetBuilder primaryButtonPreview() {
   };
 }
 
-@Preview(name: "Danger Button", theme: appPreviewTheme)
+@Preview(name: "Danger Button", group: "App Button", theme: appPreviewTheme)
 WidgetBuilder dangerButtonPreview() {
   return (BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -65,7 +65,7 @@ WidgetBuilder dangerButtonPreview() {
   };
 }
 
-@Preview(name: "Secondary Button", theme: appPreviewTheme)
+@Preview(name: "Secondary Button", group: "App Button", theme: appPreviewTheme)
 WidgetBuilder secondaryButtonPreview() {
   return (BuildContext context) {
     final colors = Theme.of(context).colorScheme;

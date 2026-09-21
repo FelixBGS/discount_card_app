@@ -55,6 +55,7 @@ class EditorScreen extends StatelessWidget {
 
 @Preview(
   name: "Editor Screen",
+  group: "Editor Screen",
   theme: appPreviewTheme,
   localizations: appPreviewLocalizations,
 )

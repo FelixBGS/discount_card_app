@@ -47,7 +47,11 @@ class ColorVariant extends StatelessWidget {
   }
 }
 
-@Preview(name: "Color Variant Neutral", theme: appPreviewTheme)
+@Preview(
+  name: "Color Variant Neutral",
+  group: "Editor Screen",
+  theme: appPreviewTheme,
+)
 Widget colorVariantNeutralPreview() => Material(
   color: Colors.transparent,
   child: Center(
@@ -62,7 +66,11 @@ Widget colorVariantNeutralPreview() => Material(
   ),
 );
 
-@Preview(name: "Color Variant Selected", theme: appPreviewTheme)
+@Preview(
+  name: "Color Variant Selected",
+  group: "Editor Screen",
+  theme: appPreviewTheme,
+)
 Widget colorVariantSelectedPreview() => Material(
   color: Colors.transparent,
   child: Center(

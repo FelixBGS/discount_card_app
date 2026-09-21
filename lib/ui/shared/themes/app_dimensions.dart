@@ -37,5 +37,5 @@ abstract final class AppSizes {
   static const double radiusExtraLarge = 24;
 
   // Границы
-  static const double borderWidth = 3;
+  static const double borderWidth = 2;
 }

@@ -55,6 +55,7 @@ class CategorySelectorPanel extends StatelessWidget {
 
 @Preview(
   name: "Category Selector Panel",
+  group: "Editor Screen",
   theme: appPreviewTheme,
   localizations: appPreviewLocalizations,
 )

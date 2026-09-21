@@ -49,6 +49,7 @@ class ColorSelector extends StatelessWidget {
 
 @Preview(
   name: "Color Selector",
+  group: "Editor Screen",
   theme: appPreviewTheme,
   wrapper: whiteBackgroundPreview,
 )
@@ -64,6 +65,7 @@ Widget colorSelectorPreview() => ConstrainedBox(
 
 @Preview(
   name: "Color Selector Selected",
+  group: "Editor Screen",
   theme: appPreviewTheme,
   wrapper: whiteBackgroundPreview,
 )

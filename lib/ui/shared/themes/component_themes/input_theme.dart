@@ -13,7 +13,7 @@ abstract final class AppInputTheme {
       suffixIconColor: AppColors.textSecondary,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
-        vertical: AppSpacing.sm,
+        vertical: 12,
       ),
       border: _border(Colors.transparent),
       enabledBorder: _border(Colors.transparent),
