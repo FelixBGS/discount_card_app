@@ -32,11 +32,11 @@ class IconAndNamePanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(context.l10n.iconAndShopNameTitle, style: textTheme.titleMedium),
-          SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
               ShopIconSelector(logo: logo, onPressed: () {}),
-              SizedBox(width: AppSpacing.md),
+              const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: AppTextField(
                   controller: TextEditingController(),

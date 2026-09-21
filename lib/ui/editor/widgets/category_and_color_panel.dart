@@ -34,11 +34,11 @@ class CategoryAndColorPanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(context.l10n.categoryTitle, style: textTheme.titleMedium),
-          SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpacing.sm),
           CategorySelector(categoryType: selectedCategoryType),
-          SizedBox(height: AppSpacing.lg),
+          const SizedBox(height: AppSpacing.lg),
           Text(context.l10n.cardColor, style: textTheme.titleMedium),
-          SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpacing.sm),
           ColorSelector(
             colors: CardColor.selectable,
             onColorSelected: (color) {},

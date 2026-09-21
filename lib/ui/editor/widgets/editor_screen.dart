@@ -33,13 +33,13 @@ class EditorScreen extends StatelessWidget {
               onChangeIconPressed: () {},
               onNameChanged: () {},
             ),
-            SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpacing.sm),
             CategoryAndColorPanel(
               selectedCategoryType: CardCategoryType.unknown,
               onCategoryTypeChanged: () {},
               onColorChanged: () {},
             ),
-            SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpacing.sm),
             Text(
               context.l10n.cardDescriptionLabel,
               style: textTheme.titleMedium,
@@ -50,14 +50,14 @@ class EditorScreen extends StatelessWidget {
               minLines: 3,
               maxLines: 6,
             ),
-            SizedBox(height: AppSpacing.lg),
+            const SizedBox(height: AppSpacing.lg),
             AppButton(
               onPressed: () {},
               text: context.l10n.save,
               backgroundColor: colorScheme.primary,
               textColor: colorScheme.onPrimary,
             ),
-            SizedBox(height: AppSpacing.sm),
+            const SizedBox(height: AppSpacing.sm),
             AppButton(
               onPressed: () {},
               text: context.l10n.deleteCard,
