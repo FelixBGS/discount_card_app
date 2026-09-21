@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class PanelContainer extends StatelessWidget {
   const PanelContainer({
     super.key,
-    required this.child,
     required this.borderColor,
+    required this.child,
   });
 
   final Widget child;

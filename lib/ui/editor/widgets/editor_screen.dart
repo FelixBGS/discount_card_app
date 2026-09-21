@@ -1,5 +1,7 @@
+import 'package:discount_card_app/domain/models/barcode_format.dart';
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
+import 'package:discount_card_app/ui/editor/widgets/barcode_panel.dart';
 import 'package:discount_card_app/ui/editor/widgets/category_and_color_panel.dart';
 import 'package:discount_card_app/ui/editor/widgets/editor_app_bar.dart';
 import 'package:discount_card_app/ui/editor/widgets/icon_and_name_panel.dart';
@@ -38,6 +40,12 @@ class EditorScreen extends StatelessWidget {
               selectedCategoryType: CardCategoryType.unknown,
               onCategoryTypeChanged: () {},
               onColorChanged: () {},
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            BarcodePanel(
+              barcode: "4601234567893",
+              barcodeFormat: BarcodeFormat.qrCode,
+              onEditPressed: () {},
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
@@ -79,6 +87,6 @@ class EditorScreen extends StatelessWidget {
 )
 Widget editorScreenPreview() => SizedBox(
   width: 600,
-  height: 1000,
+  height: 1200,
   child: Container(color: Color(0xFFF7F8FC), child: EditorScreen()),
 );
