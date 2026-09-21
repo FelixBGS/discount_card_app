@@ -40,4 +40,7 @@ abstract final class AppSizes {
 
   // Границы
   static const double borderWidth = 2;
+
+  static const double barcodeLinearHeight = 80;
+  static const double barcodeQrSize = 160;
 }
