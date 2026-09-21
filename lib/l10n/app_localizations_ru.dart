@@ -77,4 +77,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardDescriptionLabel => 'Описание';
+
+  @override
+  String get barcodeTitle => 'Штрихкод';
+
+  @override
+  String get editBarcodeNumber => 'Редактировать номер штрихкода';
+
+  @override
+  String get barcodeEmptyPlaceholder => 'Номер штрихкода не указан';
+
+  @override
+  String get barcodeUnknownPlaceholder => 'Неизвестный тип штрихкода';
+
+  @override
+  String get barcodeInvalidPlaceholder => 'Некорректный номер штрихкода';
 }

@@ -231,6 +231,36 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Описание'**
   String get cardDescriptionLabel;
+
+  /// Заголовок панели штрихкода
+  ///
+  /// In ru, this message translates to:
+  /// **'Штрихкод'**
+  String get barcodeTitle;
+
+  /// Подпись кнопки перехода к редактированию номера штрихкода
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактировать номер штрихкода'**
+  String get editBarcodeNumber;
+
+  /// Плейсхолдер, если номер штрихкода пустой
+  ///
+  /// In ru, this message translates to:
+  /// **'Номер штрихкода не указан'**
+  String get barcodeEmptyPlaceholder;
+
+  /// Плейсхолдер, если формат штрихкода неизвестен
+  ///
+  /// In ru, this message translates to:
+  /// **'Неизвестный тип штрихкода'**
+  String get barcodeUnknownPlaceholder;
+
+  /// Плейсхолдер, если номер не подходит выбранному формату
+  ///
+  /// In ru, this message translates to:
+  /// **'Некорректный номер штрихкода'**
+  String get barcodeInvalidPlaceholder;
 }
 
 class _AppLocalizationsDelegate

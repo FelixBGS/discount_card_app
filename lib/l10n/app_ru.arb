@@ -81,5 +81,30 @@
 
   "shopNameLabel": "Название магазина",
 
-  "cardDescriptionLabel": "Описание"
+  "cardDescriptionLabel": "Описание",
+
+  "barcodeTitle": "Штрихкод",
+  "@barcodeTitle": {
+    "description": "Заголовок панели штрихкода"
+  },
+
+  "editBarcodeNumber": "Редактировать номер штрихкода",
+  "@editBarcodeNumber": {
+    "description": "Подпись кнопки перехода к редактированию номера штрихкода"
+  },
+
+  "barcodeEmptyPlaceholder": "Номер штрихкода не указан",
+  "@barcodeEmptyPlaceholder": {
+    "description": "Плейсхолдер, если номер штрихкода пустой"
+  },
+
+  "barcodeUnknownPlaceholder": "Неизвестный тип штрихкода",
+  "@barcodeUnknownPlaceholder": {
+    "description": "Плейсхолдер, если формат штрихкода неизвестен"
+  },
+
+  "barcodeInvalidPlaceholder": "Некорректный номер штрихкода",
+  "@barcodeInvalidPlaceholder": {
+    "description": "Плейсхолдер, если номер не подходит выбранному формату"
+  }
 }
