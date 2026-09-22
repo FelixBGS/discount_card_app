@@ -7,14 +7,10 @@ import '../../shared/themes/app_dimensions.dart';
 import '../../util/utils.dart';
 
 class ShopIconSelector extends StatelessWidget {
-  const ShopIconSelector({
-    super.key,
-    required this.logo,
-    required this.onPressed,
-  });
+  const ShopIconSelector({super.key, required this.logo, this.onPressed});
 
   final LogoSource logo;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

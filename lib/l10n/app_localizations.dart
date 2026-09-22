@@ -291,6 +291,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Формат'**
   String get barcodeFormatTitle;
+
+  /// No description provided for @pickFromGallery.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выбрать из галереи'**
+  String get pickFromGallery;
+
+  /// No description provided for @popularLogos.
+  ///
+  /// In ru, this message translates to:
+  /// **'Популярные логотипы'**
+  String get popularLogos;
+
+  /// No description provided for @editIconTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Изменить иконку'**
+  String get editIconTitle;
 }
 
 class _AppLocalizationsDelegate

@@ -108,4 +108,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get barcodeFormatTitle => 'Формат';
+
+  @override
+  String get pickFromGallery => 'Выбрать из галереи';
+
+  @override
+  String get popularLogos => 'Популярные логотипы';
+
+  @override
+  String get editIconTitle => 'Изменить иконку';
 }

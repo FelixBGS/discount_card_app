@@ -115,5 +115,11 @@
 
   "barcodeNumberTitle": "Номер штрихкода",
 
-  "barcodeFormatTitle": "Формат"
+  "barcodeFormatTitle": "Формат",
+
+  "pickFromGallery": "Выбрать из галереи",
+
+  "popularLogos": "Популярные логотипы",
+
+  "editIconTitle": "Изменить иконку"
 }
