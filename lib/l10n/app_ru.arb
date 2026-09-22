@@ -9,6 +9,7 @@
   "cardColor": "Цвет карты",
   "save": "Сохранить",
   "deleteCard": "Удалить карту",
+  "cancel": "Отмена",
 
   "catalogNavOption": "Каталог",
   "@catalogNavOption": {
@@ -106,5 +107,13 @@
   "barcodeInvalidPlaceholder": "Некорректный номер штрихкода",
   "@barcodeInvalidPlaceholder": {
     "description": "Плейсхолдер, если номер не подходит выбранному формату"
-  }
+  },
+
+  "editBarcodeNumberBottomSheet": "Редактирование штрихкода",
+
+  "instructionEditBarcodeNumberBottomSheet": "Введите числовой номер штрихкода. При необходимости выберите формат",
+
+  "barcodeNumberTitle": "Номер штрихкода",
+
+  "barcodeFormatTitle": "Формат"
 }

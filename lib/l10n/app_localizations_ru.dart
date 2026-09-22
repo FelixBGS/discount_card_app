@@ -28,6 +28,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get deleteCard => 'Удалить карту';
 
   @override
+  String get cancel => 'Отмена';
+
+  @override
   String get catalogNavOption => 'Каталог';
 
   @override
@@ -92,4 +95,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get barcodeInvalidPlaceholder => 'Некорректный номер штрихкода';
+
+  @override
+  String get editBarcodeNumberBottomSheet => 'Редактирование штрихкода';
+
+  @override
+  String get instructionEditBarcodeNumberBottomSheet =>
+      'Введите числовой номер штрихкода. При необходимости выберите формат';
+
+  @override
+  String get barcodeNumberTitle => 'Номер штрихкода';
+
+  @override
+  String get barcodeFormatTitle => 'Формат';
 }

@@ -130,6 +130,12 @@ abstract class AppLocalizations {
   /// **'Удалить карту'**
   String get deleteCard;
 
+  /// No description provided for @cancel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Отмена'**
+  String get cancel;
+
   /// Название раздела в навигационной нижней панели
   ///
   /// In ru, this message translates to:
@@ -261,6 +267,30 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Некорректный номер штрихкода'**
   String get barcodeInvalidPlaceholder;
+
+  /// No description provided for @editBarcodeNumberBottomSheet.
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактирование штрихкода'**
+  String get editBarcodeNumberBottomSheet;
+
+  /// No description provided for @instructionEditBarcodeNumberBottomSheet.
+  ///
+  /// In ru, this message translates to:
+  /// **'Введите числовой номер штрихкода. При необходимости выберите формат'**
+  String get instructionEditBarcodeNumberBottomSheet;
+
+  /// No description provided for @barcodeNumberTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Номер штрихкода'**
+  String get barcodeNumberTitle;
+
+  /// No description provided for @barcodeFormatTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Формат'**
+  String get barcodeFormatTitle;
 }
 
 class _AppLocalizationsDelegate

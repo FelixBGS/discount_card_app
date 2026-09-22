@@ -136,6 +136,7 @@ class _AppTextFieldState extends State<AppTextField> {
               hintText: widget.hintText,
               suffixIcon: _buildClearButton(),
               enabled: widget.enabled,
+              hoverColor: Colors.transparent,
               enabledBorder: _hasError ? decorationTheme.errorBorder : null,
               focusedBorder: _hasError
                   ? decorationTheme.focusedErrorBorder

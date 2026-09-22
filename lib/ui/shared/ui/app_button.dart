@@ -5,24 +5,30 @@ import 'package:flutter/widget_previews.dart';
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
-    required this.onPressed,
+    this.onPressed,
     required this.text,
     required this.backgroundColor,
     required this.textColor,
   });
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String text;
   final Color backgroundColor;
   final Color textColor;
 
   @override
   Widget build(BuildContext context) {
+    final transparentBackground = backgroundColor.a == 0;
+
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: textColor,
+        overlayColor: transparentBackground ? Colors.transparent : null,
+        shadowColor: transparentBackground ? Colors.transparent : null,
+      ).copyWith(
+        elevation: transparentBackground ? const WidgetStatePropertyAll(0) : null,
       ),
       child: Text(text),
     );
