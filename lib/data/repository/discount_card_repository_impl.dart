@@ -10,8 +10,19 @@ final class DiscountCardRepositoryImpl implements DiscountCardRepository {
   DiscountCardRepositoryImpl(this._dao);
 
   @override
+  Future<DiscountCard?> getCardById(String id) async {
+    final entity = await _dao.getCardById(id);
+    return entity?.toDomain();
+  }
+
+  @override
   Future<void> saveCard(DiscountCard card) async {
-    await _dao.insertCard(card.toCompanion());
+    await _dao.upsertCard(card.toCompanion());
+  }
+
+  @override
+  Future<void> deleteCard(String id) async {
+    await _dao.deleteCardById(id);
   }
 
   @override

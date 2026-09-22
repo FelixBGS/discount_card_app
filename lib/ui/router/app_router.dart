@@ -1,4 +1,5 @@
 import 'package:discount_card_app/ui/router/branches/home/details_route.dart';
+import 'package:discount_card_app/ui/router/branches/home/editor_route.dart';
 import 'package:discount_card_app/ui/router/branches/home/home_route.dart';
 import 'package:discount_card_app/ui/router/branches/scanner/scanner.dart';
 import 'package:discount_card_app/ui/router/branches/settings/settings.dart';
@@ -23,7 +24,10 @@ final goRouter = GoRouter(
       routes: [
         TypedGoRoute<HomeRouteData>(
           path: "/home",
-          routes: [TypedGoRoute<DetailsRouteData>(path: "details")],
+          routes: [
+            TypedGoRoute<DetailsRouteData>(path: "details"),
+            TypedGoRoute<EditorRouteData>(path: "editor"),
+          ],
         ),
       ],
     ),

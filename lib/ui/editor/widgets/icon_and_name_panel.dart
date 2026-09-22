@@ -20,7 +20,7 @@ class IconAndNamePanel extends StatefulWidget {
 
   final LogoSource logo;
   final VoidCallback onChangeIconPressed;
-  final VoidCallback onNameChanged;
+  final ValueChanged<String> onNameChanged;
   final TextEditingController? controller;
 
   @override
@@ -72,7 +72,7 @@ class _IconAndNamePanelState extends State<IconAndNamePanel> {
                   controller: _controller,
                   labelText: context.l10n.shopNameLabel,
                   showClearButton: true,
-                  onChanged: (_) => widget.onNameChanged(),
+                  onChanged: widget.onNameChanged,
                 ),
               ),
             ],
@@ -94,6 +94,6 @@ Widget iconAndNamePanelPreview() => SizedBox(
   child: IconAndNamePanel(
     logo: LogoSource.empty(),
     onChangeIconPressed: () {},
-    onNameChanged: () {},
+    onNameChanged: (_) {},
   ),
 );

@@ -25,6 +25,12 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
               parentNavigatorKey: DetailsRouteData.$parentNavigatorKey,
               factory: $DetailsRouteData._fromState,
             ),
+            GoRouteData.$route(
+              path: 'editor',
+              hasOverriddenOnExit: false,
+              parentNavigatorKey: EditorRouteData.$parentNavigatorKey,
+              factory: $EditorRouteData._fromState,
+            ),
           ],
         ),
       ],
@@ -81,6 +87,27 @@ mixin $DetailsRouteData on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/home/details');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $EditorRouteData on GoRouteData {
+  static EditorRouteData _fromState(GoRouterState state) =>
+      const EditorRouteData();
+
+  @override
+  String get location => GoRouteData.$location('/home/editor');
 
   @override
   void go(BuildContext context) => context.go(location);

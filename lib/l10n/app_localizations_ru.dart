@@ -126,4 +126,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get apply => 'Применить';
+
+  @override
+  String get shopNameRequiredError => 'Укажите название магазина';
+
+  @override
+  String get barcodeInvalidError => 'Укажите корректный штрихкод';
+
+  @override
+  String get retry => 'Повторить';
 }

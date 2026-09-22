@@ -22,7 +22,7 @@ class CategoryAndColorPanel extends StatelessWidget {
   final CardCategoryType selectedCategoryType;
   final VoidCallback onCategoryTypeChanged;
   final CardColor? selectedColor;
-  final VoidCallback onColorChanged;
+  final ValueChanged<CardColor> onColorChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class CategoryAndColorPanel extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           ColorSelector(
             colors: CardColor.selectable,
-            onColorSelected: (_) => onColorChanged(),
+            onColorSelected: onColorChanged,
             selectedColor: selectedColor,
           ),
         ],
@@ -64,6 +64,6 @@ Widget categoryAndColorPanelPreview() => SizedBox(
   child: CategoryAndColorPanel(
     selectedCategoryType: CardCategoryType.unknown,
     onCategoryTypeChanged: () {},
-    onColorChanged: () {},
+    onColorChanged: (_) {},
   ),
 );

@@ -1,3 +1,4 @@
+import 'package:discount_card_app/ui/router/branches/home/editor_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -31,9 +32,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             "assets/images/icons/ic_barcode_scanner.svg",
           ),
         ),
-        const IconButton(
-          onPressed: null,
-          icon: Icon(Icons.add, size: AppSizes.iconMedium),
+        IconButton(
+          onPressed: () => const EditorRouteData().push(context),
+          icon: const Icon(Icons.add, size: AppSizes.iconMedium),
         ),
       ],
     );

@@ -6,5 +6,10 @@ abstract interface class DiscountCardRepository {
     String shopNameQuery,
     CardCategoryType? category,
   );
+
+  Future<DiscountCard?> getCardById(String id);
+
   Future<void> saveCard(DiscountCard card);
+
+  Future<void> deleteCard(String id);
 }

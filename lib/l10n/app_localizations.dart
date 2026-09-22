@@ -327,6 +327,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Применить'**
   String get apply;
+
+  /// Ошибка сохранения карты без названия магазина
+  ///
+  /// In ru, this message translates to:
+  /// **'Укажите название магазина'**
+  String get shopNameRequiredError;
+
+  /// Ошибка сохранения карты с пустым или некорректным штрихкодом
+  ///
+  /// In ru, this message translates to:
+  /// **'Укажите корректный штрихкод'**
+  String get barcodeInvalidError;
+
+  /// Кнопка повторной загрузки карты в редакторе
+  ///
+  /// In ru, this message translates to:
+  /// **'Повторить'**
+  String get retry;
 }
 
 class _AppLocalizationsDelegate

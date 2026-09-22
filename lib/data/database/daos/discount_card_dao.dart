@@ -29,8 +29,17 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
     return query.watch();
   }
 
+  Future<DiscountCardEntity?> getCardById(String id) {
+    return (select(
+      discountCardScheme,
+    )..where((tbl) => tbl.id.equals(id))).getSingleOrNull();
+  }
+
   Future<void> insertCard(DiscountCardSchemeCompanion entity) =>
       into(discountCardScheme).insert(entity);
+
+  Future<void> upsertCard(DiscountCardSchemeCompanion entity) =>
+      into(discountCardScheme).insertOnConflictUpdate(entity);
 
   Future<void> updateCard(DiscountCardEntity entity) =>
       update(discountCardScheme).replace(entity);
