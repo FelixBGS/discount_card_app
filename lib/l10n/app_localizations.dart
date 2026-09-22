@@ -309,6 +309,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Изменить иконку'**
   String get editIconTitle;
+
+  /// Заголовок экрана фильтрации по категориям
+  ///
+  /// In ru, this message translates to:
+  /// **'Фильтры'**
+  String get filtersTitle;
+
+  /// Заголовок списка категорий на экране фильтров
+  ///
+  /// In ru, this message translates to:
+  /// **'Категории'**
+  String get categoriesTitle;
+
+  /// Кнопка применения выбранной категории
+  ///
+  /// In ru, this message translates to:
+  /// **'Применить'**
+  String get apply;
 }
 
 class _AppLocalizationsDelegate

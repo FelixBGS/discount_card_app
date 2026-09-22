@@ -117,4 +117,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get editIconTitle => 'Изменить иконку';
+
+  @override
+  String get filtersTitle => 'Фильтры';
+
+  @override
+  String get categoriesTitle => 'Категории';
+
+  @override
+  String get apply => 'Применить';
 }

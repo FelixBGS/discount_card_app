@@ -4,6 +4,7 @@ import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/ui/editor/widgets/barcode_edit_bottom_sheet.dart';
 import 'package:discount_card_app/ui/editor/widgets/barcode_panel.dart';
 import 'package:discount_card_app/ui/editor/widgets/category_and_color_panel.dart';
+import 'package:discount_card_app/ui/editor/widgets/category_filter_screen.dart';
 import 'package:discount_card_app/ui/editor/widgets/editor_app_bar.dart';
 import 'package:discount_card_app/ui/editor/widgets/icon_and_name_panel.dart';
 import 'package:discount_card_app/ui/editor/widgets/icon_edit_bottom_sheet.dart';
@@ -37,6 +38,7 @@ class _EditorScreenState extends State<EditorScreen> {
 
   TextEditingController? _internalDescriptionController;
   LogoSource _logo = const LogoSource.empty();
+  CardCategoryType _selectedCategory = CardCategoryType.unknown;
   String _barcode = '4601234567893';
   BarcodeFormat _barcodeFormat = BarcodeFormat.qrCode;
 
@@ -68,6 +70,15 @@ class _EditorScreenState extends State<EditorScreen> {
     );
     if (!mounted || logo == null) return;
     setState(() => _logo = logo);
+  }
+
+  Future<void> _editCategory() async {
+    final result = await CategoryFilterScreen.show(
+      context,
+      selectedCategory: _selectedCategory,
+    );
+    if (!mounted || result == null) return;
+    setState(() => _selectedCategory = result);
   }
 
   Future<void> _editBarcode() async {
@@ -108,8 +119,10 @@ class _EditorScreenState extends State<EditorScreen> {
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     CategoryAndColorPanel(
-                      selectedCategoryType: CardCategoryType.unknown,
-                      onCategoryTypeChanged: () {},
+                      selectedCategoryType: _selectedCategory,
+                      onCategoryTypeChanged: () {
+                        _editCategory();
+                      },
                       onColorChanged: () {},
                     ),
                     const SizedBox(height: AppSpacing.sm),

@@ -121,5 +121,20 @@
 
   "popularLogos": "Популярные логотипы",
 
-  "editIconTitle": "Изменить иконку"
+  "editIconTitle": "Изменить иконку",
+
+  "filtersTitle": "Фильтры",
+  "@filtersTitle": {
+    "description": "Заголовок экрана фильтрации по категориям"
+  },
+
+  "categoriesTitle": "Категории",
+  "@categoriesTitle": {
+    "description": "Заголовок списка категорий на экране фильтров"
+  },
+
+  "apply": "Применить",
+  "@apply": {
+    "description": "Кнопка применения выбранной категории"
+  }
 }
