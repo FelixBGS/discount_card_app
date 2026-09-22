@@ -32,7 +32,7 @@ class BarcodePanel extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(context.l10n.barcodeTitle, style: textTheme.titleMedium),
+          Text(context.l10n.barcodeTitle, style: textTheme.titleSmall),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
             width: double.infinity,
@@ -71,7 +71,7 @@ class _EditBarcodeRow extends StatelessWidget {
               Expanded(
                 child: Text(
                   context.l10n.editBarcodeNumber,
-                  style: textTheme.bodyLarge,
+                  style: textTheme.bodySmall,
                 ),
               ),
               const Icon(Icons.arrow_forward_ios),

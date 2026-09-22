@@ -12,7 +12,6 @@ class CardColorConverter extends TypeConverter<CardColor, String> {
     "YELLOW" => CardColor.yellow,
     "GREEN" => CardColor.green,
     "BLUE" => CardColor.blue,
-    "DARK_BLUE" => CardColor.darkBlue,
     "PURPLE" => CardColor.purple,
     _ => CardColor.unknown,
   };
@@ -24,7 +23,6 @@ class CardColorConverter extends TypeConverter<CardColor, String> {
     CardColor.yellow => "YELLOW",
     CardColor.green => "GREEN",
     CardColor.blue => "BLUE",
-    CardColor.darkBlue => "DARK_BLUE",
     CardColor.purple => "PURPLE",
     CardColor.unknown => "UNKNOWN",
   };

@@ -22,7 +22,7 @@ abstract final class AppTypography {
       fontWeight: FontWeight.bold,
     ),
     titleSmall: TextStyle(
-      fontSize: 14,
+      fontSize: 15,
       height: 1.3,
       fontWeight: FontWeight.bold,
     ),

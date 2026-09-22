@@ -4,7 +4,6 @@ enum CardColor {
   yellow,
   green,
   blue,
-  darkBlue,
   purple,
   unknown;
 
@@ -14,7 +13,6 @@ enum CardColor {
     yellow,
     green,
     blue,
-    darkBlue,
     purple,
   ];
 }

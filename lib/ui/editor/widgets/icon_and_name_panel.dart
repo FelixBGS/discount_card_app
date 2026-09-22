@@ -58,7 +58,7 @@ class _IconAndNamePanelState extends State<IconAndNamePanel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(context.l10n.iconAndShopNameTitle, style: textTheme.titleMedium),
+          Text(context.l10n.iconAndShopNameTitle, style: textTheme.titleSmall),
           const SizedBox(height: AppSpacing.sm),
           Row(
             children: [

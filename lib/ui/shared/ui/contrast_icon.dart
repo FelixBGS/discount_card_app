@@ -9,21 +9,17 @@ import '../../util/utils.dart';
 class ContrastIcon extends StatelessWidget {
   const ContrastIcon._({super.key, required this._child});
 
-  factory ContrastIcon.logo(LogoSource logo, {Key? key}) {
+  factory ContrastIcon.logo(LogoSource logo, {Key? key, required double size}) {
     return ContrastIcon._(
       key: key,
-      child: UniversalIcon(
-        logo: logo,
-        width: AppSizes.iconMedium,
-        height: AppSizes.iconMedium,
-      ),
+      child: UniversalIcon(logo: logo, width: size, height: size),
     );
   }
 
-  factory ContrastIcon.icon(IconData icon, {Key? key}) {
+  factory ContrastIcon.icon(IconData icon, {Key? key, required double size}) {
     return ContrastIcon._(
       key: key,
-      child: Icon(icon, size: AppSizes.iconMedium),
+      child: Icon(icon, size: size),
     );
   }
 
@@ -51,4 +47,5 @@ class ContrastIcon extends StatelessWidget {
 )
 Widget contrastIconPreview() => ContrastIcon.logo(
   LogoSource.network("https://cdn-icons-png.flaticon.com/512/1946/1946488.png"),
+  size: AppSizes.iconMedium,
 );

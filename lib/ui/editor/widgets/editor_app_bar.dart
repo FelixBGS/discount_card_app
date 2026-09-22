@@ -10,29 +10,22 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return AppBar(
       title: Text(
         context.l10n.editCardTitle,
-        style: theme.textTheme.titleLarge?.copyWith(
-          color: colorScheme.onSurface,
-        ),
+        style: theme.textTheme.titleMedium,
       ),
       centerTitle: true,
       titleSpacing: AppSpacing.lg,
       automaticallyImplyLeading: false,
-      leading: Padding(
-        padding: const EdgeInsetsGeometry.directional(start: AppSpacing.lg),
-        child: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(Icons.arrow_back_ios, size: AppSizes.iconMedium),
-        ),
+      leading: IconButton(
+        onPressed: () => context.pop(),
+        icon: const Icon(Icons.arrow_back_ios, size: AppSizes.iconSmall),
       ),
     );
   }
 
   @override
-  Size get preferredSize =>
-      const Size.fromHeight(kToolbarHeight + AppSpacing.md);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

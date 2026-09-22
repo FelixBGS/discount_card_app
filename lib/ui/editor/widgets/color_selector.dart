@@ -3,6 +3,7 @@ import 'package:discount_card_app/ui/editor/widgets/color_variant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
+import '../../shared/themes/app_dimensions.dart';
 import '../../util/utils.dart';
 
 class ColorSelector extends StatelessWidget {
@@ -25,7 +26,7 @@ class ColorSelector extends StatelessWidget {
         final isSelected = color == selectedColor;
         return Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
             child: ColorVariant(
               color: color,
               isSelected: isSelected,

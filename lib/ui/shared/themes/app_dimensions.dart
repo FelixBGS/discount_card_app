@@ -26,7 +26,7 @@ abstract final class AppSizes {
   static const double iconExtraLarge = 64;
 
   static const double logoSmall = 64;
-  static const double logoMedium = 92;
+  static const double logoMedium = 82;
   static const double logoLarge = 108;
 
   // Высота компонентов

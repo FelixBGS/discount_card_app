@@ -28,11 +28,12 @@ class CategorySelector extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: PanelContainer(
+        padding: AppSpacing.sm,
         borderColor: colorScheme.outlineVariant,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ContrastIcon.icon(categoryType.icon),
+            ContrastIcon.icon(categoryType.icon, size: AppSizes.iconSmall),
             const SizedBox(width: AppSpacing.md),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

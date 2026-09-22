@@ -61,9 +61,7 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
     if (_isPicking) return;
     _isPicking = true;
     try {
-      final picked = await ImagePicker().pickImage(
-        source: ImageSource.gallery,
-      );
+      final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (picked == null || !mounted) return;
 
       final persisted = await getIt<LogoFileService>().persistLocal(
@@ -83,7 +81,8 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final bottomInset = MediaQuery.viewInsetsOf(context).bottom;
+    final mediaQuery = MediaQuery.of(context);
+    final bottomInset = mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
 
     return Padding(
       padding: EdgeInsetsGeometry.fromLTRB(
@@ -93,13 +92,15 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
         AppSpacing.md + bottomInset,
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Expanded(
                 child: Text(
                   context.l10n.editIconTitle,
-                  style: textTheme.titleLarge,
+                  style: textTheme.titleMedium,
                 ),
               ),
               IconButton(
@@ -143,13 +144,7 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
             ],
           ),
           const SizedBox(height: AppSpacing.lg),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              context.l10n.popularLogos,
-              style: textTheme.titleMedium,
-            ),
-          ),
+          Text(context.l10n.popularLogos, style: textTheme.titleSmall),
           const SizedBox(height: AppSpacing.sm),
           SizedBox(
             height: AppSizes.logoMedium + AppSpacing.xxs * 2,

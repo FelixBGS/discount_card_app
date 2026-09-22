@@ -6,16 +6,18 @@ class PanelContainer extends StatelessWidget {
     super.key,
     required this.borderColor,
     required this.child,
+    this.padding = AppSpacing.md,
   });
 
   final Widget child;
   final Color borderColor;
+  final double padding;
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
-      padding: EdgeInsets.all(AppSpacing.md),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppSizes.radiusMedium),
         border: Border.all(color: borderColor, width: AppSizes.borderWidth),

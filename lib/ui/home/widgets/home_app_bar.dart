@@ -1,7 +1,8 @@
-import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../l10n/l10n.dart';
+import '../../shared/themes/app_dimensions.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});

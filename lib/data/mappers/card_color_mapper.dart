@@ -1,4 +1,5 @@
 import 'package:discount_card_app/domain/models/card_color.dart';
+
 import '../models/api/card_color_api.dart';
 
 abstract final class CardColorMapper {
@@ -8,7 +9,6 @@ abstract final class CardColorMapper {
     CardColorApi.yellow => CardColor.yellow,
     CardColorApi.green => CardColor.green,
     CardColorApi.blue => CardColor.blue,
-    CardColorApi.darkBlue => CardColor.darkBlue,
     CardColorApi.purple => CardColor.purple,
     _ => CardColor.unknown,
   };
@@ -19,7 +19,6 @@ abstract final class CardColorMapper {
     CardColor.yellow => CardColorApi.yellow,
     CardColor.green => CardColorApi.green,
     CardColor.blue => CardColorApi.blue,
-    CardColor.darkBlue => CardColorApi.darkBlue,
     CardColor.purple => CardColorApi.purple,
     CardColor.unknown => CardColorApi.unknown,
   };

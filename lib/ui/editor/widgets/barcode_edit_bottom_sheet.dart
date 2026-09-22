@@ -54,7 +54,7 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    _controller = TextEditingController(text: widget.barcode);
     _format = widget.barcodeFormat;
   }
 
@@ -88,7 +88,8 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
-    final bottomInset = MediaQuery.viewInsetsOf(context).bottom;
+    final mediaQuery = MediaQuery.of(context);
+    final bottomInset = mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
 
     return Padding(
       padding: EdgeInsetsGeometry.fromLTRB(
@@ -106,7 +107,7 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
               Expanded(
                 child: Text(
                   context.l10n.editBarcodeNumberBottomSheet,
-                  style: textTheme.titleLarge,
+                  style: textTheme.titleMedium,
                 ),
               ),
               IconButton(
@@ -115,13 +116,14 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
               ),
             ],
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             context.l10n.instructionEditBarcodeNumberBottomSheet,
             style: textTheme.bodyMedium,
           ),
-          const SizedBox(height: AppSpacing.lg),
-          Text(context.l10n.barcodeNumberTitle, style: textTheme.titleMedium),
+          const SizedBox(height: AppSpacing.md),
+          Text(context.l10n.barcodeNumberTitle, style: textTheme.titleSmall),
+          const SizedBox(height: AppSpacing.xs),
           AppTextField(
             controller: _controller,
             showClearButton: true,
@@ -137,7 +139,8 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
             ],
           ),
           const SizedBox(height: AppSpacing.md),
-          Text(context.l10n.barcodeFormatTitle, style: textTheme.titleMedium),
+          Text(context.l10n.barcodeFormatTitle, style: textTheme.titleSmall),
+          const SizedBox(height: AppSpacing.xs),
           DropdownButtonFormField<BarcodeFormat>(
             initialValue: _format,
             decoration: const InputDecoration(hoverColor: Colors.transparent),
@@ -146,7 +149,7 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
                 if (format != BarcodeFormat.unknown)
                   DropdownMenuItem(
                     value: format,
-                    child: Text(format.toString()),
+                    child: Text(format.toString(), style: textTheme.bodyLarge),
                   ),
             ],
             onChanged: (format) {

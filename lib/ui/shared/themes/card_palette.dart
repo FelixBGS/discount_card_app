@@ -42,7 +42,6 @@ final class CardPalette extends ThemeExtension<CardPalette> {
     CardColor.yellow => yellow,
     CardColor.green => green,
     CardColor.blue => blue,
-    CardColor.darkBlue => darkBlue,
     CardColor.purple => purple,
     CardColor.unknown => fallback,
   };
