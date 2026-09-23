@@ -1,14 +1,17 @@
+import 'package:discount_card_app/domain/models/barcode_format.dart';
 import 'package:discount_card_app/ui/router/branches/home/details_route.dart';
-import 'package:discount_card_app/ui/router/branches/home/editor_route.dart';
 import 'package:discount_card_app/ui/router/branches/home/home_route.dart';
 import 'package:discount_card_app/ui/router/branches/scanner/scanner.dart';
 import 'package:discount_card_app/ui/router/branches/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../editor/state/editor_args.dart';
+import '../editor/widgets/editor_screen.dart';
 import '../shell/app_shell_screen.dart';
 
 part 'app_router.g.dart';
+part 'branches/editor/editor_route.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -24,10 +27,7 @@ final goRouter = GoRouter(
       routes: [
         TypedGoRoute<HomeRouteData>(
           path: "/home",
-          routes: [
-            TypedGoRoute<DetailsRouteData>(path: "details"),
-            TypedGoRoute<EditorRouteData>(path: "editor"),
-          ],
+          routes: [TypedGoRoute<DetailsRouteData>(path: "details")],
         ),
       ],
     ),
@@ -59,7 +59,7 @@ class AppShellRouteData extends StatefulShellRouteData {
     return Stack(
       children: List.generate(children.length, (index) {
         final isActive = index == navigationShell.currentIndex;
-        
+
         final branch = navigationShell.route.branches[index];
         final isCameraTab = branch.initialLocation == '/scanner';
 

@@ -13,15 +13,17 @@ class IconAndNamePanel extends StatefulWidget {
   const IconAndNamePanel({
     super.key,
     required this.logo,
+    required this.shopName,
     required this.onChangeIconPressed,
-    required this.onNameChanged,
     this.controller,
+    this.errorText,
   });
 
   final LogoSource logo;
+  final String shopName;
   final VoidCallback onChangeIconPressed;
-  final ValueChanged<String> onNameChanged;
   final TextEditingController? controller;
+  final String? errorText;
 
   @override
   State<IconAndNamePanel> createState() => _IconAndNamePanelState();
@@ -31,7 +33,8 @@ class _IconAndNamePanelState extends State<IconAndNamePanel> {
   TextEditingController? _internalController;
 
   TextEditingController get _controller =>
-      widget.controller ?? (_internalController ??= TextEditingController());
+      widget.controller ??
+      (_internalController ??= TextEditingController(text: widget.shopName));
 
   @override
   void didUpdateWidget(IconAndNamePanel oldWidget) {
@@ -72,7 +75,7 @@ class _IconAndNamePanelState extends State<IconAndNamePanel> {
                   controller: _controller,
                   labelText: context.l10n.shopNameLabel,
                   showClearButton: true,
-                  onChanged: widget.onNameChanged,
+                  errorText: widget.errorText,
                 ),
               ),
             ],
@@ -92,8 +95,8 @@ class _IconAndNamePanelState extends State<IconAndNamePanel> {
 Widget iconAndNamePanelPreview() => SizedBox(
   width: 500,
   child: IconAndNamePanel(
+    shopName: "",
     logo: LogoSource.empty(),
     onChangeIconPressed: () {},
-    onNameChanged: (_) {},
   ),
 );

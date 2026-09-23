@@ -17,12 +17,14 @@ class CategoryAndColorPanel extends StatelessWidget {
     required this.onCategoryTypeChanged,
     this.selectedColor,
     required this.onColorChanged,
+    this.colorErrorText,
   });
 
   final CardCategoryType selectedCategoryType;
   final VoidCallback onCategoryTypeChanged;
   final CardColor? selectedColor;
   final ValueChanged<CardColor> onColorChanged;
+  final String? colorErrorText;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,13 @@ class CategoryAndColorPanel extends StatelessWidget {
             onColorSelected: onColorChanged,
             selectedColor: selectedColor,
           ),
+          if (colorErrorText != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              colorErrorText!,
+              style: textTheme.bodySmall?.copyWith(color: colorScheme.error),
+            ),
+          ],
         ],
       ),
     );

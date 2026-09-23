@@ -340,11 +340,23 @@ abstract class AppLocalizations {
   /// **'Укажите корректный штрихкод'**
   String get barcodeInvalidError;
 
+  /// Ошибка сохранения карты без выбранного цвета
+  ///
+  /// In ru, this message translates to:
+  /// **'Выберите цвет карты'**
+  String get cardColorRequiredError;
+
   /// Кнопка повторной загрузки карты в редакторе
   ///
   /// In ru, this message translates to:
   /// **'Повторить'**
   String get retry;
+
+  /// Сообщение, если карту не удалось загрузить в редакторе
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось загрузить карту'**
+  String get cardLoadError;
 }
 
 class _AppLocalizationsDelegate

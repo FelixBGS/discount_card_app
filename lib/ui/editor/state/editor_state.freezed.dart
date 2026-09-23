@@ -27,20 +27,20 @@ $EditorStateCopyWith<EditorState> get copyWith => _$EditorStateCopyWithImpl<Edit
 @override
 bool operator ==(Object other) {
   final _this = this as EditorState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EditorState&&(identical(other.selectedLogo, _this.selectedLogo) || other.selectedLogo == _this.selectedLogo)&&(identical(other.selectedCategory, _this.selectedCategory) || other.selectedCategory == _this.selectedCategory)&&(identical(other.selectedColor, _this.selectedColor) || other.selectedColor == _this.selectedColor)&&(identical(other.barcodeNumber, _this.barcodeNumber) || other.barcodeNumber == _this.barcodeNumber)&&(identical(other.barcodeFormat, _this.barcodeFormat) || other.barcodeFormat == _this.barcodeFormat));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EditorState&&(identical(other.status, _this.status) || other.status == _this.status)&&(identical(other.selectedLogo, _this.selectedLogo) || other.selectedLogo == _this.selectedLogo)&&(identical(other.shopName, _this.shopName) || other.shopName == _this.shopName)&&(identical(other.selectedCategory, _this.selectedCategory) || other.selectedCategory == _this.selectedCategory)&&(identical(other.selectedColor, _this.selectedColor) || other.selectedColor == _this.selectedColor)&&(identical(other.barcodeNumber, _this.barcodeNumber) || other.barcodeNumber == _this.barcodeNumber)&&(identical(other.barcodeFormat, _this.barcodeFormat) || other.barcodeFormat == _this.barcodeFormat)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.fieldErrors, _this.fieldErrors) || other.fieldErrors == _this.fieldErrors)&&(identical(other.cardId, _this.cardId) || other.cardId == _this.cardId));
 }
 
 
 @override
 int get hashCode {
   final _this = this as EditorState;
-  return Object.hash(runtimeType,_this.selectedLogo,_this.selectedCategory,_this.selectedColor,_this.barcodeNumber,_this.barcodeFormat);
+  return Object.hash(runtimeType,_this.status,_this.selectedLogo,_this.shopName,_this.selectedCategory,_this.selectedColor,_this.barcodeNumber,_this.barcodeFormat,_this.description,_this.fieldErrors,_this.cardId);
 }
 
 @override
 String toString() {
   final _this = this as EditorState;
-  return 'EditorState(selectedLogo: ${_this.selectedLogo}, selectedCategory: ${_this.selectedCategory}, selectedColor: ${_this.selectedColor}, barcodeNumber: ${_this.barcodeNumber}, barcodeFormat: ${_this.barcodeFormat})';
+  return 'EditorState(status: ${_this.status}, selectedLogo: ${_this.selectedLogo}, shopName: ${_this.shopName}, selectedCategory: ${_this.selectedCategory}, selectedColor: ${_this.selectedColor}, barcodeNumber: ${_this.barcodeNumber}, barcodeFormat: ${_this.barcodeFormat}, description: ${_this.description}, fieldErrors: ${_this.fieldErrors}, cardId: ${_this.cardId})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $EditorStateCopyWith<$Res>  {
   factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) _then) = _$EditorStateCopyWithImpl;
 @useResult
 $Res call({
- LogoSource selectedLogo, CardCategoryType selectedCategory, CardColor? selectedColor, String barcodeNumber, BarcodeFormat barcodeFormat
+ EditorStatus status, LogoSource selectedLogo, String shopName, CardCategoryType selectedCategory, CardColor? selectedColor, String barcodeNumber, BarcodeFormat barcodeFormat, String description, EditorFieldErrors fieldErrors, String? cardId
 });
 
 
@@ -68,14 +68,19 @@ class _$EditorStateCopyWithImpl<$Res>
 
 /// Create a copy of EditorState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedLogo = null,Object? selectedCategory = null,Object? selectedColor = freezed,Object? barcodeNumber = null,Object? barcodeFormat = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? selectedLogo = null,Object? shopName = null,Object? selectedCategory = null,Object? selectedColor = freezed,Object? barcodeNumber = null,Object? barcodeFormat = null,Object? description = null,Object? fieldErrors = null,Object? cardId = freezed,}) {
   return _then(EditorState(
-selectedLogo: null == selectedLogo ? _self.selectedLogo : selectedLogo // ignore: cast_nullable_to_non_nullable
-as LogoSource,selectedCategory: null == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as EditorStatus,selectedLogo: null == selectedLogo ? _self.selectedLogo : selectedLogo // ignore: cast_nullable_to_non_nullable
+as LogoSource,shopName: null == shopName ? _self.shopName : shopName // ignore: cast_nullable_to_non_nullable
+as String,selectedCategory: null == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
 as CardCategoryType,selectedColor: freezed == selectedColor ? _self.selectedColor : selectedColor // ignore: cast_nullable_to_non_nullable
 as CardColor?,barcodeNumber: null == barcodeNumber ? _self.barcodeNumber : barcodeNumber // ignore: cast_nullable_to_non_nullable
 as String,barcodeFormat: null == barcodeFormat ? _self.barcodeFormat : barcodeFormat // ignore: cast_nullable_to_non_nullable
-as BarcodeFormat,
+as BarcodeFormat,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,fieldErrors: null == fieldErrors ? _self.fieldErrors : fieldErrors // ignore: cast_nullable_to_non_nullable
+as EditorFieldErrors,cardId: freezed == cardId ? _self.cardId : cardId // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

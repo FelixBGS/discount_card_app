@@ -14,11 +14,13 @@ class BarcodePanel extends StatelessWidget {
     required this.barcode,
     required this.barcodeFormat,
     required this.onEditPressed,
+    this.errorText,
   });
 
   final String barcode;
   final BarcodeFormat barcodeFormat;
   final VoidCallback onEditPressed;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,10 @@ class BarcodePanel extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
 
+    final errorText = this.errorText;
+
     return PanelContainer(
-      borderColor: colorScheme.outline,
+      borderColor: errorText == null ? colorScheme.outline : colorScheme.error,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -40,6 +44,13 @@ class BarcodePanel extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           _EditBarcodeRow(onPressed: onEditPressed),
+          if (errorText != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              errorText,
+              style: textTheme.bodySmall?.copyWith(color: colorScheme.error),
+            ),
+          ],
         ],
       ),
     );

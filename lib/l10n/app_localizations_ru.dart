@@ -134,5 +134,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get barcodeInvalidError => 'Укажите корректный штрихкод';
 
   @override
+  String get cardColorRequiredError => 'Выберите цвет карты';
+
+  @override
   String get retry => 'Повторить';
+
+  @override
+  String get cardLoadError => 'Не удалось загрузить карту';
 }
