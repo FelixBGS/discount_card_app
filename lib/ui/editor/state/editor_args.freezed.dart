@@ -56,11 +56,11 @@ extension EditorArgsPatterns on EditorArgs {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Blank value)?  blank,TResult Function( FromCamara value)?  fromCamera,TResult Function( FromDetails value)?  fromDetails,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Blank value)?  blank,TResult Function( FromCamera value)?  fromCamera,TResult Function( FromDetails value)?  fromDetails,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case Blank() when blank != null:
-return blank(_that);case FromCamara() when fromCamera != null:
+return blank(_that);case FromCamera() when fromCamera != null:
 return fromCamera(_that);case FromDetails() when fromDetails != null:
 return fromDetails(_that);case _:
   return orElse();
@@ -80,11 +80,11 @@ return fromDetails(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Blank value)  blank,required TResult Function( FromCamara value)  fromCamera,required TResult Function( FromDetails value)  fromDetails,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Blank value)  blank,required TResult Function( FromCamera value)  fromCamera,required TResult Function( FromDetails value)  fromDetails,}){
 final _that = this;
 switch (_that) {
 case Blank():
-return blank(_that);case FromCamara():
+return blank(_that);case FromCamera():
 return fromCamera(_that);case FromDetails():
 return fromDetails(_that);}
 }
@@ -100,11 +100,11 @@ return fromDetails(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Blank value)?  blank,TResult? Function( FromCamara value)?  fromCamera,TResult? Function( FromDetails value)?  fromDetails,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Blank value)?  blank,TResult? Function( FromCamera value)?  fromCamera,TResult? Function( FromDetails value)?  fromDetails,}){
 final _that = this;
 switch (_that) {
 case Blank() when blank != null:
-return blank(_that);case FromCamara() when fromCamera != null:
+return blank(_that);case FromCamera() when fromCamera != null:
 return fromCamera(_that);case FromDetails() when fromDetails != null:
 return fromDetails(_that);case _:
   return null;
@@ -126,7 +126,7 @@ return fromDetails(_that);case _:
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  blank,TResult Function( String barcodeNumber,  BarcodeFormat barcodeFormat)?  fromCamera,TResult Function( String cardId)?  fromDetails,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Blank() when blank != null:
-return blank();case FromCamara() when fromCamera != null:
+return blank();case FromCamera() when fromCamera != null:
 return fromCamera(_that.barcodeNumber,_that.barcodeFormat);case FromDetails() when fromDetails != null:
 return fromDetails(_that.cardId);case _:
   return orElse();
@@ -149,7 +149,7 @@ return fromDetails(_that.cardId);case _:
 @optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  blank,required TResult Function( String barcodeNumber,  BarcodeFormat barcodeFormat)  fromCamera,required TResult Function( String cardId)  fromDetails,}) {final _that = this;
 switch (_that) {
 case Blank():
-return blank();case FromCamara():
+return blank();case FromCamera():
 return fromCamera(_that.barcodeNumber,_that.barcodeFormat);case FromDetails():
 return fromDetails(_that.cardId);}
 }
@@ -168,7 +168,7 @@ return fromDetails(_that.cardId);}
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  blank,TResult? Function( String barcodeNumber,  BarcodeFormat barcodeFormat)?  fromCamera,TResult? Function( String cardId)?  fromDetails,}) {final _that = this;
 switch (_that) {
 case Blank() when blank != null:
-return blank();case FromCamara() when fromCamera != null:
+return blank();case FromCamera() when fromCamera != null:
 return fromCamera(_that.barcodeNumber,_that.barcodeFormat);case FromDetails() when fromDetails != null:
 return fromDetails(_that.cardId);case _:
   return null;
@@ -213,8 +213,8 @@ String toString() {
 /// @nodoc
 
 
-class FromCamara implements EditorArgs {
-  const FromCamara({required this.barcodeNumber, required this.barcodeFormat});
+class FromCamera implements EditorArgs {
+  const FromCamera({required this.barcodeNumber, required this.barcodeFormat});
   
 
  final  String barcodeNumber;
@@ -224,13 +224,13 @@ class FromCamara implements EditorArgs {
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$FromCamaraCopyWith<FromCamara> get copyWith => _$FromCamaraCopyWithImpl<FromCamara>(this, _$identity);
+$FromCameraCopyWith<FromCamera> get copyWith => _$FromCameraCopyWithImpl<FromCamera>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is FromCamara&&(identical(other.barcodeNumber, barcodeNumber) || other.barcodeNumber == barcodeNumber)&&(identical(other.barcodeFormat, barcodeFormat) || other.barcodeFormat == barcodeFormat));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FromCamera&&(identical(other.barcodeNumber, barcodeNumber) || other.barcodeNumber == barcodeNumber)&&(identical(other.barcodeFormat, barcodeFormat) || other.barcodeFormat == barcodeFormat));
 }
 
 
@@ -248,8 +248,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $FromCamaraCopyWith<$Res> implements $EditorArgsCopyWith<$Res> {
-  factory $FromCamaraCopyWith(FromCamara value, $Res Function(FromCamara) _then) = _$FromCamaraCopyWithImpl;
+abstract mixin class $FromCameraCopyWith<$Res> implements $EditorArgsCopyWith<$Res> {
+  factory $FromCameraCopyWith(FromCamera value, $Res Function(FromCamera) _then) = _$FromCameraCopyWithImpl;
 @useResult
 $Res call({
  String barcodeNumber, BarcodeFormat barcodeFormat
@@ -260,17 +260,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$FromCamaraCopyWithImpl<$Res>
-    implements $FromCamaraCopyWith<$Res> {
-  _$FromCamaraCopyWithImpl(this._self, this._then);
+class _$FromCameraCopyWithImpl<$Res>
+    implements $FromCameraCopyWith<$Res> {
+  _$FromCameraCopyWithImpl(this._self, this._then);
 
-  final FromCamara _self;
-  final $Res Function(FromCamara) _then;
+  final FromCamera _self;
+  final $Res Function(FromCamera) _then;
 
 /// Create a copy of EditorArgs
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? barcodeNumber = null,Object? barcodeFormat = null,}) {
-  return _then(FromCamara(
+  return _then(FromCamera(
 barcodeNumber: null == barcodeNumber ? _self.barcodeNumber : barcodeNumber // ignore: cast_nullable_to_non_nullable
 as String,barcodeFormat: null == barcodeFormat ? _self.barcodeFormat : barcodeFormat // ignore: cast_nullable_to_non_nullable
 as BarcodeFormat,

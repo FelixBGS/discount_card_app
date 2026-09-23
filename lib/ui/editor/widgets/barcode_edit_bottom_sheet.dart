@@ -1,5 +1,6 @@
 import 'package:discount_card_app/domain/models/barcode_format.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
+import 'package:discount_card_app/ui/models/barcode_format_ui.dart';
 import 'package:discount_card_app/ui/shared/ui/app_button.dart';
 import 'package:discount_card_app/ui/shared/ui/app_text_field.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,8 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
     final mediaQuery = MediaQuery.of(context);
-    final bottomInset = mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
+    final bottomInset =
+        mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
 
     return Padding(
       padding: EdgeInsetsGeometry.fromLTRB(
@@ -149,7 +151,7 @@ class _BarcodeEditBottomSheetState extends State<BarcodeEditBottomSheet> {
                 if (format != BarcodeFormat.unknown)
                   DropdownMenuItem(
                     value: format,
-                    child: Text(format.toString(), style: textTheme.bodyLarge),
+                    child: Text(format.displayName, style: textTheme.bodyLarge),
                   ),
             ],
             onChanged: (format) {

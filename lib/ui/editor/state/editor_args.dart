@@ -10,7 +10,7 @@ sealed class EditorArgs with _$EditorArgs {
   const factory EditorArgs.fromCamera({
     required String barcodeNumber,
     required BarcodeFormat barcodeFormat,
-  }) = FromCamara;
+  }) = FromCamera;
 
   const factory EditorArgs.fromDetails({required String cardId}) = FromDetails;
 

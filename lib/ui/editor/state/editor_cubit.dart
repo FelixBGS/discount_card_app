@@ -25,7 +25,7 @@ class EditorCubit extends Cubit<EditorState> {
 
   static EditorState _initialState(EditorArgs args) => switch (args) {
     Blank() => const EditorState(),
-    FromCamara(:final barcodeNumber, :final barcodeFormat) => EditorState(
+    FromCamera(:final barcodeNumber, :final barcodeFormat) => EditorState(
       barcodeNumber: barcodeNumber,
       barcodeFormat: barcodeFormat,
     ),
