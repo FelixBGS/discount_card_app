@@ -1,6 +1,6 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/editor/widgets/category_selector.dart';
+import 'package:discount_card_app/ui/shared/ui/category_selector.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';

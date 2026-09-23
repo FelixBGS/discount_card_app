@@ -136,6 +136,12 @@ abstract class AppLocalizations {
   /// **'Отмена'**
   String get cancel;
 
+  /// Кнопка перехода к редактированию карты
+  ///
+  /// In ru, this message translates to:
+  /// **'Редактировать'**
+  String get edit;
+
   /// Название раздела в навигационной нижней панели
   ///
   /// In ru, this message translates to:

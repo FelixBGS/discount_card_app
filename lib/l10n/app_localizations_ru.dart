@@ -31,6 +31,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cancel => 'Отмена';
 
   @override
+  String get edit => 'Редактировать';
+
+  @override
   String get catalogNavOption => 'Каталог';
 
   @override

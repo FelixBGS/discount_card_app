@@ -12,12 +12,14 @@ class UniversalIcon extends StatelessWidget {
     this.width,
     this.height,
     this.borderRadius = 0,
+    this.fit,
   });
 
   final LogoSource logo;
   final double? width;
   final double? height;
   final double borderRadius;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -45,28 +47,38 @@ class UniversalIcon extends StatelessWidget {
 
       AssetLogo(path: var path) =>
         logo.isSvg
-            ? SvgPicture.asset(path, width: width, height: height)
+            ? SvgPicture.asset(
+                path,
+                width: width,
+                height: height,
+                fit: fit ?? BoxFit.contain,
+              )
             : Image.asset(
                 path,
                 width: width,
                 height: height,
                 cacheWidth: cacheWidth,
                 cacheHeight: cacheHeight,
-                fit: BoxFit.cover,
+                fit: fit ?? BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) =>
                     _buildFallback(context),
               ),
 
       NetworkLogo(url: var url) =>
         logo.isSvg
-            ? SvgPicture.network(url, width: width, height: height)
+            ? SvgPicture.network(
+                url,
+                width: width,
+                height: height,
+                fit: fit ?? BoxFit.contain,
+              )
             : Image.network(
                 url,
                 width: width,
                 height: height,
                 cacheWidth: cacheWidth,
                 cacheHeight: cacheHeight,
-                fit: BoxFit.cover,
+                fit: fit ?? BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) =>
                     _buildFallback(context),
               ),
@@ -77,6 +89,7 @@ class UniversalIcon extends StatelessWidget {
                 path: path,
                 width: width,
                 height: height,
+                fit: fit ?? BoxFit.contain,
                 fallback: _buildFallback(context),
               )
             : Image.file(
@@ -85,7 +98,7 @@ class UniversalIcon extends StatelessWidget {
                 height: height,
                 cacheWidth: cacheWidth,
                 cacheHeight: cacheHeight,
-                fit: BoxFit.cover,
+                fit: fit ?? BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) =>
                     _buildFallback(context),
               ),
@@ -97,6 +110,7 @@ class UniversalIcon extends StatelessWidget {
       "assets/images/icons/ic_question_mark_circle.svg",
       width: width,
       height: height,
+      fit: fit ?? BoxFit.contain,
     );
   }
 }

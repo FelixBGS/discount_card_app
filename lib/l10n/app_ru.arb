@@ -10,6 +10,10 @@
   "save": "Сохранить",
   "deleteCard": "Удалить карту",
   "cancel": "Отмена",
+  "edit": "Редактировать",
+  "@edit": {
+    "description": "Кнопка перехода к редактированию карты"
+  },
 
   "catalogNavOption": "Каталог",
   "@catalogNavOption": {

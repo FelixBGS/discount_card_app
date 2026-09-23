@@ -20,7 +20,7 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
           factory: $HomeRouteData._fromState,
           routes: [
             GoRouteData.$route(
-              path: 'details',
+              path: 'details/:cardId',
               hasOverriddenOnExit: false,
               parentNavigatorKey: DetailsRouteData.$parentNavigatorKey,
               factory: $DetailsRouteData._fromState,
@@ -77,10 +77,14 @@ mixin $HomeRouteData on GoRouteData {
 
 mixin $DetailsRouteData on GoRouteData {
   static DetailsRouteData _fromState(GoRouterState state) =>
-      const DetailsRouteData();
+      DetailsRouteData(cardId: state.pathParameters['cardId']!);
+
+  DetailsRouteData get _self => this as DetailsRouteData;
 
   @override
-  String get location => GoRouteData.$location('/home/details');
+  String get location => GoRouteData.$location(
+    '/home/details/${Uri.encodeComponent(_self.cardId)}',
+  );
 
   @override
   void go(BuildContext context) => context.go(location);

@@ -27,7 +27,7 @@ final goRouter = GoRouter(
       routes: [
         TypedGoRoute<HomeRouteData>(
           path: "/home",
-          routes: [TypedGoRoute<DetailsRouteData>(path: "details")],
+          routes: [TypedGoRoute<DetailsRouteData>(path: "details/:cardId")],
         ),
       ],
     ),

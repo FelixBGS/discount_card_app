@@ -4,6 +4,7 @@ import 'package:discount_card_app/ui/home/state/home_cubit.dart';
 import 'package:discount_card_app/ui/home/state/home_state.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_panel.dart';
 import 'package:discount_card_app/ui/home/widgets/discount_card_shimmer.dart';
+import 'package:discount_card_app/ui/router/branches/home/details_route.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/shared/themes/card_palette.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,8 @@ class HomeCardsList extends StatelessWidget {
               shopName: discountCard.shopName,
               categoryName: discountCard.category.label(context.l10n),
               color: context.cardPalette.resolve(discountCard.color),
-              onPressed: () {},
+              onPressed: () =>
+                  DetailsRouteData(cardId: discountCard.id).go(context),
             );
           },
         );

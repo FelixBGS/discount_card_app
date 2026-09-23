@@ -136,6 +136,7 @@ class EditorCubit extends Cubit<EditorState> {
         category: state.selectedCategory,
         color: cardColor,
         barcode: barcodeNumber,
+        description: state.description,
         barcodeFormat: state.barcodeFormat,
         logo: state.selectedLogo,
       ),
