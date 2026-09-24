@@ -12,4 +12,6 @@ abstract interface class DiscountCardRepository {
   Future<void> saveCard(DiscountCard card);
 
   Future<void> deleteCard(String id);
+
+  Future<void> syncSeedCards();
 }

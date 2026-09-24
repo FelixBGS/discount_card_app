@@ -1,13 +1,15 @@
 import 'package:discount_card_app/data/database/daos/discount_card_dao.dart';
 import 'package:discount_card_app/data/mappers/discount_card_entity_mapper.dart';
+import 'package:discount_card_app/data/remote/discount_card_api_client.dart';
 import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 
 final class DiscountCardRepositoryImpl implements DiscountCardRepository {
   final DiscountCardDao _dao;
+  final DiscountCardApiClient _api;
 
-  DiscountCardRepositoryImpl(this._dao);
+  DiscountCardRepositoryImpl(this._dao, this._api);
 
   @override
   Future<DiscountCard?> getCardById(String id) async {
@@ -23,6 +25,14 @@ final class DiscountCardRepositoryImpl implements DiscountCardRepository {
   @override
   Future<void> deleteCard(String id) async {
     await _dao.deleteCardById(id);
+  }
+
+  @override
+  Future<void> syncSeedCards() async {
+    final cards = await _api.fetchSeedCards();
+    for (final card in cards) {
+      await saveCard(card);
+    }
   }
 
   @override

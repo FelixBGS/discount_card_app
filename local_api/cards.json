@@ -1,0 +1,22 @@
+[
+  {
+    "id": "seed-pyaterochka",
+    "name": "Пятёрочка",
+    "category": "SUPERMARKET",
+    "color": "RED",
+    "barcode": "4601234567893",
+    "barcodeFormat": "EAN_13",
+    "logoUrl": "assets/images/icons/pyaterochka.svg",
+    "description": "Начальная карта из API"
+  },
+  {
+    "id": "seed-pharmacy",
+    "name": "Аптека",
+    "category": "PHARMACY",
+    "color": "GREEN",
+    "barcode": "4600000000004",
+    "barcodeFormat": "EAN_13",
+    "logoUrl": null,
+    "description": null
+  }
+]
