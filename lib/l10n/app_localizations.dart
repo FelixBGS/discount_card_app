@@ -363,6 +363,66 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Не удалось загрузить карту'**
   String get cardLoadError;
+
+  /// Заголовок экрана запроса разрешения камеры
+  ///
+  /// In ru, this message translates to:
+  /// **'Доступ к камере'**
+  String get scannerPermissionTitle;
+
+  /// Пояснение, зачем сканеру нужен доступ к камере
+  ///
+  /// In ru, this message translates to:
+  /// **'Разрешите доступ к камере, чтобы сканировать штрихкод карты'**
+  String get scannerPermissionMessage;
+
+  /// Кнопка системного запроса разрешения камеры
+  ///
+  /// In ru, this message translates to:
+  /// **'Разрешить'**
+  String get scannerPermissionButton;
+
+  /// Пояснение, если система больше не показывает запрос разрешения
+  ///
+  /// In ru, this message translates to:
+  /// **'Доступ к камере отключён. Включите его в настройках приложения'**
+  String get scannerPermissionPermanentMessage;
+
+  /// Кнопка перехода в настройки приложения
+  ///
+  /// In ru, this message translates to:
+  /// **'Открыть настройки'**
+  String get scannerOpenSettings;
+
+  /// Подсказка поверх превью сканера
+  ///
+  /// In ru, this message translates to:
+  /// **'Наведите камеру на штрихкод'**
+  String get scannerHint;
+
+  /// Подпись кнопки вспышки
+  ///
+  /// In ru, this message translates to:
+  /// **'Вспышка'**
+  String get scannerTorch;
+
+  /// Сообщение, если камера не открылась
+  ///
+  /// In ru, this message translates to:
+  /// **'Не удалось запустить камеру'**
+  String get scannerCameraError;
+
+  /// Сообщение, если формат штрихкода неизвестен
+  ///
+  /// In ru, this message translates to:
+  /// **'Этот код не поддерживается'**
+  String get scannerUnsupportedCode;
+
+  /// Заглушка сканера на платформах без нативной камеры
+  ///
+  /// In ru, this message translates to:
+  /// **'Сканер доступен на Android'**
+  String get scannerUnavailable;
 }
 
 class _AppLocalizationsDelegate

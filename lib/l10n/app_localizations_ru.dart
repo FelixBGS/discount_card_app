@@ -144,4 +144,36 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardLoadError => 'Не удалось загрузить карту';
+
+  @override
+  String get scannerPermissionTitle => 'Доступ к камере';
+
+  @override
+  String get scannerPermissionMessage =>
+      'Разрешите доступ к камере, чтобы сканировать штрихкод карты';
+
+  @override
+  String get scannerPermissionButton => 'Разрешить';
+
+  @override
+  String get scannerPermissionPermanentMessage =>
+      'Доступ к камере отключён. Включите его в настройках приложения';
+
+  @override
+  String get scannerOpenSettings => 'Открыть настройки';
+
+  @override
+  String get scannerHint => 'Наведите камеру на штрихкод';
+
+  @override
+  String get scannerTorch => 'Вспышка';
+
+  @override
+  String get scannerCameraError => 'Не удалось запустить камеру';
+
+  @override
+  String get scannerUnsupportedCode => 'Этот код не поддерживается';
+
+  @override
+  String get scannerUnavailable => 'Сканер доступен на Android';
 }

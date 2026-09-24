@@ -165,5 +165,55 @@
   "cardLoadError": "Не удалось загрузить карту",
   "@cardLoadError": {
     "description": "Сообщение, если карту не удалось загрузить в редакторе"
+  },
+
+  "scannerPermissionTitle": "Доступ к камере",
+  "@scannerPermissionTitle": {
+    "description": "Заголовок экрана запроса разрешения камеры"
+  },
+
+  "scannerPermissionMessage": "Разрешите доступ к камере, чтобы сканировать штрихкод карты",
+  "@scannerPermissionMessage": {
+    "description": "Пояснение, зачем сканеру нужен доступ к камере"
+  },
+
+  "scannerPermissionButton": "Разрешить",
+  "@scannerPermissionButton": {
+    "description": "Кнопка системного запроса разрешения камеры"
+  },
+
+  "scannerPermissionPermanentMessage": "Доступ к камере отключён. Включите его в настройках приложения",
+  "@scannerPermissionPermanentMessage": {
+    "description": "Пояснение, если система больше не показывает запрос разрешения"
+  },
+
+  "scannerOpenSettings": "Открыть настройки",
+  "@scannerOpenSettings": {
+    "description": "Кнопка перехода в настройки приложения"
+  },
+
+  "scannerHint": "Наведите камеру на штрихкод",
+  "@scannerHint": {
+    "description": "Подсказка поверх превью сканера"
+  },
+
+  "scannerTorch": "Вспышка",
+  "@scannerTorch": {
+    "description": "Подпись кнопки вспышки"
+  },
+
+  "scannerCameraError": "Не удалось запустить камеру",
+  "@scannerCameraError": {
+    "description": "Сообщение, если камера не открылась"
+  },
+
+  "scannerUnsupportedCode": "Этот код не поддерживается",
+  "@scannerUnsupportedCode": {
+    "description": "Сообщение, если формат штрихкода неизвестен"
+  },
+
+  "scannerUnavailable": "Сканер доступен на Android",
+  "@scannerUnavailable": {
+    "description": "Заглушка сканера на платформах без нативной камеры"
   }
 }

@@ -34,9 +34,10 @@ class CameraManager(
 
     private var state: CameraState = CameraState.Idle
 
-    suspend fun start(analyzer: ImageAnalysis.Analyzer): Result<Unit> = withContext(mainDispatcher) {
-        when (state) {
-            is CameraState.Running -> return@withContext Result.success(Unit)
+    suspend fun start(analyzer: ImageAnalysis.Analyzer): Result<Boolean> = withContext(mainDispatcher) {
+        when (val current = state) {
+            is CameraState.Running ->
+                return@withContext Result.success(current.camera.cameraInfo.hasFlashUnit())
             is CameraState.Starting -> return@withContext Result.failure(CameraError.AlreadyStarting())
             CameraState.Disposed -> return@withContext Result.failure(CameraError.Disposed())
             CameraState.Idle -> Unit
@@ -76,7 +77,7 @@ class CameraManager(
                 preview = preview,
                 analysis = analysis,
             )
-            Result.success(Unit)
+            Result.success(camera.cameraInfo.hasFlashUnit())
         } catch (error: CancellationException) {
             if (state === request) state = CameraState.Idle
             throw error

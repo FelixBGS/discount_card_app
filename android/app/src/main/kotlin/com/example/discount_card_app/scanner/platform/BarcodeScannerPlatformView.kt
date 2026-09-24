@@ -70,10 +70,29 @@ class BarcodeScannerPlatformView(
         result: MethodChannel.Result,
     ) {
         when (call.method) {
-            "start" -> result.replyWith { cameraManager.start(analyzer) }
+            "start" -> handleStart(result)
             "stop" -> result.replyWith { Result.success(cameraManager.stop()) }
             "setTorch" -> handleSetTorch(call, result)
             else -> result.notImplemented()
+        }
+    }
+
+    private fun handleStart(result: MethodChannel.Result) {
+        scope.launch {
+            try {
+                cameraManager.start(analyzer).fold(
+                    onSuccess = { torchAvailable ->
+                        result.success(mapOf("torchAvailable" to torchAvailable))
+                    },
+                    onFailure = { failure ->
+                        val code = (failure as? CameraError)?.code ?: "unknown_error"
+                        result.error(code, failure.message, null)
+                    },
+                )
+            } catch (cancellation: CancellationException) {
+                result.error("cancelled", "Scanner view was disposed", null)
+                throw cancellation
+            }
         }
     }
 

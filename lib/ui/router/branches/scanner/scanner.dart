@@ -1,3 +1,5 @@
+import 'package:discount_card_app/ui/scanner/widgets/scanner_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -5,7 +7,12 @@ import '../../app_router.dart';
 
 class ScannerRouteData extends GoRouteData with $ScannerRouteData {
   const ScannerRouteData();
+
   @override
-  Widget build(BuildContext context, GoRouterState state) =>
-      const Text("Not implemented");
+  Widget build(BuildContext context, GoRouterState state) {
+    if (defaultTargetPlatform != TargetPlatform.android) {
+      return const ScannerUnavailablePage();
+    }
+    return const ScannerPage();
+  }
 }
