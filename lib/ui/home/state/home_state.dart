@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +13,7 @@ class HomeState with _$HomeState {
     this.status = const HomeDataInitial(),
   });
 
-  final CardCategoryType? selectedCategory;
+  final CardCategory? selectedCategory;
   final List<DiscountCard> discountCards;
   final String searchQuery;
   final HomeDataStatus status;

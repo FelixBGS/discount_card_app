@@ -51,7 +51,7 @@ abstract mixin class $EditorStateCopyWith<$Res>  {
   factory $EditorStateCopyWith(EditorState value, $Res Function(EditorState) _then) = _$EditorStateCopyWithImpl;
 @useResult
 $Res call({
- EditorStatus status, LogoSource selectedLogo, String shopName, CardCategoryType selectedCategory, CardColor? selectedColor, String barcodeNumber, BarcodeFormat barcodeFormat, String description, EditorFieldErrors fieldErrors, String? cardId
+ EditorStatus status, LogoSource selectedLogo, String shopName, CardCategory selectedCategory, CardColor? selectedColor, String barcodeNumber, BarcodeFormat barcodeFormat, String description, EditorFieldErrors fieldErrors, String? cardId
 });
 
 
@@ -74,7 +74,7 @@ status: null == status ? _self.status : status // ignore: cast_nullable_to_non_n
 as EditorStatus,selectedLogo: null == selectedLogo ? _self.selectedLogo : selectedLogo // ignore: cast_nullable_to_non_nullable
 as LogoSource,shopName: null == shopName ? _self.shopName : shopName // ignore: cast_nullable_to_non_nullable
 as String,selectedCategory: null == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
-as CardCategoryType,selectedColor: freezed == selectedColor ? _self.selectedColor : selectedColor // ignore: cast_nullable_to_non_nullable
+as CardCategory,selectedColor: freezed == selectedColor ? _self.selectedColor : selectedColor // ignore: cast_nullable_to_non_nullable
 as CardColor?,barcodeNumber: null == barcodeNumber ? _self.barcodeNumber : barcodeNumber // ignore: cast_nullable_to_non_nullable
 as String,barcodeFormat: null == barcodeFormat ? _self.barcodeFormat : barcodeFormat // ignore: cast_nullable_to_non_nullable
 as BarcodeFormat,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable

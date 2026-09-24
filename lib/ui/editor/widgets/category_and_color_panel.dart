@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/shared/ui/category_selector.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
@@ -20,7 +20,7 @@ class CategoryAndColorPanel extends StatelessWidget {
     this.colorErrorText,
   });
 
-  final CardCategoryType selectedCategoryType;
+  final CardCategory selectedCategoryType;
   final VoidCallback onCategoryTypeChanged;
   final CardColor? selectedColor;
   final ValueChanged<CardColor> onColorChanged;
@@ -71,7 +71,7 @@ class CategoryAndColorPanel extends StatelessWidget {
 Widget categoryAndColorPanelPreview() => SizedBox(
   width: 500,
   child: CategoryAndColorPanel(
-    selectedCategoryType: CardCategoryType.unknown,
+    selectedCategoryType: CardCategory.unknown,
     onCategoryTypeChanged: () {},
     onColorChanged: (_) {},
   ),

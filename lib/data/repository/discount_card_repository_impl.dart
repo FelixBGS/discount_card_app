@@ -1,6 +1,6 @@
 import 'package:discount_card_app/data/database/daos/discount_card_dao.dart';
 import 'package:discount_card_app/data/mappers/discount_card_entity_mapper.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 
@@ -28,7 +28,7 @@ final class DiscountCardRepositoryImpl implements DiscountCardRepository {
   @override
   Stream<List<DiscountCard>> watchCardsByFilters(
     String shopNameQuery,
-    CardCategoryType? category,
+    CardCategory? category,
   ) {
     return _dao
         .watchCardsByFilters(shopNameQuery, category)

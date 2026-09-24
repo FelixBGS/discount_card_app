@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
@@ -74,7 +74,7 @@ class EditorCubit extends Cubit<EditorState> {
     emit(state.copyWith(selectedLogo: newLogo));
   }
 
-  void changeSelectedCategory(CardCategoryType newCategory) {
+  void changeSelectedCategory(CardCategory newCategory) {
     emit(state.copyWith(selectedCategory: newCategory));
   }
 

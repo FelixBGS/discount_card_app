@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:drift/drift.dart';
 
 import '../drift_database.dart';
@@ -13,7 +13,7 @@ class DiscountCardDao extends DatabaseAccessor<AppDatabase>
 
   Stream<List<DiscountCardEntity>> watchCardsByFilters(
     String shopNameQuery,
-    CardCategoryType? category,
+    CardCategory? category,
   ) {
     final query = select(discountCardScheme);
 

@@ -51,7 +51,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- CardCategoryType? selectedCategory, String searchQuery, List<DiscountCard> discountCards, HomeDataStatus status
+ CardCategory? selectedCategory, String searchQuery, List<DiscountCard> discountCards, HomeDataStatus status
 });
 
 
@@ -71,7 +71,7 @@ class _$HomeStateCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? selectedCategory = freezed,Object? searchQuery = null,Object? discountCards = null,Object? status = null,}) {
   return _then(HomeState(
 selectedCategory: freezed == selectedCategory ? _self.selectedCategory : selectedCategory // ignore: cast_nullable_to_non_nullable
-as CardCategoryType?,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
+as CardCategory?,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
 as String,discountCards: null == discountCards ? _self.discountCards : discountCards // ignore: cast_nullable_to_non_nullable
 as List<DiscountCard>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as HomeDataStatus,

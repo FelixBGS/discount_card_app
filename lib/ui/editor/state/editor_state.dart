@@ -1,5 +1,5 @@
 import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -48,7 +48,7 @@ class EditorState with _$EditorState {
     this.status = EditorStatus.ready,
     this.selectedLogo = const EmptyLogo(),
     this.shopName = "",
-    this.selectedCategory = CardCategoryType.unknown,
+    this.selectedCategory = CardCategory.unknown,
     this.selectedColor,
     this.barcodeNumber = "",
     this.barcodeFormat = BarcodeFormat.ean8,
@@ -60,7 +60,7 @@ class EditorState with _$EditorState {
   final EditorStatus status;
   final LogoSource selectedLogo;
   final String shopName;
-  final CardCategoryType selectedCategory;
+  final CardCategory selectedCategory;
   final CardColor? selectedColor;
   final String barcodeNumber;
   final BarcodeFormat barcodeFormat;

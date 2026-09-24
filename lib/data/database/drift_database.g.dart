@@ -41,15 +41,14 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
     requiredDuringInsert: true,
   );
   @override
-  late final GeneratedColumnWithTypeConverter<CardCategoryType, String>
-  category =
+  late final GeneratedColumnWithTypeConverter<CardCategory, String> category =
       GeneratedColumn<String>(
         'category',
         aliasedName,
         false,
         type: DriftSqlType.string,
         requiredDuringInsert: true,
-      ).withConverter<CardCategoryType>(
+      ).withConverter<CardCategory>(
         $DiscountCardSchemeTable.$convertercategory,
       );
   @override
@@ -236,7 +235,7 @@ class $DiscountCardSchemeTable extends DiscountCardScheme
     return $DiscountCardSchemeTable(attachedDatabase, alias);
   }
 
-  static TypeConverter<CardCategoryType, String> $convertercategory =
+  static TypeConverter<CardCategory, String> $convertercategory =
       const CardCategoryConverter();
   static TypeConverter<CardColor, String> $convertercolor =
       const CardColorConverter();
@@ -249,7 +248,7 @@ class DiscountCardEntity extends DataClass
   final String id;
   final String shopName;
   final String shopNameSearch;
-  final CardCategoryType category;
+  final CardCategory category;
   final CardColor color;
   final String barcode;
   final BarcodeFormat barcodeFormat;
@@ -324,7 +323,7 @@ class DiscountCardEntity extends DataClass
       id: serializer.fromJson<String>(json['id']),
       shopName: serializer.fromJson<String>(json['shopName']),
       shopNameSearch: serializer.fromJson<String>(json['shopNameSearch']),
-      category: serializer.fromJson<CardCategoryType>(json['category']),
+      category: serializer.fromJson<CardCategory>(json['category']),
       color: serializer.fromJson<CardColor>(json['color']),
       barcode: serializer.fromJson<String>(json['barcode']),
       barcodeFormat: serializer.fromJson<BarcodeFormat>(json['barcodeFormat']),
@@ -339,7 +338,7 @@ class DiscountCardEntity extends DataClass
       'id': serializer.toJson<String>(id),
       'shopName': serializer.toJson<String>(shopName),
       'shopNameSearch': serializer.toJson<String>(shopNameSearch),
-      'category': serializer.toJson<CardCategoryType>(category),
+      'category': serializer.toJson<CardCategory>(category),
       'color': serializer.toJson<CardColor>(color),
       'barcode': serializer.toJson<String>(barcode),
       'barcodeFormat': serializer.toJson<BarcodeFormat>(barcodeFormat),
@@ -352,7 +351,7 @@ class DiscountCardEntity extends DataClass
     String? id,
     String? shopName,
     String? shopNameSearch,
-    CardCategoryType? category,
+    CardCategory? category,
     CardColor? color,
     String? barcode,
     BarcodeFormat? barcodeFormat,
@@ -436,7 +435,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
   final Value<String> id;
   final Value<String> shopName;
   final Value<String> shopNameSearch;
-  final Value<CardCategoryType> category;
+  final Value<CardCategory> category;
   final Value<CardColor> color;
   final Value<String> barcode;
   final Value<BarcodeFormat> barcodeFormat;
@@ -459,7 +458,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     required String id,
     required String shopName,
     required String shopNameSearch,
-    required CardCategoryType category,
+    required CardCategory category,
     required CardColor color,
     required String barcode,
     required BarcodeFormat barcodeFormat,
@@ -503,7 +502,7 @@ class DiscountCardSchemeCompanion extends UpdateCompanion<DiscountCardEntity> {
     Value<String>? id,
     Value<String>? shopName,
     Value<String>? shopNameSearch,
-    Value<CardCategoryType>? category,
+    Value<CardCategory>? category,
     Value<CardColor>? color,
     Value<String>? barcode,
     Value<BarcodeFormat>? barcodeFormat,
@@ -607,7 +606,7 @@ typedef $$DiscountCardSchemeTableCreateCompanionBuilder =
       required String id,
       required String shopName,
       required String shopNameSearch,
-      required CardCategoryType category,
+      required CardCategory category,
       required CardColor color,
       required String barcode,
       required BarcodeFormat barcodeFormat,
@@ -620,7 +619,7 @@ typedef $$DiscountCardSchemeTableUpdateCompanionBuilder =
       Value<String> id,
       Value<String> shopName,
       Value<String> shopNameSearch,
-      Value<CardCategoryType> category,
+      Value<CardCategory> category,
       Value<CardColor> color,
       Value<String> barcode,
       Value<BarcodeFormat> barcodeFormat,
@@ -653,7 +652,7 @@ class $$DiscountCardSchemeTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<CardCategoryType, CardCategoryType, String>
+  ColumnWithTypeConverterFilters<CardCategory, CardCategory, String>
   get category => $composableBuilder(
     column: $table.category,
     builder: (column) => ColumnWithTypeConverterFilters(column),
@@ -762,7 +761,7 @@ class $$DiscountCardSchemeTableAnnotationComposer
     builder: (column) => column,
   );
 
-  GeneratedColumnWithTypeConverter<CardCategoryType, String> get category =>
+  GeneratedColumnWithTypeConverter<CardCategory, String> get category =>
       $composableBuilder(column: $table.category, builder: (column) => column);
 
   GeneratedColumnWithTypeConverter<CardColor, String> get color =>
@@ -829,7 +828,7 @@ class $$DiscountCardSchemeTableTableManager
                 Value<String> id = const Value.absent(),
                 Value<String> shopName = const Value.absent(),
                 Value<String> shopNameSearch = const Value.absent(),
-                Value<CardCategoryType> category = const Value.absent(),
+                Value<CardCategory> category = const Value.absent(),
                 Value<CardColor> color = const Value.absent(),
                 Value<String> barcode = const Value.absent(),
                 Value<BarcodeFormat> barcodeFormat = const Value.absent(),
@@ -853,7 +852,7 @@ class $$DiscountCardSchemeTableTableManager
                 required String id,
                 required String shopName,
                 required String shopNameSearch,
-                required CardCategoryType category,
+                required CardCategory category,
                 required CardColor color,
                 required String barcode,
                 required BarcodeFormat barcodeFormat,

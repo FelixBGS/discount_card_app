@@ -1,5 +1,5 @@
 import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -24,7 +24,7 @@ class DiscountCard with _$DiscountCard {
 
   final String shopName;
 
-  final CardCategoryType category;
+  final CardCategory category;
   final CardColor color;
   final String barcode;
   final BarcodeFormat barcodeFormat;

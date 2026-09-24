@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/models/card_category_ui.dart';
@@ -13,7 +13,7 @@ import 'package:flutter/widget_previews.dart';
 class CategorySelector extends StatelessWidget {
   CategorySelector({
     super.key,
-    required CardCategoryType categoryType,
+    required CardCategory categoryType,
     this.onPressed,
     this.decoratedLeading = true,
   }) : _content = _CategoryContent(categoryType);
@@ -166,7 +166,7 @@ sealed class _SelectorContent {
 final class _CategoryContent extends _SelectorContent {
   const _CategoryContent(this.categoryType);
 
-  final CardCategoryType categoryType;
+  final CardCategory categoryType;
 }
 
 final class _ColorContent extends _SelectorContent {
@@ -196,7 +196,7 @@ final class _InfoContent extends _SelectorContent {
 Widget categorySelectorPanelPreview() => SizedBox(
   width: 500,
   child: CategorySelector(
-    categoryType: CardCategoryType.entertainment,
+    categoryType: const CardCategory('ENTERTAINMENT'),
     onPressed: () {},
   ),
 );

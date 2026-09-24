@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/repository/discount_card_repository.dart';
 import 'package:discount_card_app/ui/home/state/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
         Rx.combineLatest2(
               searchStream,
               categoryStream,
-              (String query, CardCategoryType? category) => (query, category),
+              (String query, CardCategory? category) => (query, category),
             )
             .switchMap((filters) {
               final (query, category) = filters;
@@ -55,7 +55,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(searchQuery: newQuery));
   }
 
-  void changeSelectedCategory(CardCategoryType? selectedCategory) {
+  void changeSelectedCategory(CardCategory? selectedCategory) {
     emit(state.copyWith(selectedCategory: selectedCategory));
   }
 

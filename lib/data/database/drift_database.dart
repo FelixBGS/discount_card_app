@@ -4,7 +4,7 @@ import 'package:discount_card_app/data/database/converters/card_color_converter.
 import 'package:discount_card_app/data/database/drift_database.steps.dart';
 import 'package:discount_card_app/data/database/tables/discount_card_scheme.dart';
 import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';

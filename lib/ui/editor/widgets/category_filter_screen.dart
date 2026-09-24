@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/models/card_category_ui.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
@@ -12,13 +12,13 @@ import '../../util/utils.dart';
 class CategoryFilterScreen extends StatefulWidget {
   const CategoryFilterScreen({super.key, required this.selectedCategory});
 
-  final CardCategoryType selectedCategory;
+  final CardCategory selectedCategory;
 
-  static Future<CardCategoryType?> show(
+  static Future<CardCategory?> show(
     BuildContext context, {
-    required CardCategoryType selectedCategory,
+    required CardCategory selectedCategory,
   }) {
-    return Navigator.of(context, rootNavigator: true).push<CardCategoryType>(
+    return Navigator.of(context, rootNavigator: true).push<CardCategory>(
       MaterialPageRoute(
         builder: (context) =>
             CategoryFilterScreen(selectedCategory: selectedCategory),
@@ -31,7 +31,7 @@ class CategoryFilterScreen extends StatefulWidget {
 }
 
 class _CategoryFilterScreenState extends State<CategoryFilterScreen> {
-  late CardCategoryType _selected;
+  late CardCategory _selected;
 
   @override
   void initState() {
@@ -77,9 +77,9 @@ class _CategoryFilterScreenState extends State<CategoryFilterScreen> {
               Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
-                  itemCount: CardCategoryType.values.length,
+                  itemCount: CardCategoryUi.selectable.length,
                   itemBuilder: (context, index) {
-                    final category = CardCategoryType.values[index];
+                    final category = CardCategoryUi.selectable[index];
                     return _CategoryFilterTile(
                       category: category,
                       selected: _selected == category,
@@ -110,7 +110,7 @@ class _CategoryFilterTile extends StatelessWidget {
     required this.onTap,
   });
 
-  final CardCategoryType category;
+  final CardCategory category;
   final bool selected;
   final VoidCallback onTap;
 
@@ -184,8 +184,10 @@ class _SelectionMark extends StatelessWidget {
   theme: appPreviewTheme,
   localizations: appPreviewLocalizations,
 )
-Widget categoryFilterScreenPreview() => const SizedBox(
+Widget categoryFilterScreenPreview() => SizedBox(
   width: 400,
   height: 800,
-  child: CategoryFilterScreen(selectedCategory: CardCategoryType.supermarket),
+  child: CategoryFilterScreen(
+    selectedCategory: CardCategory('SUPERMARKET'),
+  ),
 );

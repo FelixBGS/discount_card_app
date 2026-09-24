@@ -1,4 +1,4 @@
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/home/state/home_cubit.dart';
 import 'package:discount_card_app/ui/home/state/home_state.dart';
@@ -13,10 +13,10 @@ class HomeFiltersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<HomeCubit, HomeState, CardCategoryType?>(
+    return BlocSelector<HomeCubit, HomeState, CardCategory?>(
       selector: (state) => state.selectedCategory,
       builder: ((context, selectedFilter) {
-        final filters = [null, ...CardCategoryType.values];
+        final filters = [null, ...CardCategoryUi.selectable];
 
         return Wrap(
           spacing: AppSpacing.sm,

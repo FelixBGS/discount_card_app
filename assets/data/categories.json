@@ -1,0 +1,42 @@
+[
+  {
+    "id": "SUPERMARKET",
+    "name": "Супермаркеты",
+    "icon": "shopping_cart"
+  },
+  {
+    "id": "CLOTHING",
+    "name": "Одежда",
+    "icon": "checkroom"
+  },
+  {
+    "id": "CAFE_AND_RESTAURANT",
+    "name": "Кафе и рестораны",
+    "icon": "local_cafe"
+  },
+  {
+    "id": "PHARMACY",
+    "name": "Аптеки",
+    "icon": "local_pharmacy"
+  },
+  {
+    "id": "ELECTRONICS",
+    "name": "Электроника",
+    "icon": "computer"
+  },
+  {
+    "id": "HOUSEHOLD_APPLIANCE",
+    "name": "Бытовая техника",
+    "icon": "local_laundry_service"
+  },
+  {
+    "id": "ENTERTAINMENT",
+    "name": "Развлечения",
+    "icon": "sports_esports"
+  },
+  {
+    "id": "NEW_TEST",
+    "name": "TEST",
+    "icon": "sports_esports"
+  }
+]

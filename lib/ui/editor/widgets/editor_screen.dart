@@ -1,6 +1,6 @@
 import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
+import 'package:discount_card_app/domain/models/card_category.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/ui/editor/state/editor_args.dart';
 import 'package:discount_card_app/ui/editor/state/editor_cubit.dart';
@@ -216,7 +216,7 @@ class _EditorFormState extends State<_EditorForm> {
                     EditorCubit,
                     EditorState,
                     ({
-                      CardCategoryType category,
+                      CardCategory category,
                       CardColor? color,
                       bool colorInvalid,
                     })

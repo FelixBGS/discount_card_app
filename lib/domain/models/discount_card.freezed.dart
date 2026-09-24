@@ -51,7 +51,7 @@ abstract mixin class $DiscountCardCopyWith<$Res>  {
   factory $DiscountCardCopyWith(DiscountCard value, $Res Function(DiscountCard) _then) = _$DiscountCardCopyWithImpl;
 @useResult
 $Res call({
- String id, String shopName, CardCategoryType category, CardColor color, String barcode, BarcodeFormat barcodeFormat, LogoSource logo, String? description
+ String id, String shopName, CardCategory category, CardColor color, String barcode, BarcodeFormat barcodeFormat, LogoSource logo, String? description
 });
 
 
@@ -73,7 +73,7 @@ class _$DiscountCardCopyWithImpl<$Res>
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,shopName: null == shopName ? _self.shopName : shopName // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
-as CardCategoryType,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
+as CardCategory,color: null == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as CardColor,barcode: null == barcode ? _self.barcode : barcode // ignore: cast_nullable_to_non_nullable
 as String,barcodeFormat: null == barcodeFormat ? _self.barcodeFormat : barcodeFormat // ignore: cast_nullable_to_non_nullable
 as BarcodeFormat,logo: null == logo ? _self.logo : logo // ignore: cast_nullable_to_non_nullable
