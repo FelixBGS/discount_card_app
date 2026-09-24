@@ -1,4 +1,4 @@
-package com.example.discount_card_app
+package com.example.discount_card_app.scanner.analysis
 
 import android.util.Log
 import androidx.annotation.OptIn
@@ -6,18 +6,12 @@ import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.barcode.BarcodeScanner
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-
 
 data class ScannedBarcode(val rawValue: String, val format: Int)
 
@@ -25,8 +19,10 @@ class BarcodeAnalyzer(
     private val scanner: BarcodeScanner
 ) : ImageAnalysis.Analyzer {
 
-    private val scope = CoroutineScope(Dispatchers.Default + SupervisorJob())
-    private val _barcodeEvents = MutableSharedFlow<ScannedBarcode>(extraBufferCapacity = 1)
+    private val _barcodeEvents = MutableSharedFlow<ScannedBarcode>(
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
     val barcodeEvents: SharedFlow<ScannedBarcode> = _barcodeEvents.asSharedFlow()
 
     @OptIn(ExperimentalGetImage::class)
@@ -40,27 +36,25 @@ class BarcodeAnalyzer(
             mediaImage,
             imageProxy.imageInfo.rotationDegrees
         )
-        scope.launch {
-            try {
-                val barcodes = scanner.process(inputImage).await()
-                for (barcode in barcodes) {
-                    val rawValue = barcode.rawValue
-                    if (!rawValue.isNullOrBlank()) {
-                        _barcodeEvents.emit(ScannedBarcode(rawValue, barcode.format))
-                        break
-                    }
-                }
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                Log.e(TAG, "Barcode detection failed on frame", e)
+        scanner.process(inputImage)
+            .addOnSuccessListener { barcodes ->
+                barcodes.firstNotNullOfOrNull(::toScannedBarcode)
+                    ?.let(_barcodeEvents::tryEmit)
             }
-        }.invokeOnCompletion { imageProxy.close() }
+            .addOnFailureListener { error ->
+                Log.e(TAG, "Barcode detection failed on frame", error)
+            }
+            .addOnCompleteListener { imageProxy.close() }
     }
 
     fun close() {
-        scope.cancel()
         scanner.close()
+    }
+
+    private fun toScannedBarcode(barcode: Barcode): ScannedBarcode? {
+        val rawValue = barcode.rawValue
+        if (rawValue.isNullOrBlank()) return null
+        return ScannedBarcode(rawValue, barcode.format)
     }
 
     companion object {

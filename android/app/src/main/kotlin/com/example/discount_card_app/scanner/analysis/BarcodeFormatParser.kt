@@ -1,4 +1,4 @@
-package com.example.discount_card_app
+package com.example.discount_card_app.scanner.analysis
 
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.common.Barcode
@@ -36,6 +36,7 @@ object BarcodeFormatParser {
                     }.distinct()
                 }
             }
+
             else -> throw IllegalArgumentException("Barcode formats must be a list")
         }
 

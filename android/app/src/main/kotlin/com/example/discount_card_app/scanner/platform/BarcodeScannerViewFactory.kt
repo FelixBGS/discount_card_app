@@ -1,4 +1,4 @@
-package com.example.discount_card_app
+package com.example.discount_card_app.scanner.platform
 
 import android.content.Context
 import androidx.lifecycle.LifecycleOwner
@@ -9,15 +9,17 @@ import io.flutter.plugin.platform.PlatformViewFactory
 
 class BarcodeScannerViewFactory(
     private val messenger: BinaryMessenger,
-    private val lifecycleOwner: LifecycleOwner
+    private val lifecycleOwnerProvider: () -> LifecycleOwner?,
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
     override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
-        val creationParams = args as? Map<*, *>
+        val lifecycleOwner = checkNotNull(lifecycleOwnerProvider()) {
+            "Barcode scanner requires an attached Activity"
+        }
         return BarcodeScannerPlatformView(
             context,
             messenger,
             viewId,
-            creationParams,
+            args as? Map<*, *>,
             lifecycleOwner
         )
     }

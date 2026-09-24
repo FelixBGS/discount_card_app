@@ -47,7 +47,7 @@ dependencies {
 
     implementation("com.google.mlkit:barcode-scanning:17.3.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.11.0")
 }
 
 kotlin {

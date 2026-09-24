@@ -1,20 +1,12 @@
 package com.example.discount_card_app
 
+import com.example.discount_card_app.scanner.platform.BarcodeScannerPlugin
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 
 class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        flutterEngine
-            .platformViewsController
-            .registry
-            .registerViewFactory(
-                BarcodeScannerPlatformView.VIEW_TYPE,
-                BarcodeScannerViewFactory(
-                    flutterEngine.dartExecutor.binaryMessenger,
-                    this
-                )
-            )
+        flutterEngine.plugins.add(BarcodeScannerPlugin())
     }
 }
