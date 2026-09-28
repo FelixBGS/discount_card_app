@@ -3,6 +3,7 @@ package com.example.discount_card_app.scanner.platform
 import android.content.Context
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import com.example.discount_card_app.scanner.ScannerConstants
 import com.example.discount_card_app.scanner.analysis.BarcodeAnalyzer
 import com.example.discount_card_app.scanner.analysis.BarcodeFormatParser
 import com.example.discount_card_app.scanner.camera.CameraError
@@ -30,12 +31,12 @@ class BarcodeScannerPlatformView(
 
     private val methodChannel = MethodChannel(
         messenger,
-        "$VIEW_TYPE/methods/$viewId",
+        "${ScannerConstants.METHODS_CHANNEL_PREFIX}/$viewId",
     )
 
     private val eventChannel = EventChannel(
         messenger,
-        "$VIEW_TYPE/events/$viewId",
+        "${ScannerConstants.EVENTS_CHANNEL_PREFIX}/$viewId",
     )
 
     private val scope = CoroutineScope(
@@ -44,7 +45,7 @@ class BarcodeScannerPlatformView(
 
     private val analyzer = BarcodeAnalyzer(
         BarcodeScanning.getClient(
-            BarcodeFormatParser.parse(creationParams?.get("formats")),
+            BarcodeFormatParser.parse(creationParams?.get(ScannerConstants.PARAM_FORMATS)),
         ),
     )
 
@@ -70,9 +71,9 @@ class BarcodeScannerPlatformView(
         result: MethodChannel.Result,
     ) {
         when (call.method) {
-            "start" -> result.replyWith { cameraManager.start(analyzer) }
-            "stop" -> result.replyWith { Result.success(cameraManager.stop()) }
-            "setTorch" -> handleSetTorch(call, result)
+            ScannerConstants.METHOD_START -> result.replyWith { cameraManager.start(analyzer) }
+            ScannerConstants.METHOD_STOP -> result.replyWith { Result.success(cameraManager.stop()) }
+            ScannerConstants.METHOD_SET_TORCH -> handleSetTorch(call, result)
             else -> result.notImplemented()
         }
     }
@@ -81,7 +82,7 @@ class BarcodeScannerPlatformView(
         call: MethodCall,
         result: MethodChannel.Result,
     ) {
-        val enabled = call.argument<Boolean>("enabled")
+        val enabled = call.argument<Boolean>(ScannerConstants.ARG_TORCH_ENABLED)
 
         if (enabled == null) {
             result.error(
@@ -121,9 +122,5 @@ class BarcodeScannerPlatformView(
             cameraManager.dispose()
             analyzer.close()
         }.invokeOnCompletion { scope.cancel() }
-    }
-
-    companion object {
-        const val VIEW_TYPE = "barcode_scanner"
     }
 }

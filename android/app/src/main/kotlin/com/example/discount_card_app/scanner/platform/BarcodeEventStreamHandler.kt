@@ -1,6 +1,7 @@
 package com.example.discount_card_app.scanner.platform
 
 import com.example.discount_card_app.extension.throttleFirstBy
+import com.example.discount_card_app.scanner.ScannerConstants
 import com.example.discount_card_app.scanner.analysis.BarcodeFormatParser
 import com.example.discount_card_app.scanner.analysis.ScannedBarcode
 import io.flutter.plugin.common.EventChannel
@@ -26,8 +27,8 @@ class BarcodeEventStreamHandler(
             .onEach { barcode ->
                 events.success(
                     mapOf(
-                        "value" to barcode.rawValue,
-                        "format" to BarcodeFormatParser.mapToString(barcode.format),
+                        ScannerConstants.EVENT_KEY_VALUE to barcode.rawValue,
+                        ScannerConstants.EVENT_KEY_FORMAT to BarcodeFormatParser.mapToString(barcode.format),
                     )
                 )
             }
