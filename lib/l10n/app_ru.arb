@@ -165,5 +165,36 @@
   "cardLoadError": "Не удалось загрузить карту",
   "@cardLoadError": {
     "description": "Сообщение, если карту не удалось загрузить в редакторе"
-  }
+  },
+
+  "requiredPermissionForCamera": "Для сканирования карточки нам нужно разрешение на использование камеры",
+
+  "allow": "Разрешить",
+
+  "permissionDeniedForCamera": "Вы видимо запретили использование камеры.\nЕсли вы передумали нажмите на кнопку «Открыть настройки» и разрешите использования в настройках",
+
+  "openSettings": "Открыть настройки",
+
+  "cameraErrorHappen": "Случилась ошибка камеры\n{error}.",
+  "@cameraErrorHappen": {
+    "placeholders": {
+        "error": {"type": "String"}
+    }
+  },
+
+  "torchErrorHappen": "Случилась ошибка при включении вспышки\n{error}.",
+    "@torchErrorHappen": {
+      "placeholders": {
+          "error": {"type": "String"}
+      }
+   },
+
+  "torchErrorHappen": "Случилась ошибка при включении вспышки\n{error}.",
+  "@torchErrorHappen": {
+    "placeholders": {
+             "error": {"type": "String"}
+    }
+  },
+
+  "barcodeErrorHappen": "Случилась ошибка при распознавании штрихкода.\nПовторите попытку."
 }

@@ -56,13 +56,13 @@ extension ScannerStatePatterns on ScannerState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ScanerInitialState value)?  initial,TResult Function( ScannerRequiredPermissionState value)?  requiredPermission,TResult Function( ScannerPermissionPermanentlyDeniedState value)?  permissionPermanentlyDenied,TResult Function( ScannerPermissionGranted value)?  permissionGranted,TResult Function( ScannerCameraRunningState value)?  cameraRunning,TResult Function( ScannerCameraErrorState value)?  cameraError,TResult Function( ScannerDataSuccessState value)?  dataSuccess,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ScanerInitialState value)?  initial,TResult Function( ScannerRequiredPermissionState value)?  requiredPermission,TResult Function( ScannerPermissionPermanentlyDeniedState value)?  permissionPermanentlyDenied,TResult Function( ScannerPermissionGrantedState value)?  permissionGranted,TResult Function( ScannerCameraRunningState value)?  cameraRunning,TResult Function( ScannerCameraErrorState value)?  cameraError,TResult Function( ScannerDataSuccessState value)?  dataSuccess,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case ScanerInitialState() when initial != null:
 return initial(_that);case ScannerRequiredPermissionState() when requiredPermission != null:
 return requiredPermission(_that);case ScannerPermissionPermanentlyDeniedState() when permissionPermanentlyDenied != null:
-return permissionPermanentlyDenied(_that);case ScannerPermissionGranted() when permissionGranted != null:
+return permissionPermanentlyDenied(_that);case ScannerPermissionGrantedState() when permissionGranted != null:
 return permissionGranted(_that);case ScannerCameraRunningState() when cameraRunning != null:
 return cameraRunning(_that);case ScannerCameraErrorState() when cameraError != null:
 return cameraError(_that);case ScannerDataSuccessState() when dataSuccess != null:
@@ -84,13 +84,13 @@ return dataSuccess(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ScanerInitialState value)  initial,required TResult Function( ScannerRequiredPermissionState value)  requiredPermission,required TResult Function( ScannerPermissionPermanentlyDeniedState value)  permissionPermanentlyDenied,required TResult Function( ScannerPermissionGranted value)  permissionGranted,required TResult Function( ScannerCameraRunningState value)  cameraRunning,required TResult Function( ScannerCameraErrorState value)  cameraError,required TResult Function( ScannerDataSuccessState value)  dataSuccess,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ScanerInitialState value)  initial,required TResult Function( ScannerRequiredPermissionState value)  requiredPermission,required TResult Function( ScannerPermissionPermanentlyDeniedState value)  permissionPermanentlyDenied,required TResult Function( ScannerPermissionGrantedState value)  permissionGranted,required TResult Function( ScannerCameraRunningState value)  cameraRunning,required TResult Function( ScannerCameraErrorState value)  cameraError,required TResult Function( ScannerDataSuccessState value)  dataSuccess,}){
 final _that = this;
 switch (_that) {
 case ScanerInitialState():
 return initial(_that);case ScannerRequiredPermissionState():
 return requiredPermission(_that);case ScannerPermissionPermanentlyDeniedState():
-return permissionPermanentlyDenied(_that);case ScannerPermissionGranted():
+return permissionPermanentlyDenied(_that);case ScannerPermissionGrantedState():
 return permissionGranted(_that);case ScannerCameraRunningState():
 return cameraRunning(_that);case ScannerCameraErrorState():
 return cameraError(_that);case ScannerDataSuccessState():
@@ -108,13 +108,13 @@ return dataSuccess(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ScanerInitialState value)?  initial,TResult? Function( ScannerRequiredPermissionState value)?  requiredPermission,TResult? Function( ScannerPermissionPermanentlyDeniedState value)?  permissionPermanentlyDenied,TResult? Function( ScannerPermissionGranted value)?  permissionGranted,TResult? Function( ScannerCameraRunningState value)?  cameraRunning,TResult? Function( ScannerCameraErrorState value)?  cameraError,TResult? Function( ScannerDataSuccessState value)?  dataSuccess,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ScanerInitialState value)?  initial,TResult? Function( ScannerRequiredPermissionState value)?  requiredPermission,TResult? Function( ScannerPermissionPermanentlyDeniedState value)?  permissionPermanentlyDenied,TResult? Function( ScannerPermissionGrantedState value)?  permissionGranted,TResult? Function( ScannerCameraRunningState value)?  cameraRunning,TResult? Function( ScannerCameraErrorState value)?  cameraError,TResult? Function( ScannerDataSuccessState value)?  dataSuccess,}){
 final _that = this;
 switch (_that) {
 case ScanerInitialState() when initial != null:
 return initial(_that);case ScannerRequiredPermissionState() when requiredPermission != null:
 return requiredPermission(_that);case ScannerPermissionPermanentlyDeniedState() when permissionPermanentlyDenied != null:
-return permissionPermanentlyDenied(_that);case ScannerPermissionGranted() when permissionGranted != null:
+return permissionPermanentlyDenied(_that);case ScannerPermissionGrantedState() when permissionGranted != null:
 return permissionGranted(_that);case ScannerCameraRunningState() when cameraRunning != null:
 return cameraRunning(_that);case ScannerCameraErrorState() when cameraError != null:
 return cameraError(_that);case ScannerDataSuccessState() when dataSuccess != null:
@@ -140,7 +140,7 @@ switch (_that) {
 case ScanerInitialState() when initial != null:
 return initial();case ScannerRequiredPermissionState() when requiredPermission != null:
 return requiredPermission();case ScannerPermissionPermanentlyDeniedState() when permissionPermanentlyDenied != null:
-return permissionPermanentlyDenied();case ScannerPermissionGranted() when permissionGranted != null:
+return permissionPermanentlyDenied();case ScannerPermissionGrantedState() when permissionGranted != null:
 return permissionGranted();case ScannerCameraRunningState() when cameraRunning != null:
 return cameraRunning(_that.isTorchEnabled,_that.torchFailureMessage,_that.barcodeFailureMessage);case ScannerCameraErrorState() when cameraError != null:
 return cameraError(_that.message);case ScannerDataSuccessState() when dataSuccess != null:
@@ -167,7 +167,7 @@ switch (_that) {
 case ScanerInitialState():
 return initial();case ScannerRequiredPermissionState():
 return requiredPermission();case ScannerPermissionPermanentlyDeniedState():
-return permissionPermanentlyDenied();case ScannerPermissionGranted():
+return permissionPermanentlyDenied();case ScannerPermissionGrantedState():
 return permissionGranted();case ScannerCameraRunningState():
 return cameraRunning(_that.isTorchEnabled,_that.torchFailureMessage,_that.barcodeFailureMessage);case ScannerCameraErrorState():
 return cameraError(_that.message);case ScannerDataSuccessState():
@@ -190,7 +190,7 @@ switch (_that) {
 case ScanerInitialState() when initial != null:
 return initial();case ScannerRequiredPermissionState() when requiredPermission != null:
 return requiredPermission();case ScannerPermissionPermanentlyDeniedState() when permissionPermanentlyDenied != null:
-return permissionPermanentlyDenied();case ScannerPermissionGranted() when permissionGranted != null:
+return permissionPermanentlyDenied();case ScannerPermissionGrantedState() when permissionGranted != null:
 return permissionGranted();case ScannerCameraRunningState() when cameraRunning != null:
 return cameraRunning(_that.isTorchEnabled,_that.torchFailureMessage,_that.barcodeFailureMessage);case ScannerCameraErrorState() when cameraError != null:
 return cameraError(_that.message);case ScannerDataSuccessState() when dataSuccess != null:
@@ -301,8 +301,8 @@ String toString() {
 /// @nodoc
 
 
-class ScannerPermissionGranted implements ScannerState {
-  const ScannerPermissionGranted();
+class ScannerPermissionGrantedState implements ScannerState {
+  const ScannerPermissionGrantedState();
   
 
 
@@ -312,7 +312,7 @@ class ScannerPermissionGranted implements ScannerState {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is ScannerPermissionGranted);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ScannerPermissionGrantedState);
 }
 
 

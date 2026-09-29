@@ -144,4 +144,32 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardLoadError => 'Не удалось загрузить карту';
+
+  @override
+  String get requiredPermissionForCamera =>
+      'Для сканирования карточки нам нужно разрешение на использование камеры';
+
+  @override
+  String get allow => 'Разрешить';
+
+  @override
+  String get permissionDeniedForCamera =>
+      'Вы видимо запретили использование камеры.\nЕсли вы передумали нажмите на кнопку «Открыть настройки» и разрешите использования в настройках';
+
+  @override
+  String get openSettings => 'Открыть настройки';
+
+  @override
+  String cameraErrorHappen(String error) {
+    return 'Случилась ошибка камеры\n$error.';
+  }
+
+  @override
+  String torchErrorHappen(String error) {
+    return 'Случилась ошибка при включении вспышки\n$error.';
+  }
+
+  @override
+  String get barcodeErrorHappen =>
+      'Случилась ошибка при распознавании штрихкода.\nПовторите попытку.';
 }

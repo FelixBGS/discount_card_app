@@ -363,6 +363,48 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Не удалось загрузить карту'**
   String get cardLoadError;
+
+  /// No description provided for @requiredPermissionForCamera.
+  ///
+  /// In ru, this message translates to:
+  /// **'Для сканирования карточки нам нужно разрешение на использование камеры'**
+  String get requiredPermissionForCamera;
+
+  /// No description provided for @allow.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разрешить'**
+  String get allow;
+
+  /// No description provided for @permissionDeniedForCamera.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вы видимо запретили использование камеры.\nЕсли вы передумали нажмите на кнопку «Открыть настройки» и разрешите использования в настройках'**
+  String get permissionDeniedForCamera;
+
+  /// No description provided for @openSettings.
+  ///
+  /// In ru, this message translates to:
+  /// **'Открыть настройки'**
+  String get openSettings;
+
+  /// No description provided for @cameraErrorHappen.
+  ///
+  /// In ru, this message translates to:
+  /// **'Случилась ошибка камеры\n{error}.'**
+  String cameraErrorHappen(String error);
+
+  /// No description provided for @torchErrorHappen.
+  ///
+  /// In ru, this message translates to:
+  /// **'Случилась ошибка при включении вспышки\n{error}.'**
+  String torchErrorHappen(String error);
+
+  /// No description provided for @barcodeErrorHappen.
+  ///
+  /// In ru, this message translates to:
+  /// **'Случилась ошибка при распознавании штрихкода.\nПовторите попытку.'**
+  String get barcodeErrorHappen;
 }
 
 class _AppLocalizationsDelegate

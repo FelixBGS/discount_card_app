@@ -13,7 +13,8 @@ sealed class ScannerState with _$ScannerState {
   const factory ScannerState.permissionPermanentlyDenied() =
       ScannerPermissionPermanentlyDeniedState;
 
-  const factory ScannerState.permissionGranted() = ScannerPermissionGranted;
+  const factory ScannerState.permissionGranted() =
+      ScannerPermissionGrantedState;
 
   const factory ScannerState.cameraRunning({
     @Default(false) bool isTorchEnabled,

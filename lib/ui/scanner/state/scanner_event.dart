@@ -12,6 +12,10 @@ final class ScannerPermissionRequestPressed extends ScannerEvent {
   const ScannerPermissionRequestPressed();
 }
 
+final class ScannerOpenSettingsPressed extends ScannerEvent {
+  const ScannerOpenSettingsPressed();
+}
+
 final class ScannerTorchPressed extends ScannerEvent {
   const ScannerTorchPressed();
 }

@@ -1,6 +1,7 @@
 package com.example.discount_card_app.scanner.platform
 
 import androidx.lifecycle.LifecycleOwner
+import com.example.discount_card_app.scanner.ScannerConstants
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -10,7 +11,7 @@ class BarcodeScannerPlugin : FlutterPlugin, ActivityAware {
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
         binding.platformViewRegistry.registerViewFactory(
-            BarcodeScannerPlatformView.VIEW_TYPE,
+            ScannerConstants.VIEW_TYPE,
             BarcodeScannerViewFactory(binding.binaryMessenger) { lifecycleOwner },
         )
     }

@@ -5,17 +5,18 @@ import 'package:permission_handler/permission_handler.dart';
 
 class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
   ScannerBloc() : super(const ScannerState.initial()) {
-    on<ScannerInitialized>(_onInitialized);
+    on<ScannerInitialized>(_onScannerInitialized);
     on<ScannerStarted>(_onScannerStarted);
     on<ScannerBarcodeDetected>(_onScannerBarcodeDetected);
     on<ScannerCameraErrorOccurred>(_onScannerCameraErrorOccurred);
     on<ScannerDataErrorOccurred>(_onScannerDataErrorOccurred);
     on<ScannerTorchErrorOccurred>(_onScannerTorchErrorOccurred);
-    on<ScannerPermissionRequestPressed>(_onPermissionRequestPressed);
+    on<ScannerPermissionRequestPressed>(_onScannerPermissionRequestPressed);
+    on<ScannerOpenSettingsPressed>(_onScannerOpenSettingsPressed);
     on<ScannerTorchPressed>(_onScannerTorchPressed);
   }
 
-  Future<void> _onInitialized(
+  Future<void> _onScannerInitialized(
     ScannerInitialized event,
     Emitter<ScannerState> emit,
   ) async {
@@ -86,12 +87,19 @@ class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
     }
   }
 
-  Future<void> _onPermissionRequestPressed(
+  Future<void> _onScannerPermissionRequestPressed(
     ScannerPermissionRequestPressed event,
     Emitter<ScannerState> emit,
   ) async {
     final status = await Permission.camera.request();
     await _evaluatePermissionStatus(status, emit);
+  }
+
+  Future<void> _onScannerOpenSettingsPressed(
+    ScannerOpenSettingsPressed event,
+    Emitter<ScannerState> emit,
+  ) async {
+    await openAppSettings();
   }
 
   Future<void> _evaluatePermissionStatus(
@@ -108,6 +116,10 @@ class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
       return;
     }
 
-    emit(ScannerState.requiredPermission());
+    if (status.isDenied && state is ScannerPermissionPermanentlyDeniedState) {
+      return;
+    }
+
+    emit(const ScannerState.requiredPermission());
   }
 }
