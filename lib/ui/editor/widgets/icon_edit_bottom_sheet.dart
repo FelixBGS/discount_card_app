@@ -12,7 +12,7 @@ import 'package:image_picker/image_picker.dart';
 import '../../shared/themes/app_dimensions.dart';
 import '../../shared/ui/app_button.dart';
 import '../../shared/ui/universal_icon.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 
 class IconEditBottomSheet extends StatefulWidget {
   const IconEditBottomSheet({
@@ -82,7 +82,8 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
     final mediaQuery = MediaQuery.of(context);
-    final bottomInset = mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
+    final bottomInset =
+        mediaQuery.padding.bottom + mediaQuery.viewInsets.bottom;
 
     return Padding(
       padding: EdgeInsetsGeometry.fromLTRB(

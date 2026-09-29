@@ -6,7 +6,7 @@ import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/shared/themes/card_palette.dart';
 import 'package:discount_card_app/ui/shared/ui/contrast_icon.dart';
 import 'package:discount_card_app/ui/shared/ui/panel_container.dart';
-import 'package:discount_card_app/ui/util/utils.dart';
+import 'package:discount_card_app/ui/utils/preview_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 

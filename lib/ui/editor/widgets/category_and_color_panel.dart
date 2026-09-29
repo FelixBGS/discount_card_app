@@ -1,13 +1,13 @@
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/shared/ui/category_selector.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
+import 'package:discount_card_app/ui/shared/ui/category_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
 import '../../../domain/models/card_color.dart';
 import '../../shared/ui/panel_container.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 import 'color_selector.dart';
 
 class CategoryAndColorPanel extends StatelessWidget {

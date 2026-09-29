@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
 import '../../shared/themes/app_dimensions.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 
 class BarcodePanel extends StatelessWidget {
   const BarcodePanel({

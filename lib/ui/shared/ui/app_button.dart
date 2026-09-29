@@ -1,4 +1,4 @@
-import 'package:discount_card_app/ui/util/utils.dart';
+import 'package:discount_card_app/ui/utils/preview_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
@@ -22,14 +22,17 @@ class AppButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor,
-        foregroundColor: textColor,
-        overlayColor: transparentBackground ? Colors.transparent : null,
-        shadowColor: transparentBackground ? Colors.transparent : null,
-      ).copyWith(
-        elevation: transparentBackground ? const WidgetStatePropertyAll(0) : null,
-      ),
+      style:
+          ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            foregroundColor: textColor,
+            overlayColor: transparentBackground ? Colors.transparent : null,
+            shadowColor: transparentBackground ? Colors.transparent : null,
+          ).copyWith(
+            elevation: transparentBackground
+                ? const WidgetStatePropertyAll(0)
+                : null,
+          ),
       child: Text(text),
     );
   }

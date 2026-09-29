@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widget_previews.dart';
 
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 import '../themes/app_colors.dart';
 import '../themes/app_dimensions.dart';
 

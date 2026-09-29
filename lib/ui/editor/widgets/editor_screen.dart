@@ -21,7 +21,7 @@ import 'package:go_router/go_router.dart';
 import '../../../domain/models/card_color.dart';
 import '../../../l10n/l10n.dart';
 import '../../shared/themes/app_dimensions.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 import '../state/editor_state.dart';
 
 class EditorPage extends StatelessWidget {

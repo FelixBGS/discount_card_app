@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../models/barcode_format_codec.dart';
 import '../../shared/themes/app_dimensions.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 
 class BarcodeEditResult {
   const BarcodeEditResult({required this.barcode, required this.format});

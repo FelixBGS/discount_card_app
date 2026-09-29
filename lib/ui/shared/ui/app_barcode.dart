@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
 import '../../models/barcode_format_codec.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 import '../themes/app_dimensions.dart';
 
 class AppBarcode extends StatelessWidget {

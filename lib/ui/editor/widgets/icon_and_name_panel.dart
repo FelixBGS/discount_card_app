@@ -7,7 +7,7 @@ import 'package:flutter/widget_previews.dart';
 
 import '../../../domain/models/logo_source.dart';
 import '../../shared/ui/app_text_field.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 
 class IconAndNamePanel extends StatefulWidget {
   const IconAndNamePanel({

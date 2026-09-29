@@ -4,7 +4,7 @@ import 'package:flutter/widget_previews.dart';
 
 import '../../../domain/models/logo_source.dart';
 import '../../shared/themes/app_dimensions.dart';
-import '../../util/utils.dart';
+import '../../utils/preview_utils.dart';
 
 class ShopIconSelector extends StatelessWidget {
   const ShopIconSelector({super.key, required this.logo, this.onPressed});

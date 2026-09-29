@@ -33,6 +33,8 @@ class _ScannerViewState extends State<ScannerView> {
   ScannerController? _controller;
   StreamSubscription? _barcodeSub;
 
+  bool _nativeTorchState = false;
+
   @override
   void didUpdateWidget(covariant ScannerView oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -44,8 +46,11 @@ class _ScannerViewState extends State<ScannerView> {
   }
 
   Future<void> _applyTorchState() async {
+    if (_nativeTorchState == widget.isTorchEnabled) return;
+
     try {
       await _controller?.setTorch(enabled: widget.isTorchEnabled);
+      _nativeTorchState = widget.isTorchEnabled;
     } on PlatformException catch (e) {
       widget.onTorchError?.call(e.message ?? 'Failed to set torch state');
     }
