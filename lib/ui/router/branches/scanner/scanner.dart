@@ -8,5 +8,5 @@ class ScannerRouteData extends GoRouteData with $ScannerRouteData {
   const ScannerRouteData();
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      const ScannerPage();
+      const ScannerScreen();
 }

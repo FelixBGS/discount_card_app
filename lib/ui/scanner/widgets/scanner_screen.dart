@@ -1,27 +1,11 @@
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/router/app_router.dart';
 import 'package:discount_card_app/ui/scanner/controller/scanner_controller.dart';
-import 'package:discount_card_app/ui/scanner/state/scanner_bloc.dart';
-import 'package:discount_card_app/ui/scanner/state/scanner_event.dart';
 import 'package:discount_card_app/ui/scanner/state/scanner_state.dart';
 import 'package:discount_card_app/ui/scanner/widgets/scanner_view.dart';
 import 'package:discount_card_app/ui/shared/ui/app_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared/themes/app_dimensions.dart';
-
-class ScannerPage extends StatelessWidget {
-  const ScannerPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ScannerBloc()..add(ScannerInitialized()),
-      child: const ScannerScreen(),
-    );
-  }
-}
 
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});
@@ -49,51 +33,28 @@ class _ScannerScreenState extends State<ScannerScreen>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      final currentState = context.read<ScannerBloc>().state;
-
-      if (currentState is ScannerPermissionPermanentlyDeniedState ||
-          currentState is ScannerRequiredPermissionState) {
-        context.read<ScannerBloc>().add(ScannerInitialized());
-      }
+      // TODO(riverpod): перепроверить разрешение камеры, если текущее состояние — ScannerRequiredPermissionState или ScannerPermissionPermanentlyDeniedState (пользователь мог выдать доступ в настройках).
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ScannerBloc, ScannerState>(
-      listener: (context, state) async {
-        if (state is ScannerDataSuccessState) {
-          _scannerController?.stopScanner();
+    // TODO(riverpod): на ScannerDataSuccessState остановить _scannerController, открыть EditorRouteData с найденным штрихкодом, а после возврата (если виджет ещё смонтирован) снова запустить сканер и перевести состояние в cameraRunning.
+    // TODO(riverpod): подписаться на состояние сканера; при первом открытии экрана должна выполняться проверка разрешения камеры.
+    const state = ScannerState.initial();
 
-          await EditorRouteData(
-            barcodeNumber: state.barcodeNumber,
-            barcodeFormat: state.barcodeFormat,
-          ).push(context);
+    return switch (state) {
+      ScanerInitialState() => _buildScannerLoading(context),
+      ScannerRequiredPermissionState() => _buildRequiredPermission(context),
+      ScannerPermissionPermanentlyDeniedState() =>
+        _buildPermissionPermanentlyDenied(context),
 
-          if (context.mounted) {
-            _scannerController?.startScanner();
-            context.read<ScannerBloc>().add(ScannerStarted());
-          }
-        }
-      },
-      builder: (context, state) {
-        return switch (state) {
-          ScanerInitialState() => _buildScannerLoading(context),
-          ScannerRequiredPermissionState() => _buildRequiredPermission(context),
-          ScannerPermissionPermanentlyDeniedState() =>
-            _buildPermissionPermanentlyDenied(context),
+      ScannerPermissionGrantedState() ||
+      ScannerCameraRunningState() ||
+      ScannerDataSuccessState() => _buildCameraLayer(context, state),
 
-          ScannerPermissionGrantedState() ||
-          ScannerCameraRunningState() ||
-          ScannerDataSuccessState() => _buildCameraLayer(context, state),
-
-          ScannerCameraErrorState() => _buildCameraError(
-            context,
-            state.message,
-          ),
-        };
-      },
-    );
+      ScannerCameraErrorState() => _buildCameraError(context, state.message),
+    };
   }
 
   Widget _buildCameraLayer(BuildContext context, ScannerState state) {
@@ -107,19 +68,12 @@ class _ScannerScreenState extends State<ScannerScreen>
         ScannerView(
           onCreated: (controller) => _scannerController = controller,
           isTorchEnabled: isTorchEnabled,
-          onReady: () => context.read<ScannerBloc>().add(ScannerStarted()),
-          onBarcode: (barcode) => context.read<ScannerBloc>().add(
-            ScannerBarcodeDetected(barcode: barcode),
-          ),
-          onDataError: (message) => context.read<ScannerBloc>().add(
-            ScannerDataErrorOccurred(message: message ?? ""),
-          ),
-          onTorchError: (message) => context.read<ScannerBloc>().add(
-            ScannerTorchErrorOccurred(message: message ?? ""),
-          ),
-          onCameraError: (msg) => context.read<ScannerBloc>().add(
-            ScannerCameraErrorOccurred(message: msg ?? ''),
-          ),
+          // TODO(riverpod): каждый колбэк ниже должен менять состояние сканера: камера запущена, найден штрихкод, ошибка данных, ошибка фонарика, ошибка камеры.
+          onReady: () {},
+          onBarcode: (barcode) {},
+          onDataError: (message) {},
+          onTorchError: (message) {},
+          onCameraError: (message) {},
         ),
 
         if (state is ScannerPermissionGrantedState) ...[
@@ -160,9 +114,8 @@ Widget _buildRequiredPermission(BuildContext context) {
           text: context.l10n.allow,
           backgroundColor: colorScheme.primary,
           textColor: colorScheme.onPrimary,
-          onPressed: () => context.read<ScannerBloc>().add(
-            const ScannerPermissionRequestPressed(),
-          ),
+          // TODO(riverpod): запросить разрешение камеры и обновить состояние сканера по результату.
+          onPressed: () {},
         ),
       ],
     ),
@@ -190,9 +143,8 @@ Widget _buildPermissionPermanentlyDenied(BuildContext context) {
           text: context.l10n.openSettings,
           backgroundColor: colorScheme.primary,
           textColor: colorScheme.onPrimary,
-          onPressed: () => context.read<ScannerBloc>().add(
-            const ScannerOpenSettingsPressed(),
-          ),
+          // TODO(riverpod): открыть настройки приложения.
+          onPressed: () {},
         ),
       ],
     ),
@@ -209,8 +161,8 @@ Widget _buildCameraError(BuildContext context, String message) {
         Text(message, style: const TextStyle(color: Colors.white)),
         const SizedBox(height: 16),
         ElevatedButton(
-          onPressed: () =>
-              context.read<ScannerBloc>().add(ScannerInitialized()),
+          // TODO(riverpod): заново проверить разрешение камеры и перезапустить сканер.
+          onPressed: () {},
           child: const Text('Retry'),
         ),
       ],
@@ -254,9 +206,8 @@ Widget _buildTorchButton(BuildContext context, bool isTorchEnabled) {
     child: Center(
       child: FloatingActionButton(
         backgroundColor: isTorchEnabled ? Colors.white : Colors.black54,
-        onPressed: () {
-          context.read<ScannerBloc>().add(ScannerTorchPressed());
-        },
+        // TODO(riverpod): переключить фонарик в состоянии сканера.
+        onPressed: () {},
         child: Icon(
           isTorchEnabled ? Icons.flash_on : Icons.flash_off,
           color: isTorchEnabled ? Colors.black : Colors.white,

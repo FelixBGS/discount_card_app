@@ -1,11 +1,9 @@
-import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/domain/models/barcode_format.dart';
 import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/card_color.dart';
 import 'package:discount_card_app/domain/models/discount_card.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/details/state/details_cubit.dart';
 import 'package:discount_card_app/ui/details/state/details_state.dart';
 import 'package:discount_card_app/ui/models/card_category_ui.dart';
 import 'package:discount_card_app/ui/router/app_router.dart';
@@ -20,52 +18,33 @@ import 'package:discount_card_app/ui/utils/preview_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widget_previews.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key, required this.cardId});
+class DetailsScreen extends StatelessWidget {
+  const DetailsScreen({super.key, required this.cardId});
 
   final String cardId;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => DetailsCubit(getIt(), cardId),
-      child: const DetailsScreen(),
-    );
-  }
-}
+    // TODO(riverpod): закрывать экран, когда статус карты становится DetailsStatus.missing (карту удалили в редакторе).
+    // TODO(riverpod): подписаться на состояние карты с идентификатором cardId.
+    const state = DetailsState();
 
-class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+    final card = state.card;
+    if (card != null) {
+      return DetailsContent(
+        card: card,
+        onEdit: () => _openEditor(context, card.id),
+      );
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocListener<DetailsCubit, DetailsState>(
-      listenWhen: (_, current) => current.status == DetailsStatus.missing,
-      listener: (context, _) {
-        if (context.canPop()) context.pop();
-      },
-      child: BlocBuilder<DetailsCubit, DetailsState>(
-        builder: (context, state) {
-          final card = state.card;
-          if (card != null) {
-            return DetailsContent(
-              card: card,
-              onEdit: () => _openEditor(context, card.id),
-            );
-          }
-
-          return switch (state.status) {
-            DetailsStatus.loading => const _DetailsPlaceholder(
-              child: CircularProgressIndicator(),
-            ),
-            _ => const _DetailsLoadError(),
-          };
-        },
+    return switch (state.status) {
+      DetailsStatus.loading => const _DetailsPlaceholder(
+        child: CircularProgressIndicator(),
       ),
-    );
+      _ => const _DetailsLoadError(),
+    };
   }
 }
 
@@ -343,7 +322,8 @@ class _DetailsLoadError extends StatelessWidget {
             Text(context.l10n.cardLoadError, textAlign: TextAlign.center),
             const SizedBox(height: AppSpacing.md),
             AppButton(
-              onPressed: () => context.read<DetailsCubit>().load(),
+              // TODO(riverpod): повторить загрузку карты.
+              onPressed: () {},
               text: context.l10n.retry,
               backgroundColor: colorScheme.primary,
               textColor: colorScheme.onPrimary,
@@ -373,8 +353,7 @@ SystemUiOverlayStyle _overlayFor(Color background) {
 
 Future<void> _openEditor(BuildContext context, String cardId) async {
   await EditorCardRouteData(cardId: cardId).push(context);
-  if (!context.mounted) return;
-  await context.read<DetailsCubit>().load();
+  // TODO(riverpod): обновить карту после возврата из редактора.
 }
 
 @Preview(

@@ -1,6 +1,4 @@
-import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
-import 'package:discount_card_app/domain/service/logo_file_service.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
 import 'package:discount_card_app/ui/editor/widgets/shop_icon_selector.dart';
 import 'package:discount_card_app/ui/shared/ui/panel_container.dart';
@@ -63,12 +61,7 @@ class IconEditBottomSheetState extends State<IconEditBottomSheet> {
     try {
       final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (picked == null || !mounted) return;
-
-      final persisted = await getIt<LogoFileService>().persistLocal(
-        picked.path,
-      );
-      if (!mounted) return;
-      setState(() => _selectedLogo = persisted);
+      // TODO(riverpod): сохранить picked.path через LogoFileService.persistLocal и выбрать полученный логотип.
     } finally {
       _isPicking = false;
     }

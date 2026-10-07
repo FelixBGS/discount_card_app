@@ -1,25 +1,10 @@
-import 'package:discount_card_app/core/di/injection.dart';
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/home/state/home_cubit.dart';
 import 'package:discount_card_app/ui/home/widgets/home_app_bar.dart';
 import 'package:discount_card_app/ui/home/widgets/home_cards_list.dart';
 import 'package:discount_card_app/ui/home/widgets/home_filters_section.dart';
 import 'package:discount_card_app/ui/shared/themes/app_dimensions.dart';
 import 'package:discount_card_app/ui/shared/ui/app_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(getIt())..init(),
-      child: const HomeScreen(),
-    );
-  }
-}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,8 +21,8 @@ class HomeScreen extends StatelessWidget {
               child: AppSearchBar(
                 hintText: context.l10n.searchCardsHint,
                 icon: Icons.search_rounded,
-                onChanged: (query) =>
-                    context.read<HomeCubit>().changeSearchQuery(query),
+                // TODO(riverpod): передать поисковый запрос в состояние главного экрана.
+                onChanged: (query) {},
               ),
             ),
           ),

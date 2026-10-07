@@ -1,9 +1,5 @@
-import 'package:discount_card_app/core/di/injection.dart';
-import 'package:discount_card_app/domain/models/barcode_format.dart';
-import 'package:discount_card_app/domain/models/card_category_type.dart';
 import 'package:discount_card_app/domain/models/logo_source.dart';
 import 'package:discount_card_app/ui/editor/state/editor_args.dart';
-import 'package:discount_card_app/ui/editor/state/editor_cubit.dart';
 import 'package:discount_card_app/ui/editor/widgets/barcode_edit_bottom_sheet.dart';
 import 'package:discount_card_app/ui/editor/widgets/barcode_panel.dart';
 import 'package:discount_card_app/ui/editor/widgets/category_and_color_panel.dart';
@@ -15,53 +11,36 @@ import 'package:discount_card_app/ui/shared/ui/app_button.dart';
 import 'package:discount_card_app/ui/shared/ui/app_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../domain/models/card_color.dart';
 import '../../../l10n/l10n.dart';
 import '../../shared/themes/app_dimensions.dart';
 import '../../utils/preview_utils.dart';
 import '../state/editor_state.dart';
 
-class EditorPage extends StatelessWidget {
-  const EditorPage({super.key, this.args});
-
-  final EditorArgs? args;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          EditorCubit(args ?? const EditorArgs.blank(), getIt()),
-      child: const EditorScreen(),
-    );
-  }
-}
-
 class EditorScreen extends StatelessWidget {
-  const EditorScreen({super.key});
+  const EditorScreen({super.key, this.args = const EditorArgs.blank()});
+
+  final EditorArgs args;
 
   @override
   Widget build(BuildContext context) {
+    // TODO(riverpod): подписаться на статус редактора, созданного из args.
+    const state = EditorState();
+
     return Scaffold(
       appBar: const EditorAppBar(),
-      body: BlocBuilder<EditorCubit, EditorState>(
-        buildWhen: (previous, current) => previous.status != current.status,
-        builder: (context, state) {
-          return switch (state.status) {
-            EditorStatus.loading => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            EditorStatus.ready => _EditorForm(
-              shopName: state.shopName,
-              description: state.description,
-              isEditing: state.cardId != null,
-            ),
-            EditorStatus.error => const _EditorLoadError(),
-          };
-        },
-      ),
+      body: switch (state.status) {
+        EditorStatus.loading => const Center(
+          child: CircularProgressIndicator(),
+        ),
+        EditorStatus.ready => _EditorForm(
+          shopName: state.shopName,
+          description: state.description,
+          isEditing: state.cardId != null,
+        ),
+        EditorStatus.error => const _EditorLoadError(),
+      },
     );
   }
 }
@@ -82,7 +61,8 @@ class _EditorLoadError extends StatelessWidget {
             Text(context.l10n.cardLoadError, textAlign: TextAlign.center),
             const SizedBox(height: AppSpacing.md),
             AppButton(
-              onPressed: () => context.read<EditorCubit>().retryLoad(),
+              // TODO(riverpod): повторить загрузку редактируемой карты.
+              onPressed: () {},
               text: context.l10n.retry,
               backgroundColor: colorScheme.primary,
               textColor: colorScheme.onPrimary,
@@ -128,50 +108,46 @@ class _EditorFormState extends State<_EditorForm> {
   }
 
   Future<void> _editIcon() async {
-    final cubit = context.read<EditorCubit>();
+    // TODO(riverpod): взять текущий логотип из состояния редактора.
+    const state = EditorState();
     final logo = await IconEditBottomSheet.show(
       context,
-      selectedLogo: cubit.state.selectedLogo,
+      selectedLogo: state.selectedLogo,
       popularLogos: popularLogos,
     );
     if (!mounted || logo == null) return;
-    cubit.changeLogo(logo);
+    // TODO(riverpod): передать logo в состояние редактора.
   }
 
   Future<void> _editCategory() async {
-    final cubit = context.read<EditorCubit>();
+    // TODO(riverpod): взять текущую категорию из состояния редактора.
+    const state = EditorState();
     final category = await CategoryFilterScreen.show(
       context,
-      selectedCategory: cubit.state.selectedCategory,
+      selectedCategory: state.selectedCategory,
     );
     if (!mounted || category == null) return;
-    cubit.changeSelectedCategory(category);
+    // TODO(riverpod): передать category в состояние редактора.
   }
 
   Future<void> _editBarcode() async {
-    final cubit = context.read<EditorCubit>();
+    // TODO(riverpod): взять текущий штрихкод и формат из состояния редактора.
+    const state = EditorState();
     final result = await BarcodeEditBottomSheet.show(
       context,
-      cubit.state.barcodeNumber,
-      cubit.state.barcodeFormat,
+      state.barcodeNumber,
+      state.barcodeFormat,
     );
     if (!mounted || result == null) return;
-    cubit.changeBarcodeNumberAndFormat(result.barcode, result.format);
+    // TODO(riverpod): передать result.barcode и result.format в состояние редактора.
   }
 
   Future<void> _onSave() async {
-    final cubit = context.read<EditorCubit>();
-    cubit.changeShopName(_shopNameController.text);
-    cubit.changeDescription(_descriptionController.text);
-    final saved = await cubit.saveCard();
-    if (!mounted || !saved) return;
-    context.pop();
+    // TODO(riverpod): передать текст из _shopNameController и _descriptionController в редактор, сохранить карту и закрыть экран только при успешной валидации.
   }
 
   Future<void> _onDelete() async {
-    await context.read<EditorCubit>().deleteCard();
-    if (!mounted) return;
-    context.pop();
+    // TODO(riverpod): удалить карту через редактор, затем закрыть экран.
   }
 
   @override
@@ -179,6 +155,8 @@ class _EditorFormState extends State<_EditorForm> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
+    // TODO(riverpod): заменить на точечные подписки (логотип и ошибка имени; категория, цвет и ошибка цвета; штрихкод, формат и ошибка штрихкода), чтобы панели перестраивались независимо.
+    const state = EditorState();
 
     return SafeArea(
       top: false,
@@ -190,83 +168,36 @@ class _EditorFormState extends State<_EditorForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BlocSelector<
-                    EditorCubit,
-                    EditorState,
-                    ({LogoSource logo, bool shopNameInvalid})
-                  >(
-                    selector: (s) => (
-                      logo: s.selectedLogo,
-                      shopNameInvalid: s.fieldErrors.shopName,
-                    ),
-                    builder: (context, panelInfo) {
-                      return IconAndNamePanel(
-                        logo: panelInfo.logo,
-                        shopName: widget.shopName,
-                        controller: _shopNameController,
-                        errorText: panelInfo.shopNameInvalid
-                            ? context.l10n.shopNameRequiredError
-                            : null,
-                        onChangeIconPressed: _editIcon,
-                      );
-                    },
+                  IconAndNamePanel(
+                    logo: state.selectedLogo,
+                    shopName: widget.shopName,
+                    controller: _shopNameController,
+                    errorText: state.fieldErrors.shopName
+                        ? context.l10n.shopNameRequiredError
+                        : null,
+                    onChangeIconPressed: _editIcon,
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  BlocSelector<
-                    EditorCubit,
-                    EditorState,
-                    ({
-                      CardCategoryType category,
-                      CardColor? color,
-                      bool colorInvalid,
-                    })
-                  >(
-                    selector: (s) => (
-                      category: s.selectedCategory,
-                      color: s.selectedColor,
-                      colorInvalid: s.fieldErrors.color,
-                    ),
-                    builder: (context, panelInfo) {
-                      return CategoryAndColorPanel(
-                        selectedCategoryType: panelInfo.category,
-                        selectedColor: panelInfo.color,
-                        colorErrorText: panelInfo.colorInvalid
-                            ? context.l10n.cardColorRequiredError
-                            : null,
-                        onCategoryTypeChanged: () {
-                          _editCategory();
-                        },
-                        onColorChanged: context
-                            .read<EditorCubit>()
-                            .changeCardColor,
-                      );
+                  CategoryAndColorPanel(
+                    selectedCategoryType: state.selectedCategory,
+                    selectedColor: state.selectedColor,
+                    colorErrorText: state.fieldErrors.color
+                        ? context.l10n.cardColorRequiredError
+                        : null,
+                    onCategoryTypeChanged: () {
+                      _editCategory();
                     },
+                    // TODO(riverpod): передать выбранный цвет в состояние редактора.
+                    onColorChanged: (color) {},
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  BlocSelector<
-                    EditorCubit,
-                    EditorState,
-                    ({
-                      String barcodeNumber,
-                      BarcodeFormat barcodeFormat,
-                      bool barcodeInvalid,
-                    })
-                  >(
-                    selector: (s) => (
-                      barcodeNumber: s.barcodeNumber,
-                      barcodeFormat: s.barcodeFormat,
-                      barcodeInvalid: s.fieldErrors.barcode,
-                    ),
-                    builder: (context, barcodeInfo) {
-                      return BarcodePanel(
-                        barcode: barcodeInfo.barcodeNumber,
-                        barcodeFormat: barcodeInfo.barcodeFormat,
-                        errorText: barcodeInfo.barcodeInvalid
-                            ? context.l10n.barcodeInvalidError
-                            : null,
-                        onEditPressed: _editBarcode,
-                      );
-                    },
+                  BarcodePanel(
+                    barcode: state.barcodeNumber,
+                    barcodeFormat: state.barcodeFormat,
+                    errorText: state.fieldErrors.barcode
+                        ? context.l10n.barcodeInvalidError
+                        : null,
+                    onEditPressed: _editBarcode,
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
@@ -347,9 +278,6 @@ Widget editorScreenPreview() => SizedBox(
   height: 1200,
   child: Container(
     color: const Color(0xFFF7F8FC),
-    child: BlocProvider(
-      create: (_) => MockEditorCubit(),
-      child: const EditorScreen(),
-    ),
+    child: const EditorScreen(),
   ),
 );

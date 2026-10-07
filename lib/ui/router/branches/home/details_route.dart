@@ -12,5 +12,5 @@ class DetailsRouteData extends GoRouteData with $DetailsRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      DetailsPage(cardId: cardId);
+      DetailsScreen(cardId: cardId);
 }

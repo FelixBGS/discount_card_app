@@ -11,7 +11,7 @@ class EditorRouteData extends GoRouteData with $EditorRouteData {
   final BarcodeFormat? barcodeFormat;
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => EditorPage(
+  Widget build(BuildContext context, GoRouterState state) => EditorScreen(
     args: EditorArgs.createFromQuery(
       barcodeNumber: barcodeNumber,
       barcodeFormat: barcodeFormat,
@@ -26,5 +26,5 @@ class EditorCardRouteData extends GoRouteData with $EditorCardRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
-      EditorPage(args: EditorArgs.fromDetails(cardId: cardId));
+      EditorScreen(args: EditorArgs.fromDetails(cardId: cardId));
 }

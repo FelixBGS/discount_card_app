@@ -1,8 +1,6 @@
 import 'package:discount_card_app/l10n/l10n.dart';
-import 'package:discount_card_app/ui/editor/state/editor_cubit.dart';
 import 'package:discount_card_app/ui/editor/state/editor_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../shared/themes/app_dimensions.dart';
@@ -13,18 +11,15 @@ class EditorAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // TODO(riverpod): подписаться только на cardId из состояния редактора.
+    final cardId = const EditorState().cardId;
 
     return AppBar(
-      title: BlocSelector<EditorCubit, EditorState, String?>(
-        selector: (state) => state.cardId,
-        builder: (context, cardId) {
-          return Text(
-            cardId == null
-                ? context.l10n.createCardTitle
-                : context.l10n.editCardTitle,
-            style: theme.textTheme.titleMedium,
-          );
-        },
+      title: Text(
+        cardId == null
+            ? context.l10n.createCardTitle
+            : context.l10n.editCardTitle,
+        style: theme.textTheme.titleMedium,
       ),
       centerTitle: true,
       titleSpacing: AppSpacing.lg,
